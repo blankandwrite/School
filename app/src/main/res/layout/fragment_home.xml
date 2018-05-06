@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:banner="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@mipmap/ic_background"
+              android:fitsSystemWindows="true"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="horizontal"
+        android:focusableInTouchMode="true"
+        android:layout_gravity="center_vertical">
+        <ImageView
+            android:id="@+id/iv_top"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/icon_head"
+            />
+        <EditText
+            android:id="@+id/et_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_home_text"
+            android:layout_marginLeft="15dp"
+            android:padding="5dp"
+            android:cursorVisible="true"
+            android:drawableRight="@mipmap/ic_search"
+            android:gravity="center_vertical"
+            android:hint="搜索内容"
+            android:singleLine="true"
+            android:textColor="#8A8A8A"
+            android:textColorHint="#8A8A8A"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+
+    <aqtc.gl.school.fragment.banner.SimpleImageBanner
+        android:id="@+id/banner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        banner:bb_delay="2"
+        banner:bb_indicatorCornerRadius="3dp"
+        banner:bb_indicatorGap="8dp"
+        banner:bb_indicatorGravity="RIGHT"
+        banner:bb_indicatorHeight="6dp"
+        banner:bb_indicatorSelectColor="#ffffff"
+        banner:bb_indicatorStyle="CORNER_RECTANGLE"
+        banner:bb_indicatorUnselectColor="#88ffffff"
+        banner:bb_indicatorWidth="6dp"
+        banner:bb_isAutoScrollEnable="true"
+        banner:bb_isBarShowWhenLast="true"
+        banner:bb_isIndicatorShow="true"
+        banner:bb_isLoopEnable="true"
+        banner:bb_isTitleShow="true"
+        banner:bb_period="10"
+        banner:bb_scale="0.5625"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="2">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_weight="2"
+            android:background="@drawable/home_item_bg">
+            <TextView
+                android:text="师大要闻"
+                android:drawableRight="@mipmap/ic_news"
+                style="@style/home_list"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/home_item_bg"
+            android:clickable="true">
+
+            <TextView
+                style="@style/home_list"
+                android:text="校园传真"
+                android:drawableRight="@mipmap/ic_chuanzhen"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="2"
+        android:background="@drawable/home_item_bg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="18dp"
+            android:drawablePadding="5dp"
+            android:drawableRight="@mipmap/ic_notice"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="通知公告"
+            android:textColor="@color/white"
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/tv_scene"
+            android:drawableTop="@mipmap/ic_scene"
+            android:text="校园风光"
+            android:layout_alignParentRight="true"
+            style="@style/home_list2"/>
+
+        <TextView
+            style="@style/home_list2"
+            android:text="学校概况"
+            android:drawableTop="@mipmap/ic_desc"
+            android:layout_toLeftOf="@+id/tv_scene"
+            android:layout_marginRight="18dp"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="2">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_weight="2"
+            android:background="@drawable/home_item_bg">
+
+            <TextView
+                style="@style/home_list"
+                android:text="媒体师大"
+                android:drawableRight="@mipmap/ic_meiti"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ray_schoolFriend"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/home_item_bg"
+            android:clickable="true">
+
+            <TextView
+                style="@style/home_list"
+                android:text="学术动态"
+                android:drawableRight="@mipmap/ic_xueshu"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

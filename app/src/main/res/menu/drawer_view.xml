@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@mipmap/ic_xueyuan"
+            android:title="学院:计算机与信息学院"/>
+        <item
+            android:id="@+id/nav_messages"
+            android:icon="@mipmap/ic_jiebie"
+            android:title="级别:2011级"/>
+        <item
+            android:id="@+id/nav_friends"
+            android:icon="@mipmap/ic_zhuanye"
+            android:title="专业:计算机科学与技术"/>
+        <item
+            android:id="@+id/nav_discussion"
+            android:icon="@mipmap/ic_class"
+            android:title="班级:工科一班"/>
+    </group>
+
+    <item android:title="其他">
+        <menu>
+            <item
+                android:icon="@mipmap/ic_about"
+                android:title="关于"/>
+            <item
+                android:icon="@mipmap/ic_version"
+                android:title="版本:v1.00"/>
+        </menu>
+    </item>
+
+</menu>

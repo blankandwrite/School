@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+             >
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/blue3"
+        android:orientation="horizontal"
+        android:weightSum="4">
+            <Button
+                android:id="@+id/homeBtn"
+                style="@style/main_bottom_style"
+                android:onClick="onTabClicked"
+                android:drawableTop="@mipmap/ic_home"
+                android:text="首页"/>
+            <Button
+                android:id="@+id/academyBtn"
+                style="@style/main_bottom_style"
+                android:onClick="onTabClicked"
+                android:drawableTop="@mipmap/ic_acade"
+                android:text="学院"/>
+
+            <Button
+                android:id="@+id/findBtn"
+                style="@style/main_bottom_style"
+                android:onClick="onTabClicked"
+                android:drawableTop="@mipmap/ic_find"
+                android:text="发现"/>
+        <Button
+            android:id="@+id/managementBtn"
+            style="@style/main_bottom_style"
+            android:onClick="onTabClicked"
+            android:drawableTop="@mipmap/ic_contacts"
+            android:text="教务管理"/>
+    </LinearLayout>
+</LinearLayout>
