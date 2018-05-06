@@ -17,7 +17,11 @@ import aqtc.gl.school.fragment.listener.OpenDrawerLayoutListener;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
+/**
+ * @author gl
+ * @date 2018/5/6
+ * @desc 主页
+ */
 public class MainActivity extends AppCompatActivity implements OpenDrawerLayoutListener {
     @BindView(R.id.homeBtn)
     Button homeBtn;

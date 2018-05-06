@@ -10,31 +10,33 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/dp_10"
         android:orientation="horizontal"
         android:focusableInTouchMode="true"
         android:layout_gravity="center_vertical">
+
         <ImageView
             android:id="@+id/iv_top"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@mipmap/icon_head"
             />
+
         <EditText
             android:id="@+id/et_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_home_text"
-            android:layout_marginLeft="15dp"
-            android:padding="5dp"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:padding="@dimen/dp_5"
             android:cursorVisible="true"
             android:drawableRight="@mipmap/ic_search"
             android:gravity="center_vertical"
-            android:hint="搜索内容"
+            android:hint="@string/home_search_hint"
             android:singleLine="true"
-            android:textColor="#8A8A8A"
-            android:textColorHint="#8A8A8A"
-            android:textSize="14sp"/>
+            android:textColor="@color/gray3"
+            android:textColorHint="@color/gray2"
+            android:textSize="@dimen/sp_14"/>
     </LinearLayout>
 
 
@@ -43,14 +45,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         banner:bb_delay="2"
-        banner:bb_indicatorCornerRadius="3dp"
-        banner:bb_indicatorGap="8dp"
+        banner:bb_indicatorCornerRadius="@dimen/dp_3"
+        banner:bb_indicatorGap="@dimen/dp_8"
         banner:bb_indicatorGravity="RIGHT"
         banner:bb_indicatorHeight="6dp"
-        banner:bb_indicatorSelectColor="#ffffff"
+        banner:bb_indicatorSelectColor="@color/white"
         banner:bb_indicatorStyle="CORNER_RECTANGLE"
         banner:bb_indicatorUnselectColor="#88ffffff"
-        banner:bb_indicatorWidth="6dp"
+        banner:bb_indicatorWidth="@dimen/dp_6"
         banner:bb_isAutoScrollEnable="true"
         banner:bb_isBarShowWhenLast="true"
         banner:bb_isIndicatorShow="true"
@@ -63,21 +65,22 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
         android:layout_weight="2">
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="@dimen/dp_5"
             android:layout_weight="2"
             android:background="@drawable/home_item_bg">
+
             <TextView
-                android:text="师大要闻"
-                android:drawableRight="@mipmap/ic_news"
-                style="@style/home_list"/>
+                style="@style/home_list"
+                android:text="@string/home_news"
+                android:drawableRight="@mipmap/ic_news"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -89,17 +92,18 @@
 
             <TextView
                 style="@style/home_list"
-                android:text="校园传真"
+                android:text="@string/home_fax"
                 android:drawableRight="@mipmap/ic_chuanzhen"
                 />
         </RelativeLayout>
     </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
         android:layout_weight="2"
         android:background="@drawable/home_item_bg">
 
@@ -107,50 +111,47 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="18dp"
+            android:layout_marginLeft="@dimen/dp_18"
             android:drawablePadding="5dp"
             android:drawableRight="@mipmap/ic_notice"
             android:ellipsize="end"
             android:maxLines="1"
-            android:text="通知公告"
+            android:text="@string/home_notice"
             android:textColor="@color/white"
-            android:textSize="16sp"/>
+            android:textSize="@dimen/sp_16"/>
 
         <TextView
             android:id="@+id/tv_scene"
+            style="@style/home_list2"
             android:drawableTop="@mipmap/ic_scene"
-            android:text="校园风光"
-            android:layout_alignParentRight="true"
-            style="@style/home_list2"/>
+            android:text="@string/home_scene"
+            android:layout_alignParentRight="true"/>
 
         <TextView
             style="@style/home_list2"
-            android:text="学校概况"
+            android:text="@string/home_desc"
             android:drawableTop="@mipmap/ic_desc"
             android:layout_toLeftOf="@+id/tv_scene"
-            android:layout_marginRight="18dp"
+            android:layout_marginRight="@dimen/dp_18"
             />
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_margin="@dimen/dp_10"
         android:layout_weight="2">
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="@dimen/dp_5"
             android:layout_weight="2"
             android:background="@drawable/home_item_bg">
 
             <TextView
                 style="@style/home_list"
-                android:text="媒体师大"
+                android:text="@string/home_media"
                 android:drawableRight="@mipmap/ic_meiti"
                 />
         </RelativeLayout>
@@ -165,7 +166,7 @@
 
             <TextView
                 style="@style/home_list"
-                android:text="学术动态"
+                android:text="@string/home_science"
                 android:drawableRight="@mipmap/ic_xueshu"
                 />
         </RelativeLayout>

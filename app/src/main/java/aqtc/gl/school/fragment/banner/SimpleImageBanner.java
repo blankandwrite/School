@@ -12,7 +12,11 @@ import com.flyco.banner.widget.Banner.BaseIndicatorBanner;
 
 import aqtc.gl.school.R;
 
-
+/**
+ * @author gl
+ * @date 2018/5/6
+ * @desc 首页轮播图控件
+ */
 public class SimpleImageBanner extends BaseIndicatorBanner<BannerBean.DataEntity, SimpleImageBanner> {
 
     public SimpleImageBanner(Context context) {

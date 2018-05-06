@@ -21,25 +21,25 @@
                 style="@style/main_bottom_style"
                 android:onClick="onTabClicked"
                 android:drawableTop="@mipmap/ic_home"
-                android:text="首页"/>
+                android:text="@string/index_bottom_home"/>
             <Button
                 android:id="@+id/academyBtn"
                 style="@style/main_bottom_style"
                 android:onClick="onTabClicked"
                 android:drawableTop="@mipmap/ic_acade"
-                android:text="学院"/>
+                android:text="@string/index_bottom_academy"/>
 
             <Button
                 android:id="@+id/findBtn"
                 style="@style/main_bottom_style"
                 android:onClick="onTabClicked"
                 android:drawableTop="@mipmap/ic_find"
-                android:text="发现"/>
+                android:text="@string/index_bottom_find"/>
         <Button
             android:id="@+id/managementBtn"
             style="@style/main_bottom_style"
             android:onClick="onTabClicked"
             android:drawableTop="@mipmap/ic_contacts"
-            android:text="教务管理"/>
+            android:text="@string/index_bottom_managemrnt"/>
     </LinearLayout>
 </LinearLayout>

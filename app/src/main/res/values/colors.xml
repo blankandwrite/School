@@ -4,7 +4,6 @@
     <color name="colorPrimaryDark">#288dff</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="line">#ebeff2</color>
     <color name="blue">#5677fc</color>
     <color name="blue1">#1E6ABF</color>
     <color name="blue2">#2A7AD4</color>
@@ -18,4 +17,5 @@
     <color name="gray5">#F0F0F0</color>
     <color name="gray6">#40000000</color>
     <color name="bg_color">#F0F0F0</color>
+    <color name="line">#ebeff2</color>
 </resources>

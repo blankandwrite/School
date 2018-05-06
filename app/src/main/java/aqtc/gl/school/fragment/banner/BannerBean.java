@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 首页轮播图
- *
+ * @author gl
+ * @date 2018/5/6
+ * @desc 首页轮播图bean
  */
 public class BannerBean {
 
