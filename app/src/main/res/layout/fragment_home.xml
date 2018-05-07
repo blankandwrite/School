@@ -78,6 +78,7 @@
             android:background="@drawable/home_item_bg">
 
             <TextView
+                android:id="@+id/tv_news"
                 style="@style/home_list"
                 android:text="@string/home_news"
                 android:drawableRight="@mipmap/ic_news"/>

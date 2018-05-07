@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="title">
+        <attr name="title_name" format="string"/>
+        <attr name="right_title_name" format="string"/>
+        <attr name="iv_image_right" format="reference"/>
+        <attr name="right_title_show" format="boolean"/>
+        <attr name="iv_right_show" format="boolean"/>
+    </declare-styleable>
+
+
+</resources>

@@ -2,6 +2,7 @@ package aqtc.gl.school.fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 
 import com.flyco.banner.anim.select.ZoomInEnter;
@@ -12,6 +13,7 @@ import aqtc.gl.school.base.BaseFragment;
 import aqtc.gl.school.fragment.banner.BannerBean;
 import aqtc.gl.school.fragment.banner.SimpleImageBanner;
 import aqtc.gl.school.fragment.listener.OpenDrawerLayoutListener;
+import aqtc.gl.school.main.activity.ScenceActivity;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -57,5 +59,10 @@ public class HomeFragment extends BaseFragment {
         if (null !=mOpenDrawerLayoutListener ){
             mOpenDrawerLayoutListener.open();
         }
+    }
+
+    @OnClick(R.id.tv_scene)
+    void goScene(){
+       startActivity(new Intent(mContext, ScenceActivity.class));
     }
 }

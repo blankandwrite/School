@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_48"
+    android:background="@color/blue3">
+  <ImageView
+      android:id="@+id/back"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:padding="@dimen/dp_4"
+      android:layout_marginLeft="@dimen/dp_4"
+      android:src="@mipmap/ic_back"
+      android:layout_centerVertical="true"
+      />
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_18"
+        android:layout_centerInParent="true"
+        android:textColor="@color/white"
+        android:text="标题"/>
+
+    <TextView
+        android:id="@+id/rightTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_14"
+        android:textColor="@color/white"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:padding="@dimen/dp_4"
+        android:layout_marginRight="4dp"
+        android:text="右标题"/>
+
+    <ImageView
+        android:id="@+id/rightIv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:padding="@dimen/dp_4"
+        android:layout_marginRight="4dp"
+        android:src="@mipmap/ic_header"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        />
+
+</RelativeLayout>
