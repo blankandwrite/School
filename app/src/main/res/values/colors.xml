@@ -19,4 +19,5 @@
     <color name="gray6">#40000000</color>
     <color name="bg_color">#F0F0F0</color>
     <color name="line">#ebeff2</color>
+    <color name="colorBackgroundDark">#f2f2f2</color>
 </resources>

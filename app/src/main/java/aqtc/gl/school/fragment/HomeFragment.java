@@ -13,7 +13,7 @@ import aqtc.gl.school.base.BaseFragment;
 import aqtc.gl.school.fragment.banner.BannerBean;
 import aqtc.gl.school.fragment.banner.SimpleImageBanner;
 import aqtc.gl.school.fragment.listener.OpenDrawerLayoutListener;
-import aqtc.gl.school.main.activity.ScenceActivity;
+import aqtc.gl.school.main.home.activity.ScenceActivity;
 import butterknife.BindView;
 import butterknife.OnClick;
 
