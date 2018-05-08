@@ -20,7 +20,7 @@ public class BannerBean {
     public static BannerBean getBannerBean(){
         BannerBean bannerBean = new BannerBean();
         List<DataEntity> list = new ArrayList<>();
-        for (int i=0;i<5;i++){
+        for (int i=0;i<6;i++){
             DataEntity dataEntity = new DataEntity();
             if (i==0){
                 dataEntity.path="http://www.aqnu.edu.cn/images/jiepai1.jpg";
@@ -30,8 +30,10 @@ public class BannerBean {
                 dataEntity.path="http://www.aqnu.edu.cn/images/16/04/29/126fbmr252/2.jpg";
             }else if (i==3){
                 dataEntity.path="http://www.aqnu.edu.cn/images/16/04/29/126fbmr252/3.jpg";
-            }else {
+            }else if (i==4){
                 dataEntity.path="http://www.aqnu.edu.cn/images/16/04/29/126fbmr252/10.jpg";
+            }else {
+            dataEntity.path="http://www.aqnu.edu.cn/images/yjszs.jpg";
             }
             list.add(dataEntity);
 
