@@ -113,7 +113,10 @@ public class TitleView extends FrameLayout {
      * @param title
      */
     public void setTitle(String title){
-        mTitle.setText(title);
+        if (null != mTitle){
+            mTitle.setText(title);
+        }
+
     }
 
     /**
@@ -121,7 +124,10 @@ public class TitleView extends FrameLayout {
      * @param rightTitle
      */
     public void setRightTitle(String rightTitle){
-        mRightTitle.setText(rightTitle);
+        if (null != mRightTitle){
+            mRightTitle.setText(rightTitle);
+        }
+
     }
 
     /**
@@ -129,7 +135,10 @@ public class TitleView extends FrameLayout {
      * @param drawable
      */
     public void  setRightIv(Drawable drawable){
-        mRightIv.setImageDrawable(drawable);
+        if (null != mRightIv){
+            mRightIv.setImageDrawable(drawable);
+        }
+
 
     }
     public interface RightTitleListener{

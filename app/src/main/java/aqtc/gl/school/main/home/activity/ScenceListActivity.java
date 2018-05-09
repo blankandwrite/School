@@ -1,9 +1,8 @@
 package aqtc.gl.school.main.home.activity;
 
-import android.content.Intent;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -12,26 +11,34 @@ import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.zhy.adapter.recyclerview.MultiItemTypeRecyclerAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseActivity;
-import aqtc.gl.school.main.home.adapter.ScenceAdapter;
-import aqtc.gl.school.main.home.bean.ScenceBean;
+import aqtc.gl.school.common.DataManager;
+import aqtc.gl.school.main.home.adapter.ScenceListAdapter;
 import butterknife.BindView;
 
 /**
  * @author gl
- * @date 2018/5/7
- * @desc 校园风光
+ * @date 2018/5/9
+ * @desc
  */
-public class ScenceActivity extends BaseActivity {
+public class ScenceListActivity extends BaseActivity {
+
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
     @BindView(R.id.refreshLayout)
     SmartRefreshLayout mSmartRefreshLayout;
-    private ScenceAdapter mScenceAdapter;
-    private List<ScenceBean.ScenceEntity> mScenceEntityList;
+    private List<String> mUrlList = new ArrayList<>();
+    private ScenceListAdapter mScenceListAdapter;
+
+    @Override
+    public void findTitleViewId() {
+        mTitleView = findViewById(R.id.titleView);
+        mTitleView.setTitle(mContext.getResources().getString(R.string.home_scene));
+    }
 
     @Override
     public int getActivityViewById() {
@@ -40,29 +47,30 @@ public class ScenceActivity extends BaseActivity {
 
     @Override
     public void initView() {
-        mScenceEntityList = ScenceBean.getData();
+        mRecyclerView.setLayoutManager(new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 3));
-        mScenceAdapter = new ScenceAdapter(mContext, R.layout.item_scence, mScenceEntityList);
-        mRecyclerView.setAdapter(mScenceAdapter);
+        mScenceListAdapter = new ScenceListAdapter(mContext,R.layout.item_scence_list,DataManager.getUrl0());
+        mRecyclerView.setAdapter(mScenceListAdapter);
+
         mSmartRefreshLayout.autoRefresh();
         mSmartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
-                refreshlayout.finishRefresh(2000/*,false*/);//传入false表示刷新失败
-            }
-        });
-        mSmartRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
-            @Override
-            public void onLoadMore(RefreshLayout refreshlayout) {
-                refreshlayout.finishLoadMore(2000/*,false*/);//传入false表示加载失败
+                refreshlayout.finishRefresh(2000);
             }
         });
 
-        mScenceAdapter.setOnItemClickListener(new MultiItemTypeRecyclerAdapter.OnItemClickListener() {
+        mSmartRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
+            @Override
+            public void onLoadMore(RefreshLayout refreshlayout) {
+                refreshlayout.finishLoadMore(2000);
+            }
+        });
+
+        mScenceListAdapter.setOnItemClickListener(new MultiItemTypeRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-                startActivity(new Intent(mContext, ScenceListActivity.class));
+                ScenceDetailActivity.goScenceDetailActivity(mContext,DataManager.getUrl0(),position);
             }
 
             @Override
@@ -70,13 +78,7 @@ public class ScenceActivity extends BaseActivity {
                 return false;
             }
         });
+
+
     }
-
-    @Override
-    public void findTitleViewId() {
-        mTitleView = findViewById(R.id.titleView);
-        mTitleView.setTitle(mContext.getResources().getString(R.string.home_scene));
-    }
-
-
 }
