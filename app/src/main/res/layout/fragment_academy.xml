@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/blue3"
+        android:textSize="@dimen/sp_18"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:text="@string/index_bottom_academy"
+        />
+    <include layout="@layout/view_refresh"/>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>
