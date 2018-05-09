@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">School</string>
+    <string name="app_name">安庆师大</string>
     <string name="home_search_hint">搜索内容</string>
     <string name="home_news">师大要闻</string>
     <string name="home_fax">校园传真</string>
