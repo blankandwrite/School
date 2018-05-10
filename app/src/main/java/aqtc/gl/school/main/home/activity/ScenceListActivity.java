@@ -56,14 +56,14 @@ public class ScenceListActivity extends BaseActivity {
         mSmartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshlayout) {
-                refreshlayout.finishRefresh(2000);
+                refreshlayout.finishRefresh(1000);
             }
         });
 
         mSmartRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void onLoadMore(RefreshLayout refreshlayout) {
-                refreshlayout.finishLoadMore(2000);
+                refreshlayout.finishLoadMore(1000);
             }
         });
 

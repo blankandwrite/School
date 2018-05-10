@@ -2,7 +2,6 @@ package aqtc.gl.school.fragment;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 
 import com.flyco.banner.anim.select.ZoomInEnter;
@@ -13,7 +12,13 @@ import aqtc.gl.school.base.BaseFragment;
 import aqtc.gl.school.fragment.banner.BannerBean;
 import aqtc.gl.school.fragment.banner.SimpleImageBanner;
 import aqtc.gl.school.fragment.listener.OpenDrawerLayoutListener;
+import aqtc.gl.school.main.home.activity.FaxListActivity;
+import aqtc.gl.school.main.home.activity.MediaListActivity;
+import aqtc.gl.school.main.home.activity.NewsListActivity;
+import aqtc.gl.school.main.home.activity.NoticeListActivity;
 import aqtc.gl.school.main.home.activity.ScenceActivity;
+import aqtc.gl.school.main.home.activity.ScienceListActivity;
+import aqtc.gl.school.utils.apputil.Apputil;
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -55,14 +60,38 @@ public class HomeFragment extends BaseFragment {
     }
 
     @OnClick(R.id.iv_top)
-    void openDraw(){
-        if (null !=mOpenDrawerLayoutListener ){
+    void openDraw() {
+        if (null != mOpenDrawerLayoutListener) {
             mOpenDrawerLayoutListener.open();
         }
     }
 
     @OnClick(R.id.tv_scene)
-    void goScene(){
-       startActivity(new Intent(mContext, ScenceActivity.class));
+    void goScene() {
+        Apputil.goActivity(mContext, ScenceActivity.class);
     }
+
+    @OnClick(R.id.tv_news)
+    void goNews() {
+        Apputil.goActivity(mContext, NewsListActivity.class);
+    }
+
+    @OnClick(R.id.tv_fax)
+    void goFax() {
+        Apputil.goActivity(mContext, FaxListActivity.class);
+    }
+
+    @OnClick(R.id.tv_media)
+    void goMedia() {
+        Apputil.goActivity(mContext, MediaListActivity.class);
+    }
+    @OnClick(R.id.tv_notice)
+    void goNotice() {
+        Apputil.goActivity(mContext, NoticeListActivity.class);
+    }
+    @OnClick(R.id.tv_science)
+    void goScience() {
+        Apputil.goActivity(mContext, ScienceListActivity.class);
+    }
+
 }

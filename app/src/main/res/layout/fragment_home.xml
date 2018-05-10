@@ -80,8 +80,10 @@
             <TextView
                 android:id="@+id/tv_news"
                 style="@style/home_list"
-                android:text="@string/home_news"
-                android:drawableRight="@mipmap/ic_news"/>
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:drawableRight="@mipmap/ic_news"
+                android:text="@string/home_news"/>
         </RelativeLayout>
 
         <RelativeLayout
@@ -92,6 +94,7 @@
             android:clickable="true">
 
             <TextView
+                android:id="@+id/tv_fax"
                 style="@style/home_list"
                 android:text="@string/home_fax"
                 android:drawableRight="@mipmap/ic_chuanzhen"
@@ -109,11 +112,14 @@
         android:background="@drawable/home_item_bg">
 
         <TextView
+            android:id="@+id/tv_notice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/dp_18"
             android:drawablePadding="5dp"
+            android:paddingTop="@dimen/dp_8"
+            android:paddingBottom="@dimen/dp_8"
             android:drawableRight="@mipmap/ic_notice"
             android:ellipsize="end"
             android:maxLines="1"
@@ -151,6 +157,7 @@
             android:background="@drawable/home_item_bg">
 
             <TextView
+                android:id="@+id/tv_media"
                 style="@style/home_list"
                 android:text="@string/home_media"
                 android:drawableRight="@mipmap/ic_meiti"
@@ -166,6 +173,7 @@
             android:clickable="true">
 
             <TextView
+                android:id="@+id/tv_science"
                 style="@style/home_list"
                 android:text="@string/home_science"
                 android:drawableRight="@mipmap/ic_xueshu"

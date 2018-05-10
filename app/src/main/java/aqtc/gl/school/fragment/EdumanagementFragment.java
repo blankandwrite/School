@@ -34,7 +34,7 @@ public class EdumanagementFragment extends BaseFragment {
         mSmartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
-                mSmartRefreshLayout.finishRefresh(2000);
+                mSmartRefreshLayout.finishRefresh(1000);
             }
         });
     }

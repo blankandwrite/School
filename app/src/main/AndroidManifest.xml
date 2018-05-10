@@ -28,6 +28,21 @@
         <activity
             android:name=".main.home.activity.ScenceDetailActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".main.home.activity.NewsListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".main.home.activity.FaxListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".main.home.activity.MediaListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".main.home.activity.NoticeListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".main.home.activity.ScienceListActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
