@@ -43,6 +43,7 @@
         <activity
             android:name=".main.home.activity.ScienceListActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".main.find.ImagePagerActivity"/>
     </application>
 
 </manifest>

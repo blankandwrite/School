@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<aqtc.gl.school.main.find.widgets.TitleBar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_title_bar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_48"
+    android:background="@color/white"
+   >
+
+</aqtc.gl.school.main.find.widgets.TitleBar>
