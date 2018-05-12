@@ -24,7 +24,7 @@ import butterknife.BindView;
 /**
  * @author gl
  * @date 2018/5/9
- * @desc
+ * @desc 校园风光
  */
 public class ScenceListActivity extends BaseActivity {
 
