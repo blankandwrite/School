@@ -1,7 +1,9 @@
 package aqtc.gl.school.main.find.mvp.contract;
 
 /**
- * Created by suneee on 2016/7/15.
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public interface BasePresenter {
 }

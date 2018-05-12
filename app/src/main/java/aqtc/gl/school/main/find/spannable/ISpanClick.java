@@ -1,9 +1,9 @@
 package aqtc.gl.school.main.find.spannable;
 
 /**
- * @author yiw
- * @Description:
- * @date 16/1/2 19:44
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public interface ISpanClick {
     public void onClick(int position);

@@ -42,7 +42,9 @@ import aqtc.gl.school.main.find.widgets.dialog.CommentDialog;
 
 
 /**
- * Created by yiwei on 16/5/17.
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public class CircleAdapter extends BaseRecycleViewAdapter {
 

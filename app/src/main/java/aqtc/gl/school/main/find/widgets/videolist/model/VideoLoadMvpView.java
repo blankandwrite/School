@@ -8,7 +8,9 @@ import aqtc.gl.school.main.find.widgets.videolist.widget.TextureVideoView;
 
 
 /**
- * @author Wayne
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public interface VideoLoadMvpView {
 

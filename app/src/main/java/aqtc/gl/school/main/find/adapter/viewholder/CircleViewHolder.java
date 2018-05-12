@@ -18,7 +18,9 @@ import aqtc.gl.school.main.find.widgets.videolist.widget.TextureVideoView;
 
 
 /**
- * Created by yiw on 2016/8/16.
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public abstract class CircleViewHolder extends RecyclerView.ViewHolder implements VideoLoadMvpView {
 

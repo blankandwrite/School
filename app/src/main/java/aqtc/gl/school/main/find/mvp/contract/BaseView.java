@@ -1,7 +1,9 @@
 package aqtc.gl.school.main.find.mvp.contract;
 
 /**
- * Created by yiwei on 16/4/1.
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public interface BaseView {
     void showLoading(String msg);

@@ -5,12 +5,9 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 /**
- * 
-* @ClassName: CommonUtils 
-* @Description: 
-* @author yiw
-* @date 2015-12-28 下午4:16:01 
-*
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public class CommonUtils {
 

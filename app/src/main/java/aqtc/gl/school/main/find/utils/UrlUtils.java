@@ -15,7 +15,9 @@ import java.util.regex.Pattern;
 import aqtc.gl.school.main.find.spannable.SpannableClickable;
 
 /**
- * Created by suneee on 2016/6/2.
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public class UrlUtils {
 

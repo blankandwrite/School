@@ -10,7 +10,9 @@ import aqtc.gl.school.main.find.widgets.videolist.VideoListGlideModule;
 
 
 /**
- * @author Wayne
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public abstract class ProgressTarget<T, Z> extends WrappingTarget<Z> implements
         VideoListGlideModule.UIProgressListener {

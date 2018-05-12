@@ -8,7 +8,9 @@ import java.util.List;
 import aqtc.gl.school.main.find.listener.RecycleViewItemListener;
 
 /**
- * Created by yiwei on 16/4/9.
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public abstract class BaseRecycleViewAdapter<T,VH extends RecyclerView.ViewHolder> extends RecyclerView.Adapter<VH> {
     protected RecycleViewItemListener itemListener;

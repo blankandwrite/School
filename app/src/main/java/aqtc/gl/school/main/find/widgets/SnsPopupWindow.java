@@ -17,10 +17,9 @@ import aqtc.gl.school.main.find.bean.ActionItem;
 import aqtc.gl.school.main.find.utils.DensityUtil;
 
 /**
- * 朋友圈点赞评论的popupwindow
- * 
- * @author wei.yi
- * 
+ * @author gl
+ * @date 2018/5/12
+ * @desc 朋友圈点赞评论的popupwindow
  */
 public class SnsPopupWindow extends PopupWindow implements OnClickListener {
 

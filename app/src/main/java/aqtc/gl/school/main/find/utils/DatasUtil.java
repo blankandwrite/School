@@ -12,20 +12,22 @@ import aqtc.gl.school.main.find.bean.PhotoInfo;
 import aqtc.gl.school.main.find.bean.User;
 
 /**
- * 
-* @ClassName: DatasUtil 
-* @Description: TODO(这里用一句话描述这个类的作用) 
-* @author yiw
-* @date 2015-12-28 下午4:16:21 
-*
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public class DatasUtil {
 	public static final String[] CONTENTS = { "",
-			"哈哈，18123456789,ChinaAr  http://www.ChinaAr.com;一个不错的VR网站。哈哈，ChinaAr  http://www.ChinaAr.com;一个不错的VR网站。哈哈，ChinaAr  http://www.ChinaAr.com;一个不错的VR网站。哈哈，ChinaAr  http://www.ChinaAr.com;一个不错的VR网站。",
+			"安庆师范大学坐落在国家历史文化名城、国家园林城市、中国优秀旅游城市——安庆。这里是桐城派的故里、黄梅戏的故乡，有着“千年古城、文化之邦、百年省会、戏剧之乡”的美誉。学校傍依浩瀚长江，" +
+					"毗邻宁安高铁、合安九高铁，地理位置优越，水、陆、空交通便利，是皖西南地区唯一的省属师范大学。",
 			//"今天是个好日子，http://www.ChinaAr.com;一个不错的VR网站,18123456789,",
 			//"呵呵，http://www.ChinaAr.com;一个不错的VR网站,18123456789,",
 			//"只有http|https|ftp|svn://开头的网址才能识别为网址，正则表达式写的不太好，如果你又更好的正则表达式请评论告诉我，谢谢！",
-			"VR（Virtual Reality，即虚拟现实，简称VR），是由美国VPL公司创建人拉尼尔（Jaron Lanier）在20世纪80年代初提出的。其具体内涵是：综合利用计算机图形系统和各种现实及控制等接口设备，在计算机上生成的、可交互的三维环境中提供沉浸感觉的技术。其中，计算机生成的、可交互的三维环境称为虚拟环境（即Virtual Environment，简称VE）。虚拟现实技术是一种可以创建和体验虚拟世界的计算机仿真系统的技术。它利用计算机生成一种模拟环境，利用多源信息融合的交互式三维动态视景和实体行为的系统仿真使用户沉浸到该环境中。",
+			"学校办学历史悠久，是安徽近代高等教育的发源地。1897年，清代著名省学敬敷书院在此办学，揭开了百年育人的序幕。" +
+					"1901年，敬敷书院与求是学堂合并成立安徽大学堂，后更名为安徽高等学堂。1928年省立安徽大学在此创办，1946年改为国立安徽大学。" +
+					"菱湖校区现存的敬敷书院和国立安徽大学红楼，作为全国重点文物保护单位见证了学校百年发展历程。1980年，经国务院批准成立安庆师范学院。" +
+					"2006年，学校获批硕士学位授予权。2007年获得教育部本科教学工作水平评估“优秀”等次。" +
+					"2016年，经教育部批准更名为安庆师范大学。2017年，安庆师范大学进入安徽省一本招生行列。",
 			//"哈哈哈哈",
 			//"图不错",
 			"我勒个去" };
@@ -48,14 +50,14 @@ public class DatasUtil {
 			"http://pic1.nipic.com/2008-12-09/200812910493588_2.jpg",
 			"http://pic2.ooopic.com/11/79/98/31bOOOPICb1_1024.jpg" };*/
 	public static final String[] HEADIMG = {
-			"http://img.wzfzl.cn/uploads/allimg/140820/co140R00Q925-14.jpg",
-			"http://www.feizl.com/upload2007/2014_06/1406272351394618.png",
-			"http://v1.qzone.cc/avatar/201308/30/22/56/5220b2828a477072.jpg%21200x200.jpg",
-			"http://v1.qzone.cc/avatar/201308/22/10/36/521579394f4bb419.jpg!200x200.jpg",
-			"http://v1.qzone.cc/avatar/201408/20/17/23/53f468ff9c337550.jpg!200x200.jpg",
-			"http://cdn.duitang.com/uploads/item/201408/13/20140813122725_8h8Yu.jpeg",
-			"http://img.woyaogexing.com/touxiang/nv/20140212/9ac2117139f1ecd8%21200x200.jpg",
-			"http://p1.qqyou.com/touxiang/uploadpic/2013-3/12/2013031212295986807.jpg"};
+			"http://f.hiphotos.baidu.com/image/pic/item/faf2b2119313b07e97f760d908d7912396dd8c9c.jpg",
+			"http://bnxs.aqnu.edu.cn/__local/B/73/C4/240FC7118DAAC706BC59B9128BB_F7FE4A13_17B69.jpg",
+			"http://bnxs.aqnu.edu.cn/__local/F/A6/7B/523A36E971010C1C555E98145AD_45A09D2E_16C3B.jpg",
+			"http://e.hiphotos.baidu.com/image/pic/item/902397dda144ad343de8b756d4a20cf430ad858f.jpg",
+			"http://f.hiphotos.baidu.com/image/pic/item/f11f3a292df5e0fecc3e83ef586034a85edf723d.jpg",
+			"http://a.hiphotos.baidu.com/image/pic/item/a6efce1b9d16fdfa0fbc1ebfb68f8c5495ee7b8b.jpg",
+			"http://www.aqnu.edu.cn/dfiles/8857/scene/images/33.jpg",
+			"http://c.hiphotos.baidu.com/image/pic/item/7dd98d1001e939011b9c86d07fec54e737d19645.jpg"};
 
 	public static List<User> users = new ArrayList<User>();
 	public static List<PhotoInfo> PHOTOS = new ArrayList<>();
@@ -78,8 +80,8 @@ public class DatasUtil {
 		User user3 = new User("3", "王五", HEADIMG[3]);
 		User user4 = new User("4", "小明", HEADIMG[4]);
 		User user5 = new User("5", "田七", HEADIMG[5]);
-		User user6 = new User("6", "小明", HEADIMG[6]);
-		User user7 = new User("7", "这个名字是不是很长，哈哈！因为我是用来测试换行的", HEADIMG[7]);
+		User user6 = new User("6", "大明", HEADIMG[6]);
+		User user7 = new User("7", "小明小明小明，哈哈！因为我是用来测试换行的", HEADIMG[7]);
 
 		users.add(curUser);
 		users.add(user1);
@@ -91,17 +93,17 @@ public class DatasUtil {
 		users.add(user7);
 
 		PhotoInfo p1 = new PhotoInfo();
-		p1.url = "http://f.hiphotos.baidu.com/image/pic/item/faf2b2119313b07e97f760d908d7912396dd8c9c.jpg";
+		p1.url = "http://bnxs.aqnu.edu.cn/__local/9/1B/76/F53A0110055BD8236C81CC4695B_15413E88_12F84.jpg";
 		p1.w = 640;
 		p1.h = 792;
 
 		PhotoInfo p2 = new PhotoInfo();
-		p2.url = "http://g.hiphotos.baidu.com/image/pic/item/4b90f603738da977c76ab6fab451f8198718e39e.jpg";
+		p2.url = "http://bnxs.aqnu.edu.cn/dfiles/8857/bainianxiaoshi/right.jpg";
 		p2.w = 640;
 		p2.h = 792;
 
 		PhotoInfo p3 = new PhotoInfo();
-		p3.url = "http://e.hiphotos.baidu.com/image/pic/item/902397dda144ad343de8b756d4a20cf430ad858f.jpg";
+		p3.url = "http://www.aqnu.edu.cn/dfiles/8857/scene/images/14.jpg";
 		p3.w = 950;
 		p3.h = 597;
 
@@ -116,7 +118,7 @@ public class DatasUtil {
 		p5.h = 467;
 
 		PhotoInfo p6 = new PhotoInfo();
-		p6.url = "http://c.hiphotos.baidu.com/image/pic/item/7dd98d1001e939011b9c86d07fec54e737d19645.jpg";
+		p6.url = "http://www.aqnu.edu.cn/dfiles/8857/scene/images/04.jpg";
 		p6.w = 700;
 		p6.h = 467;
 
@@ -126,7 +128,7 @@ public class DatasUtil {
 		p7.h = 640;
 
 		PhotoInfo p8 = new PhotoInfo();
-		p8.url = "http://pic4.nipic.com/20091101/3672704_160309066949_2.jpg";
+		p8.url = "http://www.aqnu.edu.cn/dfiles/8857/scene/images/21.jpg";
 		p8.w = 1024;
 		p8.h = 768;
 
@@ -136,7 +138,7 @@ public class DatasUtil {
 		p9.h = 640;
 
 		PhotoInfo p10 = new PhotoInfo();
-		p10.url = "http://pic31.nipic.com/20130624/8821914_104949466000_2.jpg";
+		p10.url = "http://www.aqnu.edu.cn/dfiles/8857/scene/images/33.jpg";
 		p10.w = 1024;
 		p10.h = 768;
 

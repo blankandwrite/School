@@ -7,7 +7,9 @@ import com.mikhaellopez.circularprogressbar.CircularProgressBar;
 import java.io.File;
 
 /**
- * @author Wayne
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public class VideoProgressTarget extends ProgressTarget<String, File> {
     private final CircularProgressBar progress;

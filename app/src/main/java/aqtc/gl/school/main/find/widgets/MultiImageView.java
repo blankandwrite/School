@@ -18,10 +18,9 @@ import aqtc.gl.school.main.find.utils.DensityUtil;
 
 
 /**
- * @ClassName MultiImageView.java
- * @author shoyu
- * @version 
- * @Description: 显示1~N张图片的View
+ * @author gl
+ * @date 2018/5/12
+ * @desc 显示1~N张图片的View
  */
 
 public class MultiImageView extends LinearLayout {

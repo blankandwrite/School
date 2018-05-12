@@ -14,7 +14,9 @@ import aqtc.gl.school.main.find.widgets.videolist.model.VideoLoadMvpView;
 import aqtc.gl.school.main.find.widgets.videolist.widget.TextureVideoView;
 
 /**
- * @author Wayne
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public class VideoLoadTarget extends ViewTarget<TextureVideoView, File> implements TextureVideoView.MediaPlayerCallback {
 

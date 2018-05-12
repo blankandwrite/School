@@ -1,7 +1,9 @@
 package aqtc.gl.school.main.find.listener;
 
 /**
- * Created by yiwei on 16/4/9.
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public interface RecycleViewItemListener {
 

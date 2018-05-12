@@ -26,7 +26,7 @@
             android:name=".main.home.activity.ScenceListActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".main.home.activity.ScenceDetailActivity"
+            android:name=".common.PicturePagerActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".main.home.activity.NewsListActivity"

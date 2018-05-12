@@ -1,1 +1,1 @@
-include ':app', ':baseadapter-recyclerview'
+include ':app', ':baseadapter-recyclerview', ':LogLibrary', ':OkHttpWrapper'

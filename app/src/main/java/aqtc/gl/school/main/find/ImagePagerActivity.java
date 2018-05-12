@@ -31,7 +31,9 @@ import java.util.List;
 import aqtc.gl.school.R;
 
 /**
- * Created by yiw on 2016/1/6.
+ * @author gl
+ * @date 2018/5/12
+ * @desc 图片预览
  */
 public class ImagePagerActivity extends AppCompatActivity{
     public static final String INTENT_IMGURLS = "imgurls";

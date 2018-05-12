@@ -15,9 +15,9 @@ import android.widget.TextView;
 import java.util.LinkedList;
 
 /**
- * 类描述：
- * 创建人：Bob
- * 创建时间：2015/9/25 11:36
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public class TitleBar extends ViewGroup implements View.OnClickListener {
     private static final int DEFAULT_MAIN_TEXT_SIZE = 18;

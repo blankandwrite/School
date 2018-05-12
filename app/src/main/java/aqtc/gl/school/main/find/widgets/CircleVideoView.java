@@ -29,7 +29,9 @@ import aqtc.gl.school.main.find.widgets.videolist.visibility.items.ListItem;
 import aqtc.gl.school.main.find.widgets.videolist.widget.TextureVideoView;
 
 /**
- * Created by yiwei on 16/5/23.
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public class CircleVideoView extends LinearLayout implements VideoLoadMvpView, ListItem {
 

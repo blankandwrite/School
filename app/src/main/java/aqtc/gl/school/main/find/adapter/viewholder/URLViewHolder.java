@@ -10,7 +10,9 @@ import aqtc.gl.school.R;
 
 
 /**
- * Created by suneee on 2016/8/16.
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public class URLViewHolder extends CircleViewHolder{
     public LinearLayout urlBody;

@@ -22,7 +22,9 @@ import aqtc.gl.school.main.find.spannable.CircleMovementMethod;
 import aqtc.gl.school.main.find.spannable.SpannableClickable;
 
 /**
- * Created by yiwei on 16/7/9.
+ * @author gl
+ * @date 2018/5/12
+ * @desc 点赞view
  */
 @SuppressLint("AppCompatCustomView")
 public class PraiseListView extends TextView {

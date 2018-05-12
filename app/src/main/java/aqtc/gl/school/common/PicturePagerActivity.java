@@ -1,4 +1,4 @@
-package aqtc.gl.school.main.home.activity;
+package aqtc.gl.school.common;
 
 import android.content.Context;
 import android.content.Intent;
@@ -21,18 +21,20 @@ import butterknife.BindView;
 /**
  * @author gl
  * @date 2018/5/9
- * @desc
+ * @desc 图片浏览
  */
-public class ScenceDetailActivity extends BaseActivity {
+public class PicturePagerActivity extends BaseActivity {
     @BindView(R.id.viewPager)
     PhotoViewPager mViewPager;
     private ArrayList<String> mUrlList = new ArrayList<>();
     private int position;
+    private String title;
 
-    public static void goScenceDetailActivity(Context context, ArrayList<String> urlList,int position){
-        Intent intent = new Intent(context,ScenceDetailActivity.class);
+    public static void goPicturePagerActivity(Context context, ArrayList<String> urlList,int position,String title){
+        Intent intent = new Intent(context, PicturePagerActivity.class);
         intent.putStringArrayListExtra("urlList",urlList);
         intent.putExtra("position",position);
+        intent.putExtra("title",title);
         context.startActivity(intent);
     }
 
@@ -46,6 +48,7 @@ public class ScenceDetailActivity extends BaseActivity {
         mUrlList.clear();
         mUrlList.addAll(getIntent().getStringArrayListExtra("urlList"));
         position = getIntent().getIntExtra("position",0);
+        title = getIntent().getStringExtra("title");
         mViewPager.setAdapter(new PhotoViewPagerAdapter(mUrlList,mContext));
         mViewPager.setCurrentItem(position);
     }
@@ -53,7 +56,7 @@ public class ScenceDetailActivity extends BaseActivity {
     @Override
     public void findTitleViewId() {
         mTitleView = findViewById(R.id.titleView);
-        mTitleView.setTitle(mContext.getResources().getString(R.string.home_scene));
+        mTitleView.setTitle(title);
 
     }
 

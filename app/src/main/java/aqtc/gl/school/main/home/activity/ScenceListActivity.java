@@ -17,6 +17,7 @@ import java.util.List;
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseActivity;
 import aqtc.gl.school.common.DataManager;
+import aqtc.gl.school.common.PicturePagerActivity;
 import aqtc.gl.school.main.home.adapter.ScenceListAdapter;
 import butterknife.BindView;
 
@@ -51,7 +52,6 @@ public class ScenceListActivity extends BaseActivity {
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mScenceListAdapter = new ScenceListAdapter(mContext,R.layout.item_scence_list,DataManager.getUrl0());
         mRecyclerView.setAdapter(mScenceListAdapter);
-
         mSmartRefreshLayout.autoRefresh();
         mSmartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
@@ -70,7 +70,8 @@ public class ScenceListActivity extends BaseActivity {
         mScenceListAdapter.setOnItemClickListener(new MultiItemTypeRecyclerAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
-                ScenceDetailActivity.goScenceDetailActivity(mContext,DataManager.getUrl0(),position);
+                PicturePagerActivity.goPicturePagerActivity(mContext,DataManager.getUrl0(),position,
+                        mContext.getResources().getString(R.string.home_scene));
             }
 
             @Override

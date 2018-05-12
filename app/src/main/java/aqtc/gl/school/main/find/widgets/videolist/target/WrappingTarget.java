@@ -6,9 +6,10 @@ import com.bumptech.glide.request.Request;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SizeReadyCallback;
 import com.bumptech.glide.request.target.Target;
-
 /**
- * @author Wayne
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public class WrappingTarget<Z> implements Target<Z> {
     protected final Target<Z> target;

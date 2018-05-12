@@ -9,9 +9,9 @@ import aqtc.gl.school.SchoolApplication;
 
 
 /**
- * @author yiw
- * @Description:
- * @date 16/1/2 16:32
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public abstract class SpannableClickable extends ClickableSpan implements View.OnClickListener {
 

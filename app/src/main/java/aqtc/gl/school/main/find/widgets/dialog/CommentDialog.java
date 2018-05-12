@@ -18,12 +18,9 @@ import aqtc.gl.school.main.find.utils.DatasUtil;
 
 
 /**
- * 
-* @ClassName: CommentDialog 
-* @Description: 评论长按对话框，保护复制和删除 
-* @author yiw
-* @date 2015-12-28 下午3:36:39 
-*
+ * @author gl
+ * @date 2018/5/12
+ * @desc  评论长按对话框，包括复制和删除
  */
 public class CommentDialog extends Dialog implements
 		android.view.View.OnClickListener {

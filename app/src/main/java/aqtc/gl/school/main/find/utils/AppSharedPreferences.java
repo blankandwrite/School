@@ -6,12 +6,9 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 
 /**
- * 
-* @ClassName: AppSharedPreferences 
-* @Description: SharedPreference管理类
-* @author yiw
-* @date 2015-12-30 上午11:05:27 
-*
+ * @author gl
+ * @date 2018/5/12
+ * @desc SharedPreference管理类
  */
 public class AppSharedPreferences {
 

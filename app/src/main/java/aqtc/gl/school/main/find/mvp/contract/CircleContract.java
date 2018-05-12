@@ -9,7 +9,9 @@ import aqtc.gl.school.main.find.bean.CommentItem;
 import aqtc.gl.school.main.find.bean.FavortItem;
 
 /**
- * Created by suneee on 2016/7/15.
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public interface CircleContract {
 

@@ -14,7 +14,9 @@ import aqtc.gl.school.main.find.spannable.CircleMovementMethod;
 
 
 /**
- * Created by yiwei on 16/7/10.
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public class ExpandTextView extends LinearLayout {
     public static final int DEFAULT_MAX_LINES = 3;

@@ -27,7 +27,9 @@ import aqtc.gl.school.main.find.utils.UrlUtils;
 
 
 /**
- * Created by yiwei on 16/7/9.
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public class CommentListView extends LinearLayout {
     private int itemColor;

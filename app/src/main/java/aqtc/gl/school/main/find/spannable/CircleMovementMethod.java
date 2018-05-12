@@ -15,9 +15,9 @@ import aqtc.gl.school.SchoolApplication;
 
 
 /**
- * @author yiw
- * @Description:
- * @date 16/1/2 16:54
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public class CircleMovementMethod extends BaseMovementMethod {
     public final String TAG = CircleMovementMethod.class.getSimpleName();

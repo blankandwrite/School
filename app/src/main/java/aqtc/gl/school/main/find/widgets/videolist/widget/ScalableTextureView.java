@@ -8,7 +8,9 @@ import android.util.AttributeSet;
 import android.view.TextureView;
 
 /**
- * This extension of {@link TextureView} is created to isolate scaling of this view.
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 public abstract class ScalableTextureView extends TextureView {

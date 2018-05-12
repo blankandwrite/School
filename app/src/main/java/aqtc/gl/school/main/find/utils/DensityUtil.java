@@ -4,10 +4,9 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 
 /**
-* @ClassName: DensityUtil 
-* @Description: TODO(这里用一句话描述这个类的作用) 
-* @author yiw
-* @date 2015-12-28 下午4:17:01 
+ * @author gl
+ * @date 2018/5/12
+ * @desc
  */
 public class DensityUtil {
 	
