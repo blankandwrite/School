@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/iv_bg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_200"
+        android:background="@color/blue3"
+        android:scaleType="centerCrop"
+        />
+
+    <ImageView
+        android:id="@+id/iv_header"
+        android:layout_width="@dimen/dp_80"
+        android:layout_height="@dimen/dp_80"
+        android:src="@mipmap/ic_user"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_bg"
+        app:layout_constraintLeft_toLeftOf="@+id/iv_bg"
+        app:layout_constraintRight_toRightOf="@+id/iv_bg"
+        app:layout_constraintTop_toTopOf="@+id/iv_bg"
+        />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dp_10"
+        android:textSize="@dimen/sp_20"
+        android:textColor="@color/gray1"
+        android:text="小明"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@+id/iv_header"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/dp_200"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_10"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/gray1"
+            android:text="学院:计算机与信息学院"
+            android:drawableLeft="@mipmap/ic_xueyuan"
+            android:drawablePadding="@dimen/dp_6"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_10"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/gray1"
+            android:text="级别:2011级"
+            android:drawableLeft="@mipmap/ic_jiebie"
+            android:drawablePadding="@dimen/dp_6"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_10"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/gray1"
+            android:text="专业:计算机科学与技术"
+            android:drawableLeft="@mipmap/ic_zhuanye"
+            android:drawablePadding="@dimen/dp_6"
+            />
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_10"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/gray1"
+            android:text="班级:工科一班"
+            android:drawableLeft="@mipmap/ic_class"
+            android:drawablePadding="@dimen/dp_6"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_10"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/gray1"
+            android:text="关于"
+            android:drawableLeft="@mipmap/ic_about"
+            android:drawablePadding="@dimen/dp_6"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_10"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/gray1"
+            android:text="版本:v1.00"
+            android:drawableLeft="@mipmap/ic_version"
+            android:drawablePadding="@dimen/dp_6"
+            />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/quit_bg"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:padding="@dimen/dp_10"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_20"
+        android:text="退 出"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+</android.support.constraint.ConstraintLayout>

@@ -135,8 +135,8 @@
                 android:scaleX="2"
                 android:scaleY="2"
                 android:text="登 录"
-                android:textColor="#000000"
-                android:textSize="14sp"/>
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_14"/>
 
 
         </RelativeLayout>
@@ -149,30 +149,41 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
-        android:layout_marginStart="30dp"
+        android:layout_marginStart="@dimen/dp_30"
         android:orientation="horizontal"
-        android:padding="10dp"
-        android:layout_marginLeft="30dp">
+        android:padding="@dimen/dp_10"
+        android:layout_marginLeft="@dimen/dp_30">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/fb"
-            android:layout_marginRight="10dp"/>
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:src="@drawable/bottom_1"
+            android:background="@drawable/cricle_bg"
+            android:layout_marginRight="@dimen/dp_10"/>
 
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/tw"
-            android:layout_marginRight="10dp"/>
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:src="@drawable/bottom_2"
+            android:background="@drawable/cricle_bg"
+            android:layout_marginRight="@dimen/dp_10"/>
+        <ImageView
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:src="@drawable/bottom_3"
+            android:background="@drawable/cricle_bg"
+            android:layout_marginRight="@dimen/dp_10"/>
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ln"/>
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:background="@drawable/cricle_bg"
+            android:src="@drawable/bottom_4"/>
+
 
     </LinearLayout>
 

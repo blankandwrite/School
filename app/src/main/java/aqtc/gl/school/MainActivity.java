@@ -1,19 +1,21 @@
 package aqtc.gl.school;
 
 import android.os.Bundle;
-import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 
 import aqtc.gl.school.fragment.AcademyFragment;
 import aqtc.gl.school.fragment.EdumanagementFragment;
 import aqtc.gl.school.fragment.FindFragment;
 import aqtc.gl.school.fragment.HomeFragment;
+import aqtc.gl.school.fragment.LeftMenuFragment;
 import aqtc.gl.school.fragment.listener.OpenDrawerLayoutListener;
+import aqtc.gl.school.utils.Utils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -33,8 +35,8 @@ public class MainActivity extends AppCompatActivity implements OpenDrawerLayoutL
     Button findBtn;
     @BindView(R.id.drawerLayout)
     DrawerLayout drawerLayout;
-    @BindView(R.id.navigation)
-    NavigationView navigation;
+    @BindView(R.id.fl_menu)
+    FrameLayout leftMune;
 
     private Fragment[] fragments;
     private int index;
@@ -47,9 +49,19 @@ public class MainActivity extends AppCompatActivity implements OpenDrawerLayoutL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        initLeftMenu();
         initTabs();
         initContentFragment();
 
+    }
+
+    private void initLeftMenu() {
+        DrawerLayout.LayoutParams params = (DrawerLayout.LayoutParams) leftMune.getLayoutParams();
+        params.width = Utils.getScreenWidth(this) / 3 * 2;
+        leftMune.setLayoutParams(params);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fl_menu, LeftMenuFragment.newInatace())
+                .commit();
     }
 
     private void initTabs() {
@@ -103,6 +115,9 @@ public class MainActivity extends AppCompatActivity implements OpenDrawerLayoutL
 
     @Override
     public void open() {
-        drawerLayout.openDrawer(navigation);
+        if (!drawerLayout.isDrawerOpen(leftMune)) {
+            drawerLayout.openDrawer(leftMune);
+        }
+
     }
 }

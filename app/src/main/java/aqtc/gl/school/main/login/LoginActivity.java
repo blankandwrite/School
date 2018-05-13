@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity  {
         mainLinear = (LinearLayout) findViewById(R.id.mainLinear);
 
         logo = new ImageView(this);
-        logo.setImageResource(R.drawable.logo);
+        logo.setImageResource(R.drawable.logo_b);
         logo.setLayoutParams(params3);
 
         relativeLayout.post(new Runnable() {
