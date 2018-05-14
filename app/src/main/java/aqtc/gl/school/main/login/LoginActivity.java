@@ -42,6 +42,7 @@ public class LoginActivity extends AppCompatActivity  {
     FrameLayout mainFrame;
     ObjectAnimator animator2, animator1;
 
+
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -137,7 +138,7 @@ public class LoginActivity extends AppCompatActivity  {
 
                 if (params.weight == 4.25) {
 
-                    Snackbar.make(relativeLayout, "Sign Up Complete", Snackbar.LENGTH_SHORT).show();
+                 //   Snackbar.make(relativeLayout, "Sign Up Complete", Snackbar.LENGTH_SHORT).show();
                     return;
                 }
                 email2.setVisibility(View.VISIBLE);

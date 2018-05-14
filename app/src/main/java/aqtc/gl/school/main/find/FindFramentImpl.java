@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ import com.bumptech.glide.Glide;
 import com.malinskiy.superrecyclerview.OnMoreListener;
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import aqtc.gl.school.R;
@@ -39,6 +41,8 @@ import aqtc.gl.school.main.find.widgets.CommentListView;
 import aqtc.gl.school.main.find.widgets.DivItemDecoration;
 import aqtc.gl.school.main.find.widgets.TitleBar;
 import aqtc.gl.school.main.find.widgets.dialog.UpLoadDialog;
+import aqtc.gl.school.utils.ToastUtils;
+import aqtc.gl.school.widget.popwindow.SelectPicPopWindow;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
@@ -48,7 +52,7 @@ import static android.app.Activity.RESULT_OK;
  * @date 2018/5/11
  * @desc 发现
  */
-public class FindFramentImpl extends BaseFragment implements CircleContract.View{
+public class FindFramentImpl extends BaseFragment implements CircleContract.View {
 
     protected static final String TAG = FindFramentImpl.class.getSimpleName();
     private CircleAdapter circleAdapter;
@@ -73,14 +77,17 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
     private final static int TYPE_UPLOADREFRESH = 2;
     private UpLoadDialog uploadDialog;
     private SwipeRefreshLayout.OnRefreshListener refreshListener;
-
+    private SelectPicPopWindow mSelectPicPopWindow;
+    private List<String> mStringList = new ArrayList<>();
 
     @Override
     public void initView(View rootView) {
         presenter = new CirclePresenter(this);
+        mStringList.add("拍照");
+        mStringList.add("从相册中选取");
         setView(rootView);
         //实现自动下拉刷新功能
-        recyclerView.getSwipeToRefresh().post(new Runnable(){
+        recyclerView.getSwipeToRefresh().post(new Runnable() {
             @Override
             public void run() {
                 recyclerView.setRefreshing(true);//执行下拉刷新的动画
@@ -131,9 +138,9 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                if(newState == RecyclerView.SCROLL_STATE_IDLE){
+                if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                     Glide.with(mContext).resumeRequests();
-                }else{
+                } else {
                     Glide.with(mContext).pauseRequests();
                 }
 
@@ -152,8 +159,8 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
             public void onClick(View v) {
                 if (presenter != null) {
                     //发布评论
-                    String content =  editText.getText().toString().trim();
-                    if(TextUtils.isEmpty(content)){
+                    String content = editText.getText().toString().trim();
+                    if (TextUtils.isEmpty(content)) {
                         Toast.makeText(mContext, "评论内容不能为空...", Toast.LENGTH_SHORT).show();
                         return;
                     }
@@ -169,7 +176,7 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
 
     private void initTitle(View rootView) {
 
-        titleBar = (TitleBar)rootView.findViewById(R.id.main_title_bar);
+        titleBar = (TitleBar) rootView.findViewById(R.id.main_title_bar);
         titleBar.setTitle("发现");
         titleBar.setTitleColor(getResources().getColor(R.color.white));
         titleBar.setBackgroundColor(getResources().getColor(R.color.blue3));
@@ -177,9 +184,29 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
         TextView textView = (TextView) titleBar.addAction(new TitleBar.TextAction("发布") {
             @Override
             public void performAction(View view) {
-                //Toast.makeText(MainActivity.this, "敬请期待...", Toast.LENGTH_SHORT).show();
+                if (null == mSelectPicPopWindow) {
+                    mSelectPicPopWindow = new SelectPicPopWindow(mContext, mStringList);
+                }
+                if (!mSelectPicPopWindow.isShowing()) {
+                    mSelectPicPopWindow.showAtLocation(getActivity().getWindow().getDecorView(), Gravity.CENTER, 0, 0);
+                }
+               mSelectPicPopWindow.setOnIetmSelectListener(new SelectPicPopWindow.OnIetmSelectListener() {
+                   @Override
+                   public void select(int posotion) {
+                       switch (posotion){
+                           case 0:
+                               ToastUtils.showMsg(mContext,mStringList.get(posotion));
+                               mSelectPicPopWindow.dismiss();
+                               break;
+                           case 1:
+                               ToastUtils.showMsg(mContext,mStringList.get(posotion));
+                               mSelectPicPopWindow.dismiss();
+                               break;
+                       }
+                   }
+               });
 
-                //QPManager.startRecordActivity(MainActivity.this);
+
             }
         });
         textView.setTextColor(getResources().getColor(R.color.white));
@@ -198,16 +225,16 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
 
                 Rect r = new Rect();
                 bodyLayout.getWindowVisibleDisplayFrame(r);
-                int statusBarH =  getStatusBarHeight();//状态栏高度
+                int statusBarH = getStatusBarHeight();//状态栏高度
                 int screenH = bodyLayout.getRootView().getHeight();
-                if(r.top != statusBarH ){
+                if (r.top != statusBarH) {
                     //在这个demo中r.top代表的是状态栏高度，在沉浸式状态栏时r.top＝0，通过getStatusBarHeight获取状态栏高度
                     r.top = statusBarH;
                 }
                 int keyboardH = screenH - (r.bottom - r.top);
-                Log.d(TAG, "screenH＝ "+ screenH +" &keyboardH = " + keyboardH + " &r.bottom=" + r.bottom + " &top=" + r.top + " &statusBarH=" + statusBarH);
+                Log.d(TAG, "screenH＝ " + screenH + " &keyboardH = " + keyboardH + " &r.bottom=" + r.bottom + " &top=" + r.top + " &statusBarH=" + statusBarH);
 
-                if(keyboardH == currentKeyboardH){//有变化时才处理，否则会陷入死循环
+                if (keyboardH == currentKeyboardH) {//有变化时才处理，否则会陷入死循环
                     return;
                 }
 
@@ -215,12 +242,12 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
                 screenHeight = screenH;//应用屏幕的高度
                 editTextBodyHeight = edittextbody.getHeight();
 
-                if(keyboardH<150){//说明是隐藏键盘的情况
+                if (keyboardH < 150) {//说明是隐藏键盘的情况
                     updateEditTextBodyVisible(View.GONE, null);
                     return;
                 }
                 //偏移listview
-                if(layoutManager!=null && commentConfig != null){
+                if (layoutManager != null && commentConfig != null) {
                     layoutManager.scrollToPositionWithOffset(commentConfig.circlePosition + CircleAdapter.HEADVIEW_SIZE, getListviewOffset(commentConfig));
                 }
             }
@@ -229,6 +256,7 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
 
     /**
      * 获取状态栏高度
+     *
      * @return
      */
     private int getStatusBarHeight() {
@@ -246,12 +274,11 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
     }
 
 
-
     @Override
     public void update2DeleteCircle(String circleId) {
         List<CircleItem> circleItems = circleAdapter.getDatas();
-        for(int i=0; i<circleItems.size(); i++){
-            if(circleId.equals(circleItems.get(i).getId())){
+        for (int i = 0; i < circleItems.size(); i++) {
+            if (circleId.equals(circleItems.get(i).getId())) {
                 circleItems.remove(i);
                 circleAdapter.notifyDataSetChanged();
                 //circleAdapter.notifyItemRemoved(i+1);
@@ -262,7 +289,7 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
 
     @Override
     public void update2AddFavorite(int circlePosition, FavortItem addItem) {
-        if(addItem != null){
+        if (addItem != null) {
             CircleItem item = (CircleItem) circleAdapter.getDatas().get(circlePosition);
             item.getFavorters().add(addItem);
             circleAdapter.notifyDataSetChanged();
@@ -274,8 +301,8 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
     public void update2DeleteFavort(int circlePosition, String favortId) {
         CircleItem item = (CircleItem) circleAdapter.getDatas().get(circlePosition);
         List<FavortItem> items = item.getFavorters();
-        for(int i=0; i<items.size(); i++){
-            if(favortId.equals(items.get(i).getId())){
+        for (int i = 0; i < items.size(); i++) {
+            if (favortId.equals(items.get(i).getId())) {
                 items.remove(i);
                 circleAdapter.notifyDataSetChanged();
                 //circleAdapter.notifyItemChanged(circlePosition+1);
@@ -286,7 +313,7 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
 
     @Override
     public void update2AddComment(int circlePosition, CommentItem addItem) {
-        if(addItem != null){
+        if (addItem != null) {
             CircleItem item = (CircleItem) circleAdapter.getDatas().get(circlePosition);
             item.getComments().add(addItem);
             circleAdapter.notifyDataSetChanged();
@@ -300,8 +327,8 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
     public void update2DeleteComment(int circlePosition, String commentId) {
         CircleItem item = (CircleItem) circleAdapter.getDatas().get(circlePosition);
         List<CommentItem> items = item.getComments();
-        for(int i=0; i<items.size(); i++){
-            if(commentId.equals(items.get(i).getId())){
+        for (int i = 0; i < items.size(); i++) {
+            if (commentId.equals(items.get(i).getId())) {
                 items.remove(i);
                 circleAdapter.notifyDataSetChanged();
                 //circleAdapter.notifyItemChanged(circlePosition+1);
@@ -317,28 +344,28 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
 
         measureCircleItemHighAndCommentItemOffset(commentConfig);
 
-        if(View.VISIBLE==visibility){
+        if (View.VISIBLE == visibility) {
             editText.requestFocus();
             //弹出键盘
-            CommonUtils.showSoftInput( editText.getContext(),  editText);
+            CommonUtils.showSoftInput(editText.getContext(), editText);
 
-        }else if(View.GONE==visibility){
+        } else if (View.GONE == visibility) {
             //隐藏键盘
-            CommonUtils.hideSoftInput( editText.getContext(),  editText);
+            CommonUtils.hideSoftInput(editText.getContext(), editText);
         }
     }
 
     @Override
     public void update2loadData(int loadType, List<CircleItem> datas) {
-        if (loadType == TYPE_PULLREFRESH){
+        if (loadType == TYPE_PULLREFRESH) {
             recyclerView.setRefreshing(false);
             circleAdapter.setDatas(datas);
-        }else if(loadType == TYPE_UPLOADREFRESH){
+        } else if (loadType == TYPE_UPLOADREFRESH) {
             circleAdapter.getDatas().addAll(datas);
         }
         circleAdapter.notifyDataSetChanged();
 
-        if(circleAdapter.getDatas().size()<45 + CircleAdapter.HEADVIEW_SIZE){
+        if (circleAdapter.getDatas().size() < 45 + CircleAdapter.HEADVIEW_SIZE) {
             recyclerView.setupMoreListener(new OnMoreListener() {
                 @Override
                 public void onMoreAsked(int overallItemsCount, int itemsBeforeMore, int maxLastVisiblePosition) {
@@ -352,7 +379,7 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
 
                 }
             }, 1);
-        }else{
+        } else {
             recyclerView.removeMoreListener();
             recyclerView.hideMoreProgress();
         }
@@ -362,16 +389,17 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
 
     /**
      * 测量偏移量
+     *
      * @param commentConfig
      * @return
      */
     private int getListviewOffset(CommentConfig commentConfig) {
-        if(commentConfig == null)
+        if (commentConfig == null)
             return 0;
         //这里如果你的listview上面还有其它占高度的控件，则需要减去该控件高度，listview的headview除外。
         //int listviewOffset = mScreenHeight - mSelectCircleItemH - mCurrentKeyboardH - mEditTextBodyHeight;
         int listviewOffset = screenHeight - selectCircleItemH - currentKeyboardH - editTextBodyHeight - titleBar.getHeight();
-        if(commentConfig.commentType == CommentConfig.Type.REPLY){
+        if (commentConfig.commentType == CommentConfig.Type.REPLY) {
             //回复评论的情况
             listviewOffset = listviewOffset + selectCommentItemOffset;
         }
@@ -379,32 +407,32 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
         return listviewOffset;
     }
 
-    private void measureCircleItemHighAndCommentItemOffset(CommentConfig commentConfig){
-        if(commentConfig == null)
+    private void measureCircleItemHighAndCommentItemOffset(CommentConfig commentConfig) {
+        if (commentConfig == null)
             return;
 
         int firstPosition = layoutManager.findFirstVisibleItemPosition();
         //只能返回当前可见区域（列表可滚动）的子项
         View selectCircleItem = layoutManager.getChildAt(commentConfig.circlePosition + CircleAdapter.HEADVIEW_SIZE - firstPosition);
 
-        if(selectCircleItem != null){
+        if (selectCircleItem != null) {
             selectCircleItemH = selectCircleItem.getHeight();
         }
 
-        if(commentConfig.commentType == CommentConfig.Type.REPLY){
+        if (commentConfig.commentType == CommentConfig.Type.REPLY) {
             //回复评论的情况
             CommentListView commentLv = (CommentListView) selectCircleItem.findViewById(R.id.commentList);
-            if(commentLv!=null){
+            if (commentLv != null) {
                 //找到要回复的评论view,计算出该view距离所属动态底部的距离
                 View selectCommentItem = commentLv.getChildAt(commentConfig.commentPosition);
-                if(selectCommentItem != null){
+                if (selectCommentItem != null) {
                     //选择的commentItem距选择的CircleItem底部的距离
                     selectCommentItemOffset = 0;
                     View parentView = selectCommentItem;
                     do {
                         int subItemBottom = parentView.getBottom();
                         parentView = (View) parentView.getParent();
-                        if(parentView != null){
+                        if (parentView != null) {
                             selectCommentItemOffset += (parentView.getHeight() - subItemBottom);
                         }
                     } while (parentView != null && parentView != selectCircleItem);
@@ -415,12 +443,13 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
 
 
     String videoFile;
-    String [] thum;
+    String[] thum;
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (resultCode == RESULT_OK) {
-			/*RecordResult result =new RecordResult(data);
+            /*RecordResult result =new RecordResult(data);
 			//得到视频地址，和缩略图地址的数组，返回十张缩略图
 			videoFile = result.getPath();
 			thum = result.getThumbnail();

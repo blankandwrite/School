@@ -40,6 +40,7 @@ public class ScenceActivity extends BaseActivity {
 
     @Override
     public void initView() {
+
         mScenceEntityList = ScenceBean.getData();
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setLayoutManager(new GridLayoutManager(mContext, 3));
