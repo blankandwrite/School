@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 import aqtc.gl.school.MainActivity;
 import aqtc.gl.school.R;
+import aqtc.gl.school.widget.dialog.LoadingDialog;
 
 /**
  * @author gl
@@ -139,6 +140,7 @@ public class LoginActivity extends AppCompatActivity  {
                 if (params.weight == 4.25) {
 
                  //   Snackbar.make(relativeLayout, "Sign Up Complete", Snackbar.LENGTH_SHORT).show();
+                    new LoadingDialog(LoginActivity.this).show();
                     return;
                 }
                 email2.setVisibility(View.VISIBLE);

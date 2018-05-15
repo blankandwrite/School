@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import aqtc.gl.school.R;
+import aqtc.gl.school.utils.Utils;
 import aqtc.gl.school.utils.image.ImageLoad;
 
 /**
@@ -22,12 +23,14 @@ public class ScenceListAdapter extends CommonRecyclerRecyclerAdapter<String> {
 
 
     private final ArrayList<Integer> mHightList;
+    private int hight;
 
     public ScenceListAdapter(Context context, int layoutId, List<String> datas) {
         super(context, layoutId, datas);
+        hight= Utils.getScreenWidth(mContext)/3-20;
         mHightList = new ArrayList<>();
         for (String data : datas) {
-            mHightList.add((int) (100 + Math.random() * 300));
+            mHightList.add((int) (hight + Math.random() * 200));
         }
     }
 
