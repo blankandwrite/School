@@ -13,6 +13,7 @@ public class NewsListBean {
         public String title;
         public String time;
         public String imageUrl;
+        public int type;
     }
 
     public static ArrayList<NewsBean> getData(){
@@ -21,6 +22,11 @@ public class NewsListBean {
             NewsBean newsBean = new NewsBean();
             newsBean.title="我校学子在“正大杯”全国大学生市场调查与分析大赛(安徽赛区)取得优异成绩";
             newsBean.time="2018-05-09";
+            if (i==2 || i==5){
+                newsBean.type=0;
+            }else {
+                newsBean.type=1;
+            }
             newsBean.imageUrl="http://www.aqnu.edu.cn/__local/B/88/0C/B5C7ACA5BF6C27178A0FE10BD10_F5DBA2F1_33E6C.jpg";
             arrayList.add(newsBean);
         }

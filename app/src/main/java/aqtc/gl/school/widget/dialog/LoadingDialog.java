@@ -3,8 +3,6 @@ package aqtc.gl.school.widget.dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,7 +18,7 @@ public class LoadingDialog extends Dialog {
 
     private ImageView progressView;
     private TextView contentText;
-    private Animation loadAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.loading);
+ //   private Animation loadAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.loading);
 
     public LoadingDialog(Context context) {
         super(context, R.style.loading_dialog_style);

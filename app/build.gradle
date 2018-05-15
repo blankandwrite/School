@@ -23,6 +23,17 @@ android {
 repositories {
     maven { url "https://jitpack.io" }
 }
+//让所有模块都用相同的支持库版本。
+configurations.all {
+    resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+        def requested = details.requested
+        if (requested.group == 'com.android.support') {
+            if (!requested.name.startsWith("multidex")) {
+                details.useVersion '27.0.2'
+            }
+        }
+    }
+}
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -43,6 +54,7 @@ dependencies {
     implementation 'com.malinskiy:superrecyclerview:1.1.4'
     implementation 'com.mikhaellopez:circularprogressbar:1.1.1'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.1.+'
+    implementation 'pub.devrel:easypermissions:1.2.0'
     implementation('com.github.bumptech.glide:okhttp3-integration:1.4.0') {
         exclude group: 'glide-parent'
     }

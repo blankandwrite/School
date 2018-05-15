@@ -39,7 +39,8 @@ public class NewsListActivity extends BaseActivity {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext,DividerItemDecoration.VERTICAL));
-        mNewsListAdapter = new NewsListAdapter(mContext,R.layout.item_common_list, NewsListBean.getData());
+     //   mNewsListAdapter = new NewsListAdapter(mContext,R.layout.item_common_list, NewsListBean.getData());
+        mNewsListAdapter = new NewsListAdapter(mContext, NewsListBean.getData());
         mRecyclerView.setAdapter(mNewsListAdapter);
         mSmartRefreshLayout.autoRefresh();
         mSmartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {

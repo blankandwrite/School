@@ -1,8 +1,10 @@
 package aqtc.gl.school.main.find;
 
+import android.Manifest;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -43,6 +45,7 @@ import aqtc.gl.school.main.find.widgets.TitleBar;
 import aqtc.gl.school.main.find.widgets.dialog.UpLoadDialog;
 import aqtc.gl.school.utils.ToastUtils;
 import aqtc.gl.school.widget.popwindow.SelectPicPopWindow;
+import pub.devrel.easypermissions.EasyPermissions;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
@@ -52,7 +55,7 @@ import static android.app.Activity.RESULT_OK;
  * @date 2018/5/11
  * @desc 发现
  */
-public class FindFramentImpl extends BaseFragment implements CircleContract.View {
+public class FindFramentImpl extends BaseFragment implements CircleContract.View ,EasyPermissions.PermissionCallbacks{
 
     protected static final String TAG = FindFramentImpl.class.getSimpleName();
     private CircleAdapter circleAdapter;
@@ -86,6 +89,8 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
         mStringList.add("拍照");
         mStringList.add("从相册中选取");
         setView(rootView);
+        //权限申请
+        initPermission();
         //实现自动下拉刷新功能
         recyclerView.getSwipeToRefresh().post(new Runnable() {
             @Override
@@ -95,6 +100,30 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
             }
         });
 
+    }
+
+    private void initPermission() {
+        String[] perms = {Manifest.permission.CALL_PHONE
+                , Manifest.permission.WRITE_EXTERNAL_STORAGE
+                , Manifest.permission.READ_EXTERNAL_STORAGE};
+
+        if (EasyPermissions.hasPermissions(mContext, perms)) {
+            // Already have permission, do the thing
+            // ...
+        } else {
+            // Do not have permissions, request them now
+            EasyPermissions.requestPermissions(this, "因为功能需要，需要使用相关权限，请允许",
+                    100, perms);
+        }
+    }
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if(presenter !=null){
+            presenter.recycle();
+        }
     }
 
     private void setView(View rootView) {
@@ -515,8 +544,21 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
 
     }
 
+
+
     @Override
     public void showError(String errorMsg) {
 
+    }
+
+
+    @Override
+    public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
+
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
+        ToastUtils.showMsg(mContext,"您拒绝了相关权限，可能会导致相关功能不可用");
     }
 }

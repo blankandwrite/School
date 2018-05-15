@@ -1,24 +1,26 @@
 package aqtc.gl.school.main.home.adapter;
 
 import android.content.Context;
-import android.widget.ImageView;
 
-import com.zhy.adapter.recyclerview.CommonRecyclerRecyclerAdapter;
-import com.zhy.adapter.recyclerview.base.ViewHolder;
+import com.zhy.adapter.recyclerview.MultiItemTypeRecyclerAdapter;
 
 import java.util.List;
 
-import aqtc.gl.school.R;
 import aqtc.gl.school.main.home.bean.NewsListBean;
-import aqtc.gl.school.utils.image.ImageLoad;
 
 /**
  * @author gl
  * @date 2018/5/10
  * @desc
  */
-public class NewsListAdapter extends CommonRecyclerRecyclerAdapter<NewsListBean.NewsBean> {
-    public NewsListAdapter(Context context, int layoutId, List<NewsListBean.NewsBean> datas) {
+public class NewsListAdapter extends MultiItemTypeRecyclerAdapter<NewsListBean.NewsBean> {
+    public NewsListAdapter(Context context, List<NewsListBean.NewsBean> datas) {
+        super(context, datas);
+        addItemViewDelegate(new PicItemDelagate(mContext));
+        addItemViewDelegate(new TextItemDelagate(mContext));
+
+    }
+   /* public NewsListAdapter(Context context, int layoutId, List<NewsListBean.NewsBean> datas) {
         super(context, layoutId, datas);
     }
 
@@ -28,5 +30,5 @@ public class NewsListAdapter extends CommonRecyclerRecyclerAdapter<NewsListBean.
         holder.setText(R.id.tv_time, newsBean.time);
         ImageView imageView = holder.getView(R.id.iv_img);
         ImageLoad.loadImage(mContext,newsBean.imageUrl,imageView,R.mipmap.no_image);
-    }
+    }*/
 }
