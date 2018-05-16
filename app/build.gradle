@@ -62,7 +62,7 @@ dependencies {
     implementation 'com.mikhaellopez:circularprogressbar:1.1.1'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.1.+'
     implementation 'pub.devrel:easypermissions:1.2.0'
-    compile 'org.greenrobot:eventbus:3.0.0'
+    implementation 'org.greenrobot:eventbus:3.0.0'
     implementation('com.github.bumptech.glide:okhttp3-integration:1.4.0') {
         exclude group: 'glide-parent'
     }

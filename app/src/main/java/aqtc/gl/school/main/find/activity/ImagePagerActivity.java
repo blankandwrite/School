@@ -1,4 +1,4 @@
-package aqtc.gl.school.main.find;
+package aqtc.gl.school.main.find.activity;
 
 import android.content.Context;
 import android.content.Intent;

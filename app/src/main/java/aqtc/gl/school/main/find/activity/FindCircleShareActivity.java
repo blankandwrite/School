@@ -1,5 +1,6 @@
-package aqtc.gl.school.main.find;
+package aqtc.gl.school.main.find.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
@@ -19,16 +20,19 @@ import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseActivity;
 import aqtc.gl.school.common.Global;
 import aqtc.gl.school.main.find.enums.FindShareType;
+import aqtc.gl.school.main.find.utils.FindSendPopupUtil;
 import aqtc.gl.school.main.find.widgets.videolist.widget.TextureVideoView;
 import aqtc.gl.school.utils.ShapeDrawableFactory;
 import aqtc.gl.school.utils.ToastUtils;
 import aqtc.gl.school.utils.file.MimeTypeMap;
+import aqtc.gl.school.utils.file.media.PhotoFolderEntity;
 import aqtc.gl.school.utils.image.ImageLoad;
 import aqtc.gl.school.widget.dialog.LoadingDialog;
 import aqtc.gl.school.widget.flowlayout.FlowLayout;
 import aqtc.gl.school.widget.flowlayout.wrapper.TagAdapter;
 import aqtc.gl.school.widget.flowlayout.wrapper.TagFlowLayout;
 
+import static aqtc.gl.school.main.common.FindCameraType.CAMERA_MODE;
 import static aqtc.gl.school.main.common.FindCameraType.MODE_NONE;
 import static aqtc.gl.school.main.common.FindCameraType.TYPE_IMG;
 import static aqtc.gl.school.main.common.FindCameraType.TYPE_URL;
@@ -79,7 +83,6 @@ public class FindCircleShareActivity extends BaseActivity {
 
     @Override
     public void initView() {
-     //   uploadExecutor = FindUploadExecutor.getInstance(context);
         resolveIntent();
         if (type == null || type.isNone()) {
             finish();
@@ -156,24 +159,23 @@ public class FindCircleShareActivity extends BaseActivity {
 
 
     private void jumpToSelect() {
-       /*
        Intent intent = new Intent();
         if (mJumpType == CAMERA) {
-            intent.setClass(this, VideoRecorderActivity.class);
-            intent.putExtra(CAMERA_MODE, mode);
-            startActivityForResult(intent, mJumpType);
+       //     intent.setClass(this, VideoRecorderActivity.class);
+       //     intent.putExtra(CAMERA_MODE, mode);
+        //    startActivityForResult(intent, mJumpType);
         } else if (mJumpType == PIC_SELECTOR) {
-            if (getMode(contents) == TYPE_IMG) { //如果上一次是图片进入选择只能选择图片，如果全部删除掉或者一个都没选，那就可以选择图片或视频
-                PhotoSelectActivity.openSelect(context, mJumpType, MAX_COUNT - hasSelectCount, PhotoFolderEntity.FileType.IMAGE);
+            if (getMode(contents) == TYPE_IMG) { //如果上一次是图片进入选择只能选择图片，如果全部删除掉或者一个都没选，那就可以选择图片或视频//
+                PhotoSelectActivity.openSelect(FindCircleShareActivity.this, mJumpType, MAX_COUNT - hasSelectCount, PhotoFolderEntity.FileType.IMAGE);
             } else {
                 //图片最大选择数量
                 intent.setClass(this, PhotoSelectActivity.class);
                 intent.putExtra(CAMERA_MODE, mode);
                 intent.putExtra(PhotoSelectActivity.SELECT_TOTAL, MAX_COUNT - hasSelectCount);
-                PhotoSelectActivity.openSelect(FindCircleShareActivity.this, mJumpType, MAX_COUNT - hasSelectCount);
+                PhotoSelectActivity.openSelect(FindCircleShareActivity.this, mJumpType, MAX_COUNT - hasSelectCount,PhotoFolderEntity.FileType.IMAGE);
             }
         }
-        */
+
     }
 
     private void initFlowLayout() {
@@ -185,7 +187,7 @@ public class FindCircleShareActivity extends BaseActivity {
             public boolean onTagClick(View view, int position, FlowLayout parent) {
                 String data = contents.get(position);
                 if (TextUtils.isEmpty(data)) {
-                   /* FindSendPopupUtil.jumpSelectPic(FindCircleShareActivity.this, new FindSendPopupUtil.JumpListener() {
+                    FindSendPopupUtil.jumpSelectPic(FindCircleShareActivity.this, new FindSendPopupUtil.JumpListener() {
                         @Override
                         public void doJump(FindShareType shareType, int jumpType) {
                             resetMode();
@@ -193,7 +195,7 @@ public class FindCircleShareActivity extends BaseActivity {
                             mJumpType = jumpType;
                             jumpToSelect();
                         }
-                    });*/
+                    });
                 } else {
                    /* if (MimeTypeMap.isVideo(data)) {
                         SimpleVideoPlayActivity.openVideo(context, data, data);
@@ -218,7 +220,7 @@ public class FindCircleShareActivity extends BaseActivity {
         }
     }
 
- /*   @Override
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (data == null || resultCode != Activity.RESULT_OK) {
@@ -253,7 +255,6 @@ public class FindCircleShareActivity extends BaseActivity {
         }
         adapter.notifyDataChanged();
     }
-    */
 
     private int getMode(List<String> datas) {
         //确认数据类型

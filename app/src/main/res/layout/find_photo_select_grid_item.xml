@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center">
+
+    <ImageView
+        android:id="@+id/photo_grid_item_img"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_default" />
+
+    <ImageView
+        android:id="@+id/smallVideoImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="left|bottom"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:src="@mipmap/find_small_video"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/photo_grid_item_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/photo_grid_item_img"
+        android:layout_alignParentTop="true"
+        android:background="@null"
+        android:paddingBottom="10dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:src="@mipmap/icon_no_selected" />
+
+</RelativeLayout>

@@ -95,4 +95,9 @@
         <item name="android:backgroundDimEnabled">false</item><!--模糊 -->
     </style>
 
+    <style name="anim_popup_dir">
+        <item name="android:windowEnterAnimation">@anim/find_other_push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/find_other_push_bottom_out</item>
+    </style>
+
 </resources>

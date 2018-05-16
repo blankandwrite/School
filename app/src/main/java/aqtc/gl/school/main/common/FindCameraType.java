@@ -1,8 +1,9 @@
 package aqtc.gl.school.main.common;
 
 /**
- * 发现Camera类型
- * Created by FuJinhu on 2017-2-23.
+ * @author gl
+ * @date 2018/5/16
+ * @desc 发现Camera类型
  */
 public class FindCameraType {
     //0图片1视频2链接

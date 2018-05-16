@@ -17,7 +17,7 @@ import java.util.List;
 import aqtc.gl.school.MainActivity;
 import aqtc.gl.school.R;
 import aqtc.gl.school.SchoolApplication;
-import aqtc.gl.school.main.find.ImagePagerActivity;
+import aqtc.gl.school.main.find.activity.ImagePagerActivity;
 import aqtc.gl.school.main.find.adapter.viewholder.CircleViewHolder;
 import aqtc.gl.school.main.find.adapter.viewholder.ImageViewHolder;
 import aqtc.gl.school.main.find.adapter.viewholder.URLViewHolder;
