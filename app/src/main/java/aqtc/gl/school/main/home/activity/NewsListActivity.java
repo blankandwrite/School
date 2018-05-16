@@ -4,14 +4,17 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
 import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+import com.zhy.adapter.recyclerview.MultiItemTypeRecyclerAdapter;
 
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseActivity;
+import aqtc.gl.school.common.ActivityWebView;
 import aqtc.gl.school.main.home.adapter.NewsListAdapter;
 import aqtc.gl.school.main.home.bean.NewsListBean;
 import butterknife.BindView;
@@ -56,6 +59,17 @@ public class NewsListActivity extends BaseActivity {
             }
         });
 
+        mNewsListAdapter.setOnItemClickListener(new MultiItemTypeRecyclerAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
+                ActivityWebView.goActivityWebView(mContext,"file:///android_asset/index.html",ActivityWebView.TYPE_URL,"详情");
+            }
+
+            @Override
+            public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
+                return false;
+            }
+        });
     }
 
     @Override

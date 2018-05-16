@@ -8,10 +8,13 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.widget.ImageView;
 
 import com.bumptech.glide.BitmapRequestBuilder;
+import com.bumptech.glide.DrawableRequestBuilder;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.BitmapTransformation;
 import com.bumptech.glide.request.target.BitmapImageViewTarget;
+
+import aqtc.gl.school.common.Global;
 
 /**
  * @author gl
@@ -125,5 +128,20 @@ public class ImageLoad {
     public static BitmapTransformation createCircleTransform(Context context, int borderWidth, int borderColor) {
         Resources resources = context.getResources();
         return new GlideCircleTransform(context, borderWidth, resources.getColor(borderColor));
+    }
+
+    /**
+     * 配置一般图片默认加载图片
+     *
+     * @param context
+     * @param url
+     * @return
+     */
+    public static <T> DrawableRequestBuilder<T> getVideoImageGlide(Context context, T url) {
+        return getVideoImageGlide(context, url, Global.IMAGE_DEFAULT);
+    }
+
+    public static <T> DrawableRequestBuilder<T> getVideoImageGlide(Context context, T url, int resId) {
+        return Glide.with(context).load(url).placeholder(resId).error(resId).fallback(resId);
     }
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/previewImg"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:src="@mipmap/find_shared_add" />
+
+    <include
+        layout="@layout/find_layout_simple_video"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:visibility="gone" />
+
+
+</FrameLayout>

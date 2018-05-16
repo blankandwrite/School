@@ -3,6 +3,7 @@ package aqtc.gl.school.widget;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
@@ -40,7 +41,11 @@ public class ProgressWebView extends WebView {
         setWebChromeClient(new WebChromeClient());
         //是否支持缩放
         getSettings().setSupportZoom(true);
-        getSettings().setBuiltInZoomControls(true);
+        getSettings().setBuiltInZoomControls(false);
+    }
+
+    public void setting(WebSettings webSettings){
+
     }
 
     @Override

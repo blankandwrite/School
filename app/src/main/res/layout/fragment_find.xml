@@ -5,8 +5,32 @@
               android:fitsSystemWindows="true"
               android:orientation="vertical"
     >
-
-    <include layout="@layout/layout_main_titlebar"/>
+    <RelativeLayout
+        android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_48"
+        android:background="@color/blue3">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/sp_18"
+            android:textColor="@color/white"
+            android:text="@string/index_bottom_find"
+            android:gravity="center"
+            />
+        <TextView
+            android:id="@+id/tv_find"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:textSize="@dimen/sp_16"
+            android:textColor="@color/white"
+            android:text="@string/index_bottom_find"
+            android:gravity="center"
+            android:padding="@dimen/dp_10"
+            />
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/bodyLayout"

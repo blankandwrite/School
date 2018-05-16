@@ -10,7 +10,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,9 +38,9 @@ import aqtc.gl.school.main.find.bean.FavortItem;
 import aqtc.gl.school.main.find.mvp.contract.CircleContract;
 import aqtc.gl.school.main.find.mvp.presenter.CirclePresenter;
 import aqtc.gl.school.main.find.utils.CommonUtils;
+import aqtc.gl.school.main.find.utils.FindSendPopupUtil;
 import aqtc.gl.school.main.find.widgets.CommentListView;
 import aqtc.gl.school.main.find.widgets.DivItemDecoration;
-import aqtc.gl.school.main.find.widgets.TitleBar;
 import aqtc.gl.school.main.find.widgets.dialog.UpLoadDialog;
 import aqtc.gl.school.utils.ToastUtils;
 import aqtc.gl.school.widget.popwindow.SelectPicPopWindow;
@@ -74,7 +73,7 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
     private SuperRecyclerView recyclerView;
     private RelativeLayout bodyLayout;
     private LinearLayoutManager layoutManager;
-    private TitleBar titleBar;
+
 
     private final static int TYPE_PULLREFRESH = 1;
     private final static int TYPE_UPLOADREFRESH = 2;
@@ -82,6 +81,8 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
     private SwipeRefreshLayout.OnRefreshListener refreshListener;
     private SelectPicPopWindow mSelectPicPopWindow;
     private List<String> mStringList = new ArrayList<>();
+    private TextView mTvFind;
+    private RelativeLayout rlTop;
 
     @Override
     public void initView(View rootView) {
@@ -204,41 +205,22 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
 
 
     private void initTitle(View rootView) {
-
-        titleBar = (TitleBar) rootView.findViewById(R.id.main_title_bar);
-        titleBar.setTitle("发现");
-        titleBar.setTitleColor(getResources().getColor(R.color.white));
-        titleBar.setBackgroundColor(getResources().getColor(R.color.blue3));
-
-        TextView textView = (TextView) titleBar.addAction(new TitleBar.TextAction("发布") {
+        rlTop = rootView.findViewById(R.id.rl_top);
+        mTvFind = rootView.findViewById(R.id.tv_find);
+        mTvFind.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void performAction(View view) {
-                if (null == mSelectPicPopWindow) {
-                    mSelectPicPopWindow = new SelectPicPopWindow(mContext, mStringList);
-                }
-                if (!mSelectPicPopWindow.isShowing()) {
-                    mSelectPicPopWindow.showAtLocation(getActivity().getWindow().getDecorView(), Gravity.CENTER, 0, 0);
-                }
-               mSelectPicPopWindow.setOnIetmSelectListener(new SelectPicPopWindow.OnIetmSelectListener() {
-                   @Override
-                   public void select(int posotion) {
-                       switch (posotion){
-                           case 0:
-                               ToastUtils.showMsg(mContext,mStringList.get(posotion));
-                               mSelectPicPopWindow.dismiss();
-                               break;
-                           case 1:
-                               ToastUtils.showMsg(mContext,mStringList.get(posotion));
-                               mSelectPicPopWindow.dismiss();
-                               break;
-                       }
-                   }
-               });
-
-
+            public void onClick(View view) {
+                FindSendPopupUtil.goSelectPic(getActivity());
             }
         });
-        textView.setTextColor(getResources().getColor(R.color.white));
+
+        mTvFind.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                return false;
+            }
+        });
+
     }
 
     private void initUploadDialog() {
@@ -427,7 +409,7 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
             return 0;
         //这里如果你的listview上面还有其它占高度的控件，则需要减去该控件高度，listview的headview除外。
         //int listviewOffset = mScreenHeight - mSelectCircleItemH - mCurrentKeyboardH - mEditTextBodyHeight;
-        int listviewOffset = screenHeight - selectCircleItemH - currentKeyboardH - editTextBodyHeight - titleBar.getHeight();
+        int listviewOffset = screenHeight - selectCircleItemH - currentKeyboardH - editTextBodyHeight - rlTop.getHeight();
         if (commentConfig.commentType == CommentConfig.Type.REPLY) {
             //回复评论的情况
             listviewOffset = listviewOffset + selectCommentItemOffset;

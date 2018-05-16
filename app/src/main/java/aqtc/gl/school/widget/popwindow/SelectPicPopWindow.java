@@ -77,7 +77,7 @@ public class SelectPicPopWindow extends PopupWindow{
 
 
     public interface  OnIetmSelectListener{
-        void select(int posotion);
+        void select(int position);
     }
 
     public void setOnIetmSelectListener(OnIetmSelectListener onIetmSelectListener) {

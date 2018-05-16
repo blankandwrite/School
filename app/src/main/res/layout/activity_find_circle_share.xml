@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:background="@color/white"
+              android:orientation="vertical">
+
+    <aqtc.gl.school.widget.TitleView
+        android:id="@+id/titleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title_name=""
+        />
+
+    <EditText
+        android:id="@+id/sendContent"
+        android:layout_width="fill_parent"
+        android:layout_height="150dp"
+        android:layout_marginLeft="10dp"
+        android:background="@null"
+        android:gravity="top|left"
+        android:hint="这一刻的想法..."
+        android:padding="5dp"
+        android:textColorHint="@color/gray3"
+        android:textSize="15sp" />
+
+    <ViewStub
+        android:id="@+id/viewStub"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp" />
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="10dp"
+        android:background="@color/line" />
+
+    <TextView
+        android:id="@+id/sendBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rect_layer_bg"
+        android:gravity="center"
+        android:padding="10dp"
+        android:paddingBottom="10dp"
+        android:text="发送"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
+</LinearLayout>

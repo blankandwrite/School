@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.io.File;
 
+import aqtc.gl.school.R;
 import aqtc.gl.school.utils.file.PathHelper;
 
 /**
@@ -19,6 +20,8 @@ public class Global {
     public static final String PATH_LOG = "log";
     public static final String PATH_FILE = "file";
     public static final String PATH_TMP = "tmp";
+    public static final int FIND_PIC_SELECT_MAX_COUNT = 9;
+    public static final int IMAGE_DEFAULT = R.mipmap.no_image;
 
 
     public static void initAppPath(Context context) {
