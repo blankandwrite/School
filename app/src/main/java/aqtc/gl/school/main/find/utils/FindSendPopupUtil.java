@@ -33,7 +33,7 @@ public class FindSendPopupUtil {
                 intent.putExtra(FindCircleShareActivity.SHARE_TYPE, FindShareType.JUMP);
                 switch (position) {
                     case 0:
-                     //   intent.putExtra(FindCircleShareActivity.JUMP_TYPE, FindCircleShareActivity.CAMERA);
+                        intent.putExtra(FindCircleShareActivity.JUMP_TYPE, FindCircleShareActivity.CAMERA);
                         selectPicPopWindow.dismiss();
                         break;
                     case 1:

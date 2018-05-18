@@ -8,8 +8,9 @@ import aqtc.gl.school.R;
 import aqtc.gl.school.utils.file.PathHelper;
 
 /**
- * 存放公共配置,获取公共配置
- * Created by FuJinhu on 2017-2-9.
+ * @author gl
+ * @date 2018/5/18
+ * @desc 存放公共配置,获取公共配置
  */
 public class Global {
     public static final int ROWS = 10;

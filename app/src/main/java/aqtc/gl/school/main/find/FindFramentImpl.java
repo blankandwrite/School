@@ -53,7 +53,7 @@ import static android.app.Activity.RESULT_OK;
  * @date 2018/5/11
  * @desc 发现
  */
-public class FindFramentImpl extends BaseFragment implements CircleContract.View ,EasyPermissions.PermissionCallbacks{
+public class FindFramentImpl extends BaseFragment implements CircleContract.View, EasyPermissions.PermissionCallbacks {
 
     protected static final String TAG = FindFramentImpl.class.getSimpleName();
     private CircleAdapter circleAdapter;
@@ -104,7 +104,8 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
     private void initPermission() {
         String[] perms = {Manifest.permission.CAMERA
                 , Manifest.permission.WRITE_EXTERNAL_STORAGE
-                , Manifest.permission.READ_EXTERNAL_STORAGE};
+                , Manifest.permission.READ_EXTERNAL_STORAGE
+                , Manifest.permission.RECORD_AUDIO};
 
         if (EasyPermissions.hasPermissions(mContext, perms)) {
             // Already have permission, do the thing
@@ -120,7 +121,7 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if(presenter !=null){
+        if (presenter != null) {
             presenter.recycle();
         }
     }
@@ -477,7 +478,6 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
     }
 
 
-
     @Override
     public void showError(String errorMsg) {
 
@@ -492,6 +492,6 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
     @Override
     public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
 
-        ToastUtils.showMsg(mContext,"您拒绝了相关权限，可能会导致相关功能不可用");
+        ToastUtils.showMsg(mContext, "您拒绝了相关权限，可能会导致相关功能不可用");
     }
 }

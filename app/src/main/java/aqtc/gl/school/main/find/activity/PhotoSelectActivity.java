@@ -48,7 +48,9 @@ import static aqtc.gl.school.main.common.FindCameraType.TYPE_VIDEO;
 
 
 /**
- * 图片选择
+ * @author gl
+ * @date 2018/5/18
+ * @desc 图片选择
  */
 public class PhotoSelectActivity extends BaseActivity implements
         PhotoFolderPopWindow.OnImageDirSelected, OnItemClickListener {

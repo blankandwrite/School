@@ -161,9 +161,9 @@ public class FindCircleShareActivity extends BaseActivity {
     private void jumpToSelect() {
        Intent intent = new Intent();
         if (mJumpType == CAMERA) {
-       //     intent.setClass(this, VideoRecorderActivity.class);
-       //     intent.putExtra(CAMERA_MODE, mode);
-        //    startActivityForResult(intent, mJumpType);
+            intent.setClass(this, VideoRecorderActivity.class);
+            intent.putExtra(CAMERA_MODE, mode);
+           startActivityForResult(intent, mJumpType);
         } else if (mJumpType == PIC_SELECTOR) {
             if (getMode(contents) == TYPE_IMG) { //如果上一次是图片进入选择只能选择图片，如果全部删除掉或者一个都没选，那就可以选择图片或视频//
                 PhotoSelectActivity.openSelect(FindCircleShareActivity.this, mJumpType, MAX_COUNT - hasSelectCount, PhotoFolderEntity.FileType.IMAGE);
@@ -172,7 +172,7 @@ public class FindCircleShareActivity extends BaseActivity {
                 intent.setClass(this, PhotoSelectActivity.class);
                 intent.putExtra(CAMERA_MODE, mode);
                 intent.putExtra(PhotoSelectActivity.SELECT_TOTAL, MAX_COUNT - hasSelectCount);
-                PhotoSelectActivity.openSelect(FindCircleShareActivity.this, mJumpType, MAX_COUNT - hasSelectCount,PhotoFolderEntity.FileType.IMAGE);
+                PhotoSelectActivity.openSelect(FindCircleShareActivity.this, mJumpType, MAX_COUNT - hasSelectCount);
             }
         }
 
@@ -197,15 +197,15 @@ public class FindCircleShareActivity extends BaseActivity {
                         }
                     });
                 } else {
-                   /* if (MimeTypeMap.isVideo(data)) {
-                        SimpleVideoPlayActivity.openVideo(context, data, data);
+                    if (MimeTypeMap.isVideo(data)) {
+                        SimpleVideoPlayActivity.openVideo(mContext, data, data);
                     } else {
                         ArrayList datas = (ArrayList) contents.clone();
                         datas.remove("");
                         //imagesize是作为loading时的图片size
                         ImagePagerActivity.ImageSize imageSize = new ImagePagerActivity.ImageSize(view.getMeasuredWidth(), view.getMeasuredHeight());
-                        ImagePagerDeleteActivity.startImagePagerDeleteActivity(FindCircleShareActivity.this, datas, position, imageSize, DELETE);
-                    }*/
+                  //      ImagePagerDeleteActivity.startImagePagerDeleteActivity(FindCircleShareActivity.this, datas, position, imageSize, DELETE);
+                    }
                 }
                 return false;
             }
