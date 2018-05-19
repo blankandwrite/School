@@ -60,7 +60,7 @@ public class FindSendPopupUtil {
             public void select(int position) {
                 switch (position) {
                     case 0:
-                  //      listener.doJump(FindShareType.JUMP, FindCircleShareActivity.CAMERA);
+                        listener.doJump(FindShareType.JUMP, FindCircleShareActivity.CAMERA);
                         selectPicPopWindow.dismiss();
                         break;
                     case 1:

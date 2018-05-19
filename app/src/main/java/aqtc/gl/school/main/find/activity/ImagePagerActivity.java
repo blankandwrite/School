@@ -44,8 +44,10 @@ public class ImagePagerActivity extends AppCompatActivity{
     private LinearLayout guideGroup;
     public ImageSize imageSize;
     private int startPos;
-    private ArrayList<String> imgUrls;
-
+    protected ArrayList<String> imgUrls;
+    protected int selectPosition;
+    protected ViewPager viewPager;
+    protected ImageAdapter mAdapter;
 
     public static void startImagePagerActivity(Context context, List<String> imgUrls, int position, ImageSize imageSize){
         Intent intent = new Intent(context, ImagePagerActivity.class);
@@ -60,12 +62,12 @@ public class ImagePagerActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_imagepager);
-        ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        viewPager = (ViewPager) findViewById(R.id.pager);
         guideGroup = (LinearLayout) findViewById(R.id.guideGroup);
 
         getIntentData();
 
-        ImageAdapter mAdapter = new ImageAdapter(this);
+        mAdapter = new ImageAdapter(this);
         mAdapter.setDatas(imgUrls);
         mAdapter.setImageSize(imageSize);
         viewPager.setAdapter(mAdapter);

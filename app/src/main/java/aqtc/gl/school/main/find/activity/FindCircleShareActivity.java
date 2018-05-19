@@ -125,7 +125,7 @@ public class FindCircleShareActivity extends BaseActivity {
                         return;
                     }
                     dialog.show();
-               //     newItem = makeCircleItem();
+              //      newItem = makeCircleItem();
                   //  newItem = uploadExecutor.upload(context, makeCircleItem());
                     mHandler.postDelayed(finishCallback, 8500);
                 }
@@ -186,7 +186,7 @@ public class FindCircleShareActivity extends BaseActivity {
             @Override
             public boolean onTagClick(View view, int position, FlowLayout parent) {
                 String data = contents.get(position);
-                if (TextUtils.isEmpty(data)) {
+                if (TextUtils.isEmpty(data)) {//点击添加图片
                     FindSendPopupUtil.jumpSelectPic(FindCircleShareActivity.this, new FindSendPopupUtil.JumpListener() {
                         @Override
                         public void doJump(FindShareType shareType, int jumpType) {
@@ -200,11 +200,12 @@ public class FindCircleShareActivity extends BaseActivity {
                     if (MimeTypeMap.isVideo(data)) {
                         SimpleVideoPlayActivity.openVideo(mContext, data, data);
                     } else {
+                        //预览图片
                         ArrayList datas = (ArrayList) contents.clone();
                         datas.remove("");
                         //imagesize是作为loading时的图片size
                         ImagePagerActivity.ImageSize imageSize = new ImagePagerActivity.ImageSize(view.getMeasuredWidth(), view.getMeasuredHeight());
-                  //      ImagePagerDeleteActivity.startImagePagerDeleteActivity(FindCircleShareActivity.this, datas, position, imageSize, DELETE);
+                        ImagePagerActivity.startImagePagerActivity(mContext,datas,position,imageSize);
                     }
                 }
                 return false;

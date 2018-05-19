@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.transition.ChangeBounds;
@@ -43,13 +45,27 @@ public class LoginActivity extends AppCompatActivity  {
     FrameLayout mainFrame;
     ObjectAnimator animator2, animator1;
 
+    private LoadingDialog mLoadingDialog;
+    private Handler mHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what==0){
+                mLoadingDialog.dismiss();
+                Snackbar.make(relativeLayout2, "登录完成", Snackbar.LENGTH_SHORT).show();
+                startActivity(new Intent(LoginActivity.this,MainActivity.class));
+            }
+        }
+    };
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN , WindowManager.LayoutParams. FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
-
+        mLoadingDialog = new LoadingDialog(this);
+        mLoadingDialog.setContent("登录中");
+        mLoadingDialog.setCancelable(false);
         params = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT);
         params2 = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT);
         params3 = new FrameLayout.LayoutParams(inDp(50), inDp(50));
@@ -138,7 +154,7 @@ public class LoginActivity extends AppCompatActivity  {
             public void onClick(View view) {
 
                 if (params.weight == 4.25) {
-
+                   //注册
                  //   Snackbar.make(relativeLayout, "Sign Up Complete", Snackbar.LENGTH_SHORT).show();
                     new LoadingDialog(LoginActivity.this).show();
                     return;
@@ -231,9 +247,9 @@ public class LoginActivity extends AppCompatActivity  {
             public void onClick(View view) {
 
                 if (params2.weight == 4.25) {
-
-                    Snackbar.make(relativeLayout2, "登录完成", Snackbar.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                    //登录
+                    mLoadingDialog.show();
+                    mHandler.sendEmptyMessageDelayed(0,1500);
                     return;
                 }
 
