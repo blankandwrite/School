@@ -5,9 +5,7 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.transition.ChangeBounds;
 import android.transition.Transition;
 import android.transition.TransitionManager;
@@ -15,7 +13,6 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -25,6 +22,7 @@ import android.widget.TextView;
 
 import aqtc.gl.school.MainActivity;
 import aqtc.gl.school.R;
+import aqtc.gl.school.base.BaseActivity;
 import aqtc.gl.school.widget.dialog.LoadingDialog;
 
 /**
@@ -32,7 +30,7 @@ import aqtc.gl.school.widget.dialog.LoadingDialog;
  * @date 2018/5/12
  * @desc 登录
  */
-public class LoginActivity extends AppCompatActivity  {
+public class LoginActivity extends BaseActivity {
     EditText email, pass, email2, pass2, confirmPass;
     RelativeLayout relativeLayout, relativeLayout2;
     LinearLayout mainLinear,img;
@@ -43,13 +41,17 @@ public class LoginActivity extends AppCompatActivity  {
     FrameLayout mainFrame;
     ObjectAnimator animator2, animator1;
 
+    @Override
+    public int getActivityViewById() {
+        return R.layout.activity_login;
+    }
 
     @Override
-    protected void onCreate(final Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN , WindowManager.LayoutParams. FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_login);
+    public void initView() {
+         setView();
+    }
 
+    protected void setView() {
         params = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT);
         params2 = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT);
         params3 = new FrameLayout.LayoutParams(inDp(50), inDp(50));
@@ -318,6 +320,7 @@ public class LoginActivity extends AppCompatActivity  {
             }
         });
     }
+
 
 
     private int inDp(int dp) {

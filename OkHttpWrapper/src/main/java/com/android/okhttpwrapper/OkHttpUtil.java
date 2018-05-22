@@ -123,8 +123,8 @@ public class OkHttpUtil {
                     final String responseStr = response.body().string();
                     final JSONObject jsonObject = new JSONObject(responseStr);
                     LogX.e(TAG, "#response:" + jsonObject.toString());
-                    int code = jsonObject.getInt("code");
-                    if (code == 200) {
+                    int err = jsonObject.getInt("err");
+                    if (err == 0) {
                         onSuccess(onResponse, responseStr);
                     } else {
                         final String error = jsonObject.getString("msg");

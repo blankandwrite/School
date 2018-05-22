@@ -2,11 +2,15 @@ package aqtc.gl.school.base;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.android.okhttpwrapper.OkHttpUtil;
+
 import aqtc.gl.school.widget.TitleView;
 import butterknife.ButterKnife;
+import pub.devrel.easypermissions.EasyPermissions;
 
 /**
  * @author gl
@@ -35,10 +39,12 @@ public abstract class BaseActivity extends AppCompatActivity {
     public abstract void initView();
 
     /**
-     * 获取头部标题
+     * 获取头部标题 操作头部子类需重写
      * 注意：TitleView不为空 所有有关头部的操作要放在该方法里操作
      */
-    public abstract void findTitleViewId();
+    public void findTitleViewId() {
+
+    }
 
     /**
      * 返回监听
@@ -67,4 +73,15 @@ public abstract class BaseActivity extends AppCompatActivity {
         return tag;
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        OkHttpUtil.getInstance(mContext).cancelTag(getTAG());
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
+    }
 }

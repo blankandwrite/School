@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.okhttpwrapper.OkHttpUtil;
+
 import butterknife.ButterKnife;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -18,7 +20,6 @@ import pub.devrel.easypermissions.EasyPermissions;
  * @desc 基类Fragment
  */
 public abstract class BaseFragment extends Fragment {
-    // 用来标记同一生命周期
     private String tag = "";
     // 视图化的对象
     protected View rootView;
@@ -51,8 +52,21 @@ public abstract class BaseFragment extends Fragment {
     }
 
     public String getTAG() {
-        tag = getClass().getSimpleName();
+        try {
+            if ("".equals(tag)) {
+                tag = getClass().getSimpleName();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return tag;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        OkHttpUtil.getInstance(mContext).cancelTag(getTAG());
+
     }
 
     @Override

@@ -1,14 +1,13 @@
 package aqtc.gl.school;
 
-import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import aqtc.gl.school.base.BaseActivity;
 import aqtc.gl.school.fragment.AcademyFragment;
 import aqtc.gl.school.fragment.EdumanagementFragment;
 import aqtc.gl.school.fragment.FindFragment;
@@ -17,14 +16,13 @@ import aqtc.gl.school.fragment.LeftMenuFragment;
 import aqtc.gl.school.fragment.listener.OpenDrawerLayoutListener;
 import aqtc.gl.school.utils.Utils;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * @author gl
  * @date 2018/5/6
  * @desc 主页
  */
-public class MainActivity extends AppCompatActivity implements OpenDrawerLayoutListener {
+public class MainActivity extends BaseActivity implements OpenDrawerLayoutListener {
     @BindView(R.id.homeBtn)
     Button homeBtn;
     @BindView(R.id.academyBtn)
@@ -45,14 +43,15 @@ public class MainActivity extends AppCompatActivity implements OpenDrawerLayoutL
     private Button[] mTabs;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+    public int getActivityViewById() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    public void initView() {
         initLeftMenu();
         initTabs();
         initContentFragment();
-
     }
 
     private void initLeftMenu() {

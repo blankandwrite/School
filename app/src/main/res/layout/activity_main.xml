@@ -11,5 +11,6 @@
         android:id="@+id/fl_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clickable="true"
         android:layout_gravity="start"/>
 </android.support.v4.widget.DrawerLayout>
