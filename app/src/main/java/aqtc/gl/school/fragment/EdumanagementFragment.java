@@ -2,10 +2,6 @@ package aqtc.gl.school.fragment;
 
 import android.view.View;
 
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
-
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseFragment;
 import aqtc.gl.school.widget.ProgressWebView;
@@ -19,8 +15,9 @@ import butterknife.BindView;
 public class EdumanagementFragment extends BaseFragment {
     @BindView(R.id.webView)
     ProgressWebView mProgressWebView;
-    @BindView(R.id.refreshLayout)
-    SmartRefreshLayout mSmartRefreshLayout;
+
+  /*  @BindView(R.id.refreshLayout)
+    SmartRefreshLayout mSmartRefreshLayout;*/
 
     public static EdumanagementFragment getInstance() {
         EdumanagementFragment edumanagementFragment = new EdumanagementFragment();
@@ -30,13 +27,13 @@ public class EdumanagementFragment extends BaseFragment {
     @Override
     public void initView(View rootView) {
         mProgressWebView.loadUrl("http://210.45.175.14/");
-        mSmartRefreshLayout.autoRefresh();
+     /*   mSmartRefreshLayout.autoRefresh();
         mSmartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
                 mSmartRefreshLayout.finishRefresh(1000);
             }
-        });
+        });*/
     }
 
     @Override

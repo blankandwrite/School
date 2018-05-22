@@ -229,16 +229,21 @@ public class PhotoSelectActivity extends BaseActivity implements
      * 返回上一页面，并设置返回结果
      */
     private void goBack() {
-        Intent intent = getIntent();
-        intent.putStringArrayListExtra(SELECT_DATA, mSelectedImage);
-        int size = mSelectedImage.size();
-        if (size > 0) {//不替换出现文件找不到错误
-            for (int i = 0; i < size; i++) {
-                mSelectedImage.set(i, mSelectedImage.get(i).replace("file:///", "/"));
+        if (null== mSelectedImage || mSelectedImage.size()<=0){
+            ToastUtils.showMsg(mContext,"请选择图片");
+        }else {
+            Intent intent = getIntent();
+            intent.putStringArrayListExtra(SELECT_DATA, mSelectedImage);
+            int size = mSelectedImage.size();
+            if (size > 0) {//不替换出现文件找不到错误
+                for (int i = 0; i < size; i++) {
+                    mSelectedImage.set(i, mSelectedImage.get(i).replace("file:///", "/"));
+                }
             }
+            setResult(RESULT_OK, intent);
+            finish();
         }
-        setResult(RESULT_OK, intent);
-        finish();
+
     }
 
     /**

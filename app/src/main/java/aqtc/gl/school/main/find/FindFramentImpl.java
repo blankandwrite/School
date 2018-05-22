@@ -30,11 +30,13 @@ import java.util.List;
 
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseFragment;
+import aqtc.gl.school.main.find.activity.FindCircleShareActivity;
 import aqtc.gl.school.main.find.adapter.CircleAdapter;
 import aqtc.gl.school.main.find.bean.CircleItem;
 import aqtc.gl.school.main.find.bean.CommentConfig;
 import aqtc.gl.school.main.find.bean.CommentItem;
 import aqtc.gl.school.main.find.bean.FavortItem;
+import aqtc.gl.school.main.find.enums.FindShareType;
 import aqtc.gl.school.main.find.mvp.contract.CircleContract;
 import aqtc.gl.school.main.find.mvp.presenter.CirclePresenter;
 import aqtc.gl.school.main.find.utils.CommonUtils;
@@ -77,6 +79,7 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
     private final static int TYPE_PULLREFRESH = 1;
     private final static int TYPE_UPLOADREFRESH = 2;
     private UpLoadDialog uploadDialog;
+    private boolean isPission;
     private SwipeRefreshLayout.OnRefreshListener refreshListener;
     private List<String> mStringList = new ArrayList<>();
     private TextView mTvFind;
@@ -108,10 +111,10 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
                 , Manifest.permission.RECORD_AUDIO};
 
         if (EasyPermissions.hasPermissions(mContext, perms)) {
-            // Already have permission, do the thing
-            // ...
+            // 已有权限
+            isPission = true;
         } else {
-            // Do not have permissions, request them now
+            // 没有权限 申请
             EasyPermissions.requestPermissions(this, "因为功能需要，需要使用相关权限，请允许",
                     100, perms);
         }
@@ -209,14 +212,22 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
         mTvFind.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FindSendPopupUtil.goSelectPic(getActivity());
+                if (isPission){
+                    FindSendPopupUtil.goSelectPic(getActivity());
+                }else {
+                    ToastUtils.showMsg(mContext,"请开启相应权限");
+                }
+
             }
         });
 
         mTvFind.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                return false;
+                Intent intent = new Intent(mContext, FindCircleShareActivity.class);
+                intent.putExtra(FindCircleShareActivity.SHARE_TYPE, FindShareType.TEXT_ONLY);
+                startActivity(intent);
+                return true;
             }
         });
 
@@ -486,12 +497,14 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
 
     @Override
     public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
-
+          //允许申请的权限
+        isPission = true;
     }
 
     @Override
     public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
-
+        //拒绝权限
+        isPission=false;
         ToastUtils.showMsg(mContext, "您拒绝了相关权限，可能会导致相关功能不可用");
     }
 }

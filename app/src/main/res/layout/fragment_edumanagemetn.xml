@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
     android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
@@ -13,5 +14,10 @@
         android:gravity="center"
         android:text="@string/index_bottom_managemrnt"
         />
-    <include layout="@layout/webview_refresh"/>
+   <!-- <include layout="@layout/webview_refresh"/>-->
+    <aqtc.gl.school.widget.ProgressWebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"/>
 </LinearLayout>
