@@ -41,12 +41,16 @@ public class ActivityWebView extends BaseActivity {
         type = intent.getStringExtra("type");
         content_url = intent.getStringExtra("content_url");
         title = intent.getStringExtra("title");
+        setView();
         if (type.equals(TYPE_URL)){
             mWebView.loadUrl(content_url);
         }else {
             //webview.loadDataWithBaseURL(null, sb.toString(), "text/html", "utf-8", null);
             mWebView.loadData(content_url,"text/html","UTF-8");
         }
+    }
+
+    public void setView(){
 
     }
 

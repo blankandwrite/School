@@ -2,7 +2,6 @@ package com.android.okhttpwrapper;
 
 import android.util.Log;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -12,9 +11,9 @@ import java.util.Set;
 import okhttp3.RequestBody;
 
 /**
- * @author fujinhu
- * @date 2017/11/30
- * @desc OKHttp请求数据包装
+ * @author gl
+ * @date 2018/5/22
+ * @desc  OKHttp请求数据包装
  */
 public class OkHttpRequest {
     /**

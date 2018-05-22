@@ -1,9 +1,9 @@
 package com.android.okhttpwrapper.callback;
 
 /**
- * @author fujinhu
- * @date 2017/11/30
- * @desc ui层回调
+ * @author gl
+ * @date 2018/5/22
+ * @descv ui层回调
  */
 public interface OnResponse<T> {
     /**

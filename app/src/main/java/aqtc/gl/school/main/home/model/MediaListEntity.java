@@ -9,8 +9,7 @@ import aqtc.gl.school.base.BaseBean;
  * @date 2018/5/22
  * @desc
  */
-public class NewsListBean extends BaseBean {
-
+public class MediaListEntity extends BaseBean {
     /**
      * err : 0
      * msg : ok
@@ -51,7 +50,7 @@ public class NewsListBean extends BaseBean {
         public Object prev_page_url;
         public int to;
         public int total;
-        public List<ListBean> list;
+        public List<DataBean.ListBean> list;
 
         public static class ListBean {
             /**

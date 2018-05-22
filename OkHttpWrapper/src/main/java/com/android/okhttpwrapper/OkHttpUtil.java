@@ -20,8 +20,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 /**
- * @author fujinhu
- * @date 2017/11/30
+ * @author gl
+ * @date 2018/5/22
  * @desc Okhttp工具类
  */
 public class OkHttpUtil {
