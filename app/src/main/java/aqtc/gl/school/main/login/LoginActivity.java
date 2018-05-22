@@ -5,6 +5,8 @@ import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.Snackbar;
 import android.transition.ChangeBounds;
 import android.transition.Transition;
@@ -33,13 +35,25 @@ import aqtc.gl.school.widget.dialog.LoadingDialog;
 public class LoginActivity extends BaseActivity {
     EditText email, pass, email2, pass2, confirmPass;
     RelativeLayout relativeLayout, relativeLayout2;
-    LinearLayout mainLinear,img;
-    TextView signUp,login,forgetPass;
-    ImageView logo,back;
+    LinearLayout mainLinear, img;
+    TextView signUp, login, forgetPass;
+    ImageView logo, back;
     LinearLayout.LayoutParams params, params2;
     FrameLayout.LayoutParams params3;
     FrameLayout mainFrame;
     ObjectAnimator animator2, animator1;
+    private LoadingDialog mLoadingDialog;
+
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == 0) {
+                mLoadingDialog.dismiss();
+                Snackbar.make(relativeLayout2, "登录完成", Snackbar.LENGTH_SHORT).show();
+                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            }
+        }
+    };
 
     @Override
     public int getActivityViewById() {
@@ -48,13 +62,16 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     public void initView() {
-         setView();
+        setView();
     }
 
     protected void setView() {
         params = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT);
         params2 = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT);
         params3 = new FrameLayout.LayoutParams(inDp(50), inDp(50));
+
+        mLoadingDialog = new LoadingDialog(mContext);
+        mLoadingDialog.setCancelable(false);
 
         signUp = (TextView) findViewById(R.id.signUp);
         login = (TextView) findViewById(R.id.login);
@@ -140,9 +157,9 @@ public class LoginActivity extends BaseActivity {
             public void onClick(View view) {
 
                 if (params.weight == 4.25) {
-
-                 //   Snackbar.make(relativeLayout, "Sign Up Complete", Snackbar.LENGTH_SHORT).show();
-                    new LoadingDialog(LoginActivity.this).show();
+                    //注册
+                    //   Snackbar.make(relativeLayout, "Sign Up Complete", Snackbar.LENGTH_SHORT).show();
+                      new LoadingDialog(LoginActivity.this).show();
                     return;
                 }
                 email2.setVisibility(View.VISIBLE);
@@ -233,9 +250,9 @@ public class LoginActivity extends BaseActivity {
             public void onClick(View view) {
 
                 if (params2.weight == 4.25) {
-
-                    Snackbar.make(relativeLayout2, "登录完成", Snackbar.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this,MainActivity.class));
+                    //登录
+                    mLoadingDialog.show();
+                    mHandler.sendEmptyMessageDelayed(0, 1500);
                     return;
                 }
 
@@ -273,12 +290,12 @@ public class LoginActivity extends BaseActivity {
 
                         ObjectAnimator animator16 = ObjectAnimator.ofFloat(signUp, "scaleX", 1);
                         ObjectAnimator animator17 = ObjectAnimator.ofFloat(signUp, "scaleY", 1);
-                        ObjectAnimator animator18 = ObjectAnimator.ofFloat(logo, "x", logo.getX()+relativeLayout2.getWidth());
+                        ObjectAnimator animator18 = ObjectAnimator.ofFloat(logo, "x", logo.getX() + relativeLayout2.getWidth());
 
 
                         AnimatorSet set = new AnimatorSet();
                         set.playTogether(animator1, animator2, animator3, animator4, animator5, animator6, animator7,
-                                animator8, animator9, animator10, animator11, animator12, animator13, animator14, animator15, animator16, animator17,animator18);
+                                animator8, animator9, animator10, animator11, animator12, animator13, animator14, animator15, animator16, animator17, animator18);
                         set.setDuration(1500).start();
 
                     }
@@ -320,7 +337,6 @@ public class LoginActivity extends BaseActivity {
             }
         });
     }
-
 
 
     private int inDp(int dp) {
