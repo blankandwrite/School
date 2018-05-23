@@ -12,6 +12,7 @@
         android:layout_width="@dimen/dp_120"
         android:layout_height="@dimen/dp_100"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:scaleType="centerCrop"
         android:src="@mipmap/no_image"/>
 
     <TextView

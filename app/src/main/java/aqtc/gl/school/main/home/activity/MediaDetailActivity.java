@@ -35,6 +35,7 @@ public class MediaDetailActivity extends BaseWebViewActivity {
     public void setView() {
         title = getIntent().getStringExtra("title");
         id = getIntent().getStringExtra("id");
+        mWebView.getSettings().setDefaultTextEncodingName("UTF-8");
         getMediaDetail();
     }
 
@@ -53,7 +54,8 @@ public class MediaDetailActivity extends BaseWebViewActivity {
                     public void responseOk(String temp) {
                         MediaDetailEntity mediaDetailEntity = GsonUtil.jsonToBean(temp,MediaDetailEntity.class);
                         if (null != mediaDetailEntity && null != mediaDetailEntity.data){
-                            mWebView.loadData(mediaDetailEntity.data.html_content,"text/html","UTF-8");
+                            String html = mediaDetailEntity.data.html_content;
+                            mWebView.loadDataWithBaseURL("",mediaDetailEntity.data.html_content,"text/html","UTF-8","");
                         }
                     }
 

@@ -105,22 +105,23 @@ public class MediaListActivity extends BaseActivity {
                               if (mediaListEntity.data.list.size()>0){
                                         mMediaListAdapter.refresh(mediaListEntity.data.list);
                               }else {
-                                  ToastUtils.showMsg(mContext,"暂无数据");
+                                  ToastUtils.showMsg(mContext,getString(R.string.no_data));
                               }
                           }else {
                               mSmartRefreshLayout.finishLoadMore();
                               if (mediaListEntity.data.list.size()>0){
                                   mMediaListAdapter.addAll(mediaListEntity.data.list);
+                              }else {
+                                  ToastUtils.showMsg(mContext,getString(R.string.no_more_data));
                               }
                           }
-
                       }
                     }
 
                     @Override
                     public void responseFail(String msg) {
                         mSmartRefreshLayout.finishRefresh();
-                        ToastUtils.showMsg(mContext,"暂无数据");
+                        ToastUtils.showMsg(mContext,getString(R.string.no_data));
                     }
                 });
     }
