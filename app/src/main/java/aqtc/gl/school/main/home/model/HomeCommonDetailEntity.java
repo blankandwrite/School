@@ -7,7 +7,7 @@ import aqtc.gl.school.base.BaseBean;
  * @date 2018/5/22
  * @desc
  */
-public class MediaDetailEntity extends BaseBean {
+public class HomeCommonDetailEntity extends BaseBean {
 
 
     /**

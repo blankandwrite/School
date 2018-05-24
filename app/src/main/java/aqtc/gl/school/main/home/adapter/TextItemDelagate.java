@@ -6,14 +6,15 @@ import com.zhy.adapter.recyclerview.base.ItemViewDelegate;
 import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import aqtc.gl.school.R;
-import aqtc.gl.school.main.home.bean.NewsListBean;
+import aqtc.gl.school.common.Global;
+import aqtc.gl.school.main.home.model.HomeCommonListEntity;
 
 /**
  * @author gl
  * @date 2018/5/15
  * @desc
  */
-public class TextItemDelagate implements ItemViewDelegate<NewsListBean.NewsBean> {
+public class TextItemDelagate implements ItemViewDelegate<HomeCommonListEntity.DataBean.ListBean> {
     private Context mContext;
 
     public TextItemDelagate(Context context) {
@@ -26,8 +27,8 @@ public class TextItemDelagate implements ItemViewDelegate<NewsListBean.NewsBean>
     }
 
     @Override
-    public boolean isForViewType(NewsListBean.NewsBean item, int position) {
-        if (item.type==0){
+    public boolean isForViewType(HomeCommonListEntity.DataBean.ListBean item, int position) {
+        if (String.valueOf(item.category_id).equals(Global.SCIENCE_ID)){
             return true;
         }else {
             return false;
@@ -36,8 +37,8 @@ public class TextItemDelagate implements ItemViewDelegate<NewsListBean.NewsBean>
     }
 
     @Override
-    public void convert(ViewHolder holder, NewsListBean.NewsBean newsBean, int position) {
-        holder.setText(R.id.tv_title, newsBean.title);
-        holder.setText(R.id.tv_time, newsBean.time);
+    public void convert(ViewHolder holder, HomeCommonListEntity.DataBean.ListBean listBean, int position) {
+        holder.setText(R.id.tv_title, listBean.title);
+        holder.setText(R.id.tv_time, "["+listBean.publish_time+"]");
     }
 }

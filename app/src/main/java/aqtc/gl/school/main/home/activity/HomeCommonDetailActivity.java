@@ -12,7 +12,7 @@ import java.util.Map;
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseWebViewActivity;
 import aqtc.gl.school.common.CommonUrl;
-import aqtc.gl.school.main.home.model.MediaDetailEntity;
+import aqtc.gl.school.main.home.model.HomeCommonDetailEntity;
 import aqtc.gl.school.utils.GsonUtil;
 import aqtc.gl.school.utils.ToastUtils;
 
@@ -21,12 +21,12 @@ import aqtc.gl.school.utils.ToastUtils;
  * @date 2018/5/22
  * @desc
  */
-public class MediaDetailActivity extends BaseWebViewActivity {
+public class HomeCommonDetailActivity extends BaseWebViewActivity {
     protected String title;
     protected String id;
 
-    public static void goMediaDetailActivity(Context context, String title, String id) {
-        Intent intent = new Intent(context, MediaDetailActivity.class);
+    public static void goHomeCommonDetailActivity(Context context, String title, String id) {
+        Intent intent = new Intent(context, HomeCommonDetailActivity.class);
         intent.putExtra("title", title);
         intent.putExtra("id", id);
         context.startActivity(intent);
@@ -52,10 +52,10 @@ public class MediaDetailActivity extends BaseWebViewActivity {
                 new OnResponse<String>() {
                     @Override
                     public void responseOk(String temp) {
-                        MediaDetailEntity mediaDetailEntity = GsonUtil.jsonToBean(temp,MediaDetailEntity.class);
-                        if (null != mediaDetailEntity && null != mediaDetailEntity.data){
-                            String html = mediaDetailEntity.data.html_content;
-                            mWebView.loadDataWithBaseURL("",mediaDetailEntity.data.html_content,"text/html","UTF-8","");
+                        HomeCommonDetailEntity homeCommonDetailEntity = GsonUtil.jsonToBean(temp,HomeCommonDetailEntity.class);
+                        if (null != homeCommonDetailEntity && null != homeCommonDetailEntity.data){
+                            String html = homeCommonDetailEntity.data.html_content;
+                            mWebView.loadDataWithBaseURL("", homeCommonDetailEntity.data.html_content,"text/html","UTF-8","");
                         }
                     }
 

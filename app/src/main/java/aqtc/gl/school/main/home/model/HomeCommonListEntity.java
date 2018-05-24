@@ -9,7 +9,7 @@ import aqtc.gl.school.base.BaseBean;
  * @date 2018/5/22
  * @desc
  */
-public class MediaListEntity extends BaseBean {
+public class HomeCommonListEntity extends BaseBean {
     /**
      * err : 0
      * msg : ok
@@ -68,6 +68,7 @@ public class MediaListEntity extends BaseBean {
             public String title;
             public String author;
             public String publish_time;
+            public String imag_url="http://www.aqnu.edu.cn/images/banner1.jpg";
         }
     }
 }

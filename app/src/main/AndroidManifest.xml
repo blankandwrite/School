@@ -39,19 +39,7 @@
             android:name=".common.PicturePagerActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".main.home.activity.NewsListActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".main.home.activity.FaxListActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".main.home.activity.MediaListActivity"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name=".main.home.activity.NoticeListActivity"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".main.home.activity.ScienceListActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".main.find.activity.ImagePagerActivity"
@@ -72,7 +60,10 @@
             android:name=".main.find.activity.VideoRecorderActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".main.home.activity.MediaDetailActivity"
+            android:name=".main.home.activity.HomeCommonDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".main.home.activity.HomeCommonListActivity"
             android:screenOrientation="portrait"/>
     </application>
 
