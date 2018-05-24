@@ -276,10 +276,12 @@ public class FindCircleShareActivity extends BaseActivity {
             View v = getLayoutInflater().inflate(R.layout.find_circle_share_preview_item, null, false);
             ImageView previewImg = (ImageView) v.findViewById(R.id.previewImg);
             FrameLayout videoBody = (FrameLayout) v.findViewById(R.id.videoBody);
+            ImageView ivDelete = v.findViewById(R.id.iv_delete);
             final TextureVideoView videoView = (TextureVideoView) v.findViewById(R.id.textureVideoView);
             ImageView videoFrame = (ImageView) v.findViewById(R.id.videoFrame);
             videoView.mute();
             if (!TextUtils.isEmpty(data)) {
+                ivDelete.setVisibility(View.VISIBLE);
                 if (MimeTypeMap.isVideo(data)) {
                     previewImg.setVisibility(View.GONE);
                     videoBody.setVisibility(View.VISIBLE);
@@ -328,7 +330,16 @@ public class FindCircleShareActivity extends BaseActivity {
                     videoBody.setVisibility(View.GONE);
                     ImageLoad.getImageGlide(mContext, data,Global.IMAGE_DEFAULT).centerCrop().into(previewImg);
                 }
+            }else {
+                ivDelete.setVisibility(View.GONE);
             }
+            ivDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    contents.remove(data);
+                    notifyDataChanged();
+                }
+            });
             return v;
         }
     }

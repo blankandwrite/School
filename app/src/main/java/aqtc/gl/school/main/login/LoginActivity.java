@@ -33,6 +33,7 @@ import aqtc.gl.school.widget.dialog.LoadingDialog;
  * @desc 登录
  */
 public class LoginActivity extends BaseActivity {
+
     EditText email, pass, email2, pass2, confirmPass;
     RelativeLayout relativeLayout, relativeLayout2;
     LinearLayout mainLinear, img;
