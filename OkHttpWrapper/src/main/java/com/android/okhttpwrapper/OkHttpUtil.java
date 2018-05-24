@@ -26,7 +26,6 @@ import okhttp3.Response;
  */
 public class OkHttpUtil {
     private static final String TAG = "OkHttpUtil";
-
     /**
      * okhttp client
      */
