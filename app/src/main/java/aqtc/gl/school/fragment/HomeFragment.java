@@ -4,13 +4,20 @@ package aqtc.gl.school.fragment;
 import android.content.Context;
 import android.view.View;
 
+import com.android.okhttpwrapper.OkHttpUtil;
+import com.android.okhttpwrapper.callback.OnResponse;
 import com.flyco.banner.anim.select.ZoomInEnter;
 import com.flyco.banner.transform.ZoomOutSlideTransformer;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseFragment;
+import aqtc.gl.school.common.CommonUrl;
 import aqtc.gl.school.fragment.banner.BannerBean;
 import aqtc.gl.school.fragment.banner.SimpleImageBanner;
+import aqtc.gl.school.fragment.entity.CategoryBean;
 import aqtc.gl.school.fragment.listener.OpenDrawerLayoutListener;
 import aqtc.gl.school.main.home.activity.FaxListActivity;
 import aqtc.gl.school.main.home.activity.MediaListActivity;
@@ -18,6 +25,7 @@ import aqtc.gl.school.main.home.activity.NewsListActivity;
 import aqtc.gl.school.main.home.activity.NoticeListActivity;
 import aqtc.gl.school.main.home.activity.ScenceActivity;
 import aqtc.gl.school.main.home.activity.ScienceListActivity;
+import aqtc.gl.school.utils.GsonUtil;
 import aqtc.gl.school.utils.apputil.Apputil;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -33,6 +41,7 @@ public class HomeFragment extends BaseFragment {
     SimpleImageBanner mImageBanner;
 
     private OpenDrawerLayoutListener mOpenDrawerLayoutListener;
+    private CategoryBean mCategoryBean;
 
     public static HomeFragment getInstance() {
         HomeFragment homeFragment = new HomeFragment();
@@ -95,5 +104,26 @@ public class HomeFragment extends BaseFragment {
     void goScience() {
         Apputil.goActivity(mContext, ScienceListActivity.class);
     }
+
+    private void getIndexdata(){
+        Map<String,String> params = new HashMap<>();
+        params.put("school_id","1");
+        OkHttpUtil.getInstance(mContext).doRequestByPost(CommonUrl.ARTICLE_CATEGORY, getTAG(), params,
+                new OnResponse<String>() {
+                    @Override
+                    public void responseOk(String temp) {
+                        mCategoryBean = GsonUtil.jsonToBean(temp,CategoryBean.class);
+                        if (null != mCategoryBean && null != mCategoryBean.data){
+                            
+                        }
+                    }
+
+                    @Override
+                    public void responseFail(String msg) {
+
+                    }
+                });
+    }
+
 
 }

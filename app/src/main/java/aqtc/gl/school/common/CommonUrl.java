@@ -7,7 +7,8 @@ package aqtc.gl.school.common;
  */
 public class CommonUrl {
     public static final String BASE_URL = "http://106.14.8.195:8800/";
-    //师大媒体
-    public static final String MEDIA_LIS = BASE_URL + "api/v1/app/article/pages";
-    public static final String MEDIA_DETAIL = BASE_URL + "api/v1/app/article/detail";
+    //首页
+    public static final String ARTICLE_CATEGORY = BASE_URL + "api/v1/app/article/categories";
+    public static final String ARTICLE__LIS = BASE_URL + "api/v1/app/article/pages";
+    public static final String ARTICLE__DETAIL = BASE_URL + "api/v1/app/article/detail";
 }

@@ -48,7 +48,7 @@ public class MediaDetailActivity extends BaseWebViewActivity {
     private void getMediaDetail(){
         Map<String,String> params = new HashMap<>();
         params.put("id",id);
-        OkHttpUtil.getInstance(mContext).doRequestByPost(CommonUrl.MEDIA_DETAIL, getTAG(), params,
+        OkHttpUtil.getInstance(mContext).doRequestByPost(CommonUrl.ARTICLE__DETAIL, getTAG(), params,
                 new OnResponse<String>() {
                     @Override
                     public void responseOk(String temp) {

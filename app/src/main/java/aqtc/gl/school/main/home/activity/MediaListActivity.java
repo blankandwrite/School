@@ -93,7 +93,7 @@ public class MediaListActivity extends BaseActivity {
     private void getMediaList(){
         Map<String,String> params = new HashMap<>();
         params.put("page",String.valueOf(page));
-        OkHttpUtil.getInstance(mContext).doRequestByPost(CommonUrl.MEDIA_LIS, getTAG(), params,
+        OkHttpUtil.getInstance(mContext).doRequestByPost(CommonUrl.ARTICLE__LIS, getTAG(), params,
                 new OnResponse<String>() {
                     @Override
                     public void responseOk(String temp) {

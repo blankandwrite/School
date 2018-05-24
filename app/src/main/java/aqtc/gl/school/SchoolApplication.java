@@ -2,9 +2,10 @@ package aqtc.gl.school;
 
 import android.app.Application;
 import android.content.Context;
-import android.os.Environment;
 
-import java.io.File;
+import aqtc.gl.school.common.Global;
+import aqtc.gl.school.common.preload.Preloader;
+import aqtc.gl.school.main.login.LoginInfoCache;
 
 /**
  * @author gl
@@ -12,18 +13,22 @@ import java.io.File;
  * @desc
  */
 public class SchoolApplication extends Application {
-    // 默认存放图片的路径
-    public final static String DEFAULT_SAVE_IMAGE_PATH = Environment.getExternalStorageDirectory() + File.separator + "CircleDemo" + File.separator + "Images"
-            + File.separator;
 
     private static Context mContext;
+
     @Override
     public void onCreate() {
         super.onCreate();
         mContext = getApplicationContext();
-        //  QPManager.getInstance(getApplicationContext()).initRecord();
+        //初始化登录信息
+        LoginInfoCache.getInstance().initLoginInfo(mContext);
+        //文件路径初始化
+        Global.initAppPath(this);
+        //网络请求临时缓存初始化
+        Preloader.getInstance(mContext).reset();
 
     }
+
     public static Context getContext(){
         return mContext;
     }
