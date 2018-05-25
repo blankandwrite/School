@@ -28,6 +28,7 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.Tran"
             android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".main.home.activity.ScenceActivity"
@@ -65,6 +66,7 @@
         <activity
             android:name=".main.home.activity.HomeCommonListActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".main.AppbarLayoutActivity"/>
     </application>
 
 </manifest>

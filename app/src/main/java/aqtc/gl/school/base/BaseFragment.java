@@ -74,4 +74,6 @@ public abstract class BaseFragment extends Fragment {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
+
+
 }

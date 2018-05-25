@@ -36,7 +36,6 @@ import butterknife.OnClick;
  * @desc 首页
  */
 public class HomeFragment extends BaseFragment {
-
     @BindView(R.id.banner)
     SimpleImageBanner mImageBanner;
 
@@ -56,13 +55,12 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void initView(View rootView) {
-        getCategory();
         mImageBanner
                 .setSelectAnimClass(ZoomInEnter.class)
                 .setSource(BannerBean.getBannerBean().data)
                 .setTransformerClass(ZoomOutSlideTransformer.class)
                 .startScroll();
-
+        getCategory();
 
     }
 

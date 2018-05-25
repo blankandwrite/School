@@ -54,6 +54,7 @@ public class MainActivity extends BaseActivity implements OpenDrawerLayoutListen
         initContentFragment();
     }
 
+
     private void initLeftMenu() {
         DrawerLayout.LayoutParams params = (DrawerLayout.LayoutParams) leftMune.getLayoutParams();
         params.width = Utils.getScreenWidth(this) / 3 * 2;

@@ -52,6 +52,8 @@ public class LoginActivity extends BaseActivity {
                 mLoadingDialog.dismiss();
                 Snackbar.make(relativeLayout2, "登录完成", Snackbar.LENGTH_SHORT).show();
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
+               // startActivity(new Intent(LoginActivity.this, AppbarLayoutActivity.class));
+
             }
         }
     };

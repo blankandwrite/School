@@ -64,6 +64,7 @@ dependencies {
     implementation 'pub.devrel:easypermissions:1.2.0'
     implementation 'org.greenrobot:eventbus:3.0.0'
     implementation 'com.google.code.gson:gson:2.2.4'
+    implementation 'com.jaeger.statusbarutil:library:1.5.1'
     implementation('com.github.bumptech.glide:okhttp3-integration:1.4.0') {
         exclude group: 'glide-parent'
     }

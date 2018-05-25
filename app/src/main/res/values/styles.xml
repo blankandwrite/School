@@ -16,6 +16,11 @@
         <item name="android:windowFullscreen">true</item>
     </style>
 
+    <style name="AppTheme.Tran">
+        <item name="android:windowTranslucentStatus">true</item>
+
+    </style>
+
     <style name="main_bottom_style">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">wrap_content</item>
