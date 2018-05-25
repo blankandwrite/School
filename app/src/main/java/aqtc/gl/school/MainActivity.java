@@ -120,4 +120,9 @@ public class MainActivity extends BaseActivity implements OpenDrawerLayoutListen
         }
 
     }
+
+    @Override
+    protected void setStatusBar() {
+      //  StatusBarUtil.setTranslucentForImageViewInFragment(MainActivity.this, null);
+    }
 }

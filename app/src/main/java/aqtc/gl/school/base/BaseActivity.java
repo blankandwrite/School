@@ -26,6 +26,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setStatusBar();
         setContentView(getActivityViewById());
         mContext = this;
         ButterKnife.bind(this);
@@ -44,6 +45,10 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     public void findTitleViewId() {
 
+    }
+
+    protected void setStatusBar() {
+     //   StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary));
     }
 
     /**
