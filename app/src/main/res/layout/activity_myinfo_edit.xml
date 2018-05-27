@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:focusableInTouchMode="true"
+    android:background="@color/white">
+    <aqtc.gl.school.widget.TitleView
+        android:id="@+id/titleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:right_title_show="true"
+       />
+        <EditText
+            android:id="@+id/et_info"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:textColorHint="@color/gray3"
+            android:textColor="@color/gray1"
+            android:padding="@dimen/dp_10"
+            android:layout_margin="@dimen/dp_10"
+            android:textSize="@dimen/sp_16"
+            android:inputType="text"
+            tools:hint="用户名"
+            android:background="@drawable/edit_rectangle"
+            />
+</LinearLayout>
