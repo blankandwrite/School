@@ -7,7 +7,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.android.okhttpwrapper.OkHttpUtil;
+import com.jaeger.library.StatusBarUtil;
 
+import aqtc.gl.school.R;
 import aqtc.gl.school.widget.TitleView;
 import butterknife.ButterKnife;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -26,10 +28,10 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setStatusBar();
         setContentView(getActivityViewById());
-        mContext = this;
         ButterKnife.bind(this);
+        setStatusBar();
+        mContext = this;
         initView();
         findTitleViewId();
         setback();
@@ -48,7 +50,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void setStatusBar() {
-     //   StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary));
+        StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary));
     }
 
     /**

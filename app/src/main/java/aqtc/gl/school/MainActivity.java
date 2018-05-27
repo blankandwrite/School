@@ -7,12 +7,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.jaeger.library.StatusBarUtil;
+
 import aqtc.gl.school.base.BaseActivity;
 import aqtc.gl.school.fragment.AcademyFragment;
 import aqtc.gl.school.fragment.EdumanagementFragment;
 import aqtc.gl.school.fragment.FindFragment;
 import aqtc.gl.school.fragment.HomeFragment;
 import aqtc.gl.school.fragment.LeftMenuFragment;
+import aqtc.gl.school.fragment.MyFragment;
 import aqtc.gl.school.fragment.listener.OpenDrawerLayoutListener;
 import aqtc.gl.school.utils.Utils;
 import butterknife.BindView;
@@ -31,6 +34,8 @@ public class MainActivity extends BaseActivity implements OpenDrawerLayoutListen
     Button managementBtn;
     @BindView(R.id.findBtn)
     Button findBtn;
+    @BindView(R.id.myBtn)
+    Button myBtn;
     @BindView(R.id.drawerLayout)
     DrawerLayout drawerLayout;
     @BindView(R.id.fl_menu)
@@ -41,6 +46,7 @@ public class MainActivity extends BaseActivity implements OpenDrawerLayoutListen
     // 当前fragment的index
     private int currentTabIndex;
     private Button[] mTabs;
+    private int mStatusBarColor;
 
     @Override
     public int getActivityViewById() {
@@ -65,18 +71,20 @@ public class MainActivity extends BaseActivity implements OpenDrawerLayoutListen
     }
 
     private void initTabs() {
-        mTabs = new Button[4];
+        mTabs = new Button[5];
         mTabs[0] = homeBtn;
         mTabs[1] = academyBtn;
         mTabs[2] = findBtn;
-        mTabs[3] = managementBtn;
+        mTabs[3] = myBtn;
+        mTabs[4] = managementBtn;
         // 把第一个tab设为选中状态
         mTabs[0].setSelected(true);
     }
 
     private void initContentFragment() {
         fragments = new Fragment[]{HomeFragment.getInstance(), AcademyFragment.getInstance(),
-                FindFragment.getInstance(), EdumanagementFragment.getInstance()};
+                FindFragment.getInstance(), MyFragment.getInstance(),
+                EdumanagementFragment.getInstance()};
         // 添加显示第一个fragment
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.content, fragments[0])
@@ -95,8 +103,11 @@ public class MainActivity extends BaseActivity implements OpenDrawerLayoutListen
             case R.id.findBtn:
                 index = 2;
                 break;
-            case R.id.managementBtn:
+            case R.id.myBtn:
                 index = 3;
+                break;
+            case R.id.managementBtn:
+                index = 4;
                 break;
         }
         if (currentTabIndex != index) {
@@ -123,6 +134,7 @@ public class MainActivity extends BaseActivity implements OpenDrawerLayoutListen
 
     @Override
     protected void setStatusBar() {
-      //  StatusBarUtil.setTranslucentForImageViewInFragment(MainActivity.this, null);
+        mStatusBarColor = getResources().getColor(R.color.colorPrimary);
+        StatusBarUtil.setColorForDrawerLayout(this,drawerLayout, mStatusBarColor,StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA);
     }
 }

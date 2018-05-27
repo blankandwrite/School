@@ -66,7 +66,10 @@
         <activity
             android:name=".main.home.activity.HomeCommonListActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".main.AppbarLayoutActivity"/>
+        <activity
+            android:name=".main.home.activity.MyInfoEditActivity"
+            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>

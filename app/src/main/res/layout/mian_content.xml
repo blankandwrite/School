@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:background="@color/blue3"
         android:orientation="horizontal"
-        android:weightSum="4">
+        android:weightSum="5">
             <Button
                 android:id="@+id/homeBtn"
                 style="@style/main_bottom_style"
@@ -35,6 +35,13 @@
                 android:onClick="onTabClicked"
                 android:drawableTop="@mipmap/ic_find"
                 android:text="@string/index_bottom_find"/>
+        <Button
+            android:id="@+id/myBtn"
+            style="@style/main_bottom_style"
+            android:onClick="onTabClicked"
+            android:drawableTop="@mipmap/ic_my"
+            android:text="@string/index_bottom_my"/>
+
         <Button
             android:id="@+id/managementBtn"
             style="@style/main_bottom_style"

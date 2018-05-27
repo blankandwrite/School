@@ -58,7 +58,6 @@ public class AcademyFragment extends BaseFragment {
     }
 
     private void initTopView(){
-   //     StatusBarUtils.setTranslucentImageHeader(getActivity(),0,mToolbar);
         mToolbar.setTitleTextColor(Color.TRANSPARENT);
         mCollapsingToolbarLayout.setTitle("");
         mCollapsingToolbarLayout.setCollapsedTitleTextColor(getResources().getColor(R.color.white));
