@@ -8,8 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.android.okhttpwrapper.OkHttpUtil;
-import com.android.okhttpwrapper.callback.OnResponse;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
@@ -17,19 +15,15 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.zhy.adapter.recyclerview.MultiItemTypeRecyclerAdapter;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseActivity;
-import aqtc.gl.school.common.CommonUrl;
 import aqtc.gl.school.common.Global;
 import aqtc.gl.school.main.home.activity.mvp.homecommonList.HomeCommonListContract;
 import aqtc.gl.school.main.home.activity.mvp.homecommonList.HomeCommonListPresenter;
 import aqtc.gl.school.main.home.adapter.HomeCommonListAdapter;
 import aqtc.gl.school.main.home.entity.HomeCommonListEntity;
-import aqtc.gl.school.utils.GsonUtil;
 import aqtc.gl.school.utils.ToastUtils;
 import butterknife.BindView;
 
@@ -89,7 +83,6 @@ public class HomeCommonListActivity extends BaseActivity<HomeCommonListPresenter
             public void onRefresh(RefreshLayout refreshLayout) {
                page = 1;
                 mPresenter.getListData(mContext,getTAG(), Global.SCHOOL_ID,page,categoryId,Global.ROWS);
-              //  getList();
             }
         });
         mSmartRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
@@ -97,7 +90,7 @@ public class HomeCommonListActivity extends BaseActivity<HomeCommonListPresenter
             public void onLoadMore(RefreshLayout refreshLayout) {
                 page = page +1;
                 mPresenter.getListData(mContext,getTAG(), Global.SCHOOL_ID,page,categoryId,Global.ROWS);
-             //   getList();
+
             }
         });
 
@@ -125,45 +118,6 @@ public class HomeCommonListActivity extends BaseActivity<HomeCommonListPresenter
     @Override
     protected HomeCommonListPresenter getPresenter() {
         return new HomeCommonListPresenter(this);
-    }
-
-
-    private void getList(){
-        Map<String,String> params = new HashMap<>();
-        params.put("school_id", Global.SCHOOL_ID);
-        params.put("page",String.valueOf(page));
-        params.put("category_id",categoryId);
-        params.put("limit",Global.ROWS);
-        OkHttpUtil.getInstance(mContext).doRequestByPost(CommonUrl.ARTICLE__LIS, getTAG(), params,
-                new OnResponse<String>() {
-                    @Override
-                    public void responseOk(String temp) {
-                        HomeCommonListEntity homeCommonListEntity = GsonUtil.jsonToBean(temp,HomeCommonListEntity.class);
-                     if (null != homeCommonListEntity && null != homeCommonListEntity.data && null != homeCommonListEntity.data.list){
-                          if (page==1){
-                              mSmartRefreshLayout.finishRefresh();
-                              if (homeCommonListEntity.data.list.size()>0){
-                                  mCommonListAdapter.refresh(homeCommonListEntity.data.list);
-                              }else {
-                                  ToastUtils.showMsg(mContext,getString(R.string.no_data));
-                              }
-                          }else {
-                              mSmartRefreshLayout.finishLoadMore();
-                              if (homeCommonListEntity.data.list.size()>0){
-                                  mCommonListAdapter.addAll(homeCommonListEntity.data.list);
-                              }else {
-                                  ToastUtils.showMsg(mContext,getString(R.string.no_more_data));
-                              }
-                          }
-                      }
-                    }
-
-                    @Override
-                    public void responseFail(String msg) {
-                        mSmartRefreshLayout.finishRefresh();
-                        ToastUtils.showMsg(mContext,getString(R.string.no_data));
-                    }
-                });
     }
 
     @Override

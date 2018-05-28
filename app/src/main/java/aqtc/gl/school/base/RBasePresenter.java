@@ -1,9 +1,10 @@
 package aqtc.gl.school.base;
 
 /**
- * Created by a on 2017/5/15.
+ * @author gl
+ * @date 2018/5/28
+ * @desc
  */
-
 public class RBasePresenter<T extends IRBaseView> implements IRBasePresenter {
 
     protected T mView;

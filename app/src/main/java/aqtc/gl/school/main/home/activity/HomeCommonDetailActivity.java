@@ -3,19 +3,11 @@ package aqtc.gl.school.main.home.activity;
 import android.content.Context;
 import android.content.Intent;
 
-import com.android.okhttpwrapper.OkHttpUtil;
-import com.android.okhttpwrapper.callback.OnResponse;
-
-import java.util.HashMap;
-import java.util.Map;
-
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseActivity;
-import aqtc.gl.school.common.CommonUrl;
 import aqtc.gl.school.main.home.activity.mvp.homecommondetail.HomeCommomDatailPresenter;
 import aqtc.gl.school.main.home.activity.mvp.homecommondetail.HomeCommonDetailContract;
 import aqtc.gl.school.main.home.entity.HomeCommonDetailEntity;
-import aqtc.gl.school.utils.GsonUtil;
 import aqtc.gl.school.utils.ToastUtils;
 import aqtc.gl.school.widget.ProgressWebView;
 import butterknife.BindView;
@@ -50,7 +42,6 @@ public class HomeCommonDetailActivity extends BaseActivity<HomeCommomDatailPrese
         title = getIntent().getStringExtra("title");
         id = getIntent().getStringExtra("id");
         mWebView.getSettings().setDefaultTextEncodingName("UTF-8");
-        //   getMediaDetail();
         mPresenter.getData(mContext,getTAG(),id);
     }
 
@@ -65,27 +56,7 @@ public class HomeCommonDetailActivity extends BaseActivity<HomeCommomDatailPrese
     protected HomeCommomDatailPresenter getPresenter() {
         return new HomeCommomDatailPresenter(this);
     }
-
-    private void getMediaDetail() {
-        Map<String, String> params = new HashMap<>();
-        params.put("id", id);
-        OkHttpUtil.getInstance(mContext).doRequestByPost(CommonUrl.ARTICLE__DETAIL, getTAG(), params,
-                new OnResponse<String>() {
-                    @Override
-                    public void responseOk(String temp) {
-                        HomeCommonDetailEntity homeCommonDetailEntity = GsonUtil.jsonToBean(temp, HomeCommonDetailEntity.class);
-                        if (null != homeCommonDetailEntity && null != homeCommonDetailEntity.data) {
-                            mWebView.loadDataWithBaseURL("", homeCommonDetailEntity.data.html_content, "text/html", "UTF-8", "");
-                        }
-                    }
-
-                    @Override
-                    public void responseFail(String msg) {
-                        ToastUtils.showMsg(mContext, msg);
-                    }
-                });
-    }
-
+    
     @Override
     public void showViewLoading() {
 
