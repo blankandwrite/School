@@ -34,6 +34,7 @@ public class ImageLoad {
     public static <T> void loadImage(Context context, T url, ImageView iv, int ResourceId) {
         Glide.with(context)
                 .load(url)
+                .asBitmap()
                 .skipMemoryCache(false)
                 .diskCacheStrategy(DiskCacheStrategy.SOURCE)
                 .centerCrop()

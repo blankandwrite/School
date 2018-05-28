@@ -5,7 +5,7 @@ import android.content.Context;
 import java.util.List;
 
 import aqtc.gl.school.base.BaseMultiItemTypeAdapter;
-import aqtc.gl.school.main.home.model.HomeCommonListEntity;
+import aqtc.gl.school.main.home.entity.HomeCommonListEntity;
 
 /**
  * @author gl

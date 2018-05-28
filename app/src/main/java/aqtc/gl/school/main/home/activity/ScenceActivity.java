@@ -16,6 +16,7 @@ import java.util.List;
 
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseActivity;
+import aqtc.gl.school.base.RBasePresenter;
 import aqtc.gl.school.main.home.adapter.ScenceAdapter;
 import aqtc.gl.school.main.home.bean.ScenceBean;
 import butterknife.BindView;
@@ -76,6 +77,11 @@ public class ScenceActivity extends BaseActivity {
     public void findTitleViewId() {
         mTitleView = findViewById(R.id.titleView);
         mTitleView.setTitle(mContext.getResources().getString(R.string.home_scene));
+    }
+
+    @Override
+    protected RBasePresenter getPresenter() {
+        return null;
     }
 
 

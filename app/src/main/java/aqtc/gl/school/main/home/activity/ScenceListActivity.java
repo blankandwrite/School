@@ -16,6 +16,7 @@ import java.util.List;
 
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseActivity;
+import aqtc.gl.school.base.RBasePresenter;
 import aqtc.gl.school.common.DataManager;
 import aqtc.gl.school.common.PicturePagerActivity;
 import aqtc.gl.school.main.home.adapter.ScenceListAdapter;
@@ -39,6 +40,11 @@ public class ScenceListActivity extends BaseActivity {
     public void findTitleViewId() {
         mTitleView = findViewById(R.id.titleView);
         mTitleView.setTitle(mContext.getResources().getString(R.string.home_scene));
+    }
+
+    @Override
+    protected RBasePresenter getPresenter() {
+        return null;
     }
 
     @Override

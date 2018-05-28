@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseActivity;
+import aqtc.gl.school.base.RBasePresenter;
 import aqtc.gl.school.utils.image.ImageLoad;
 import aqtc.gl.school.widget.PhotoViewPager;
 import butterknife.BindView;
@@ -58,6 +59,11 @@ public class PicturePagerActivity extends BaseActivity {
         mTitleView = findViewById(R.id.titleView);
         mTitleView.setTitle(title);
 
+    }
+
+    @Override
+    protected RBasePresenter getPresenter() {
+        return null;
     }
 
     class PhotoViewPagerAdapter extends PagerAdapter{

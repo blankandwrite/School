@@ -7,6 +7,7 @@ import android.widget.EditText;
 
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseActivity;
+import aqtc.gl.school.base.RBasePresenter;
 import aqtc.gl.school.widget.TitleView;
 import butterknife.BindView;
 
@@ -88,5 +89,10 @@ public class MyInfoEditActivity extends BaseActivity {
 
             }
         });
+    }
+
+    @Override
+    protected RBasePresenter getPresenter() {
+        return null;
     }
 }

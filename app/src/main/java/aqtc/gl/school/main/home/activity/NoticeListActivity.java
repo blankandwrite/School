@@ -12,6 +12,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseActivity;
+import aqtc.gl.school.base.RBasePresenter;
 import aqtc.gl.school.main.home.adapter.NoticeListAdapter;
 import aqtc.gl.school.main.home.bean.NoticeListBean;
 import butterknife.BindView;
@@ -61,5 +62,10 @@ public class NoticeListActivity extends BaseActivity {
         mTitleView = findViewById(R.id.titleView);
         mTitleView.setTitle(mContext.getResources().getString(R.string.home_notice));
 
+    }
+
+    @Override
+    protected RBasePresenter getPresenter() {
+        return null;
     }
 }

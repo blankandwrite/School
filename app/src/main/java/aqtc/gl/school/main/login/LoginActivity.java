@@ -25,6 +25,7 @@ import android.widget.TextView;
 import aqtc.gl.school.MainActivity;
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseActivity;
+import aqtc.gl.school.base.RBasePresenter;
 import aqtc.gl.school.widget.dialog.LoadingDialog;
 
 /**
@@ -52,7 +53,6 @@ public class LoginActivity extends BaseActivity {
                 mLoadingDialog.dismiss();
                 Snackbar.make(relativeLayout2, "登录完成", Snackbar.LENGTH_SHORT).show();
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
-               // startActivity(new Intent(LoginActivity.this, AppbarLayoutActivity.class));
 
             }
         }
@@ -66,6 +66,11 @@ public class LoginActivity extends BaseActivity {
     @Override
     public void initView() {
         setView();
+    }
+
+    @Override
+    protected RBasePresenter getPresenter() {
+        return null;
     }
 
     protected void setView() {

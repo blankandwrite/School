@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseActivity;
+import aqtc.gl.school.base.RBasePresenter;
 import aqtc.gl.school.widget.ProgressWebView;
 import butterknife.BindView;
 
@@ -58,5 +59,10 @@ public class ActivityWebView extends BaseActivity {
     public void findTitleViewId() {
         mTitleView = findViewById(R.id.titleView);
         mTitleView.setTitle(title);
+    }
+
+    @Override
+    protected RBasePresenter getPresenter() {
+        return null;
     }
 }

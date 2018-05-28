@@ -25,8 +25,10 @@ import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseActivity;
 import aqtc.gl.school.common.CommonUrl;
 import aqtc.gl.school.common.Global;
+import aqtc.gl.school.main.home.activity.mvp.homecommonList.HomeCommonListContract;
+import aqtc.gl.school.main.home.activity.mvp.homecommonList.HomeCommonListPresenter;
 import aqtc.gl.school.main.home.adapter.HomeCommonListAdapter;
-import aqtc.gl.school.main.home.model.HomeCommonListEntity;
+import aqtc.gl.school.main.home.entity.HomeCommonListEntity;
 import aqtc.gl.school.utils.GsonUtil;
 import aqtc.gl.school.utils.ToastUtils;
 import butterknife.BindView;
@@ -36,7 +38,8 @@ import butterknife.BindView;
  * @date 2018/5/10
  * @desc 师大要闻、 师大媒体、校园传真、学术动态
  */
-public class HomeCommonListActivity extends BaseActivity {
+public class HomeCommonListActivity extends BaseActivity<HomeCommonListPresenter> implements
+        HomeCommonListContract.IomeCommonListView{
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
     @BindView(R.id.refreshLayout)
@@ -80,18 +83,21 @@ public class HomeCommonListActivity extends BaseActivity {
         mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext,DividerItemDecoration.VERTICAL));
         mRecyclerView.setAdapter(mCommonListAdapter);
         mSmartRefreshLayout.autoRefresh();
+
         mSmartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
                page = 1;
-                getList();
+                mPresenter.getListData(mContext,getTAG(), Global.SCHOOL_ID,page,categoryId,Global.ROWS);
+              //  getList();
             }
         });
         mSmartRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void onLoadMore(RefreshLayout refreshLayout) {
                 page = page +1;
-                getList();
+                mPresenter.getListData(mContext,getTAG(), Global.SCHOOL_ID,page,categoryId,Global.ROWS);
+             //   getList();
             }
         });
 
@@ -115,6 +121,12 @@ public class HomeCommonListActivity extends BaseActivity {
         mTitleView = findViewById(R.id.titleView);
         mTitleView.setTitle(title);
     }
+
+    @Override
+    protected HomeCommonListPresenter getPresenter() {
+        return new HomeCommonListPresenter(this);
+    }
+
 
     private void getList(){
         Map<String,String> params = new HashMap<>();
@@ -152,5 +164,40 @@ public class HomeCommonListActivity extends BaseActivity {
                         ToastUtils.showMsg(mContext,getString(R.string.no_data));
                     }
                 });
+    }
+
+    @Override
+    public void showViewLoading() {
+
+    }
+
+    @Override
+    public void showViewError(Throwable t) {
+
+    }
+
+
+    @Override
+    public void onScuess(List<HomeCommonListEntity.DataBean.ListBean> listBeans) {
+        if (page==1){
+            mSmartRefreshLayout.finishRefresh();
+            if (listBeans.size()>0){
+                mCommonListAdapter.refresh(listBeans);
+            }else {
+                ToastUtils.showMsg(mContext,getString(R.string.no_data));
+            }
+        }else {
+            mSmartRefreshLayout.finishLoadMore();
+            if (listBeans.size()>0){
+                mCommonListAdapter.addAll(listBeans);
+            }else {
+                ToastUtils.showMsg(mContext,getString(R.string.no_more_data));
+            }
+        }
+    }
+
+    @Override
+    public void onFail(String err) {
+        ToastUtils.showMsg(mContext,err);
     }
 }

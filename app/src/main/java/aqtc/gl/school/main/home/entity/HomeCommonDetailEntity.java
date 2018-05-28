@@ -1,4 +1,4 @@
-package aqtc.gl.school.main.home.model;
+package aqtc.gl.school.main.home.entity;
 
 import aqtc.gl.school.base.BaseBean;
 

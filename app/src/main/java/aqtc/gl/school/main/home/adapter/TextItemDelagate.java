@@ -7,7 +7,7 @@ import com.zhy.adapter.recyclerview.base.ViewHolder;
 
 import aqtc.gl.school.R;
 import aqtc.gl.school.common.Global;
-import aqtc.gl.school.main.home.model.HomeCommonListEntity;
+import aqtc.gl.school.main.home.entity.HomeCommonListEntity;
 
 /**
  * @author gl

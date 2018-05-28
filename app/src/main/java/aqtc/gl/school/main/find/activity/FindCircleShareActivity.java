@@ -18,6 +18,7 @@ import java.util.List;
 
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseActivity;
+import aqtc.gl.school.base.RBasePresenter;
 import aqtc.gl.school.common.Global;
 import aqtc.gl.school.main.find.enums.FindShareType;
 import aqtc.gl.school.main.find.utils.FindSendPopupUtil;
@@ -140,6 +141,11 @@ public class FindCircleShareActivity extends BaseActivity {
        mTitleView = findViewById(R.id.titleView);
        mTitleView.setTitle("");
        mTitleView.setRightTitle("发布");
+    }
+
+    @Override
+    protected RBasePresenter getPresenter() {
+        return null;
     }
 
     private void resolveIntent() {

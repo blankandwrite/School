@@ -32,6 +32,7 @@ import java.util.Set;
 
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseActivity;
+import aqtc.gl.school.base.RBasePresenter;
 import aqtc.gl.school.main.find.adapter.CommonAdapter;
 import aqtc.gl.school.main.find.widgets.popup.PhotoFolderPopWindow;
 import aqtc.gl.school.utils.ToastUtils;
@@ -218,6 +219,11 @@ public class PhotoSelectActivity extends BaseActivity implements
                 goBack();
             }
         });
+    }
+
+    @Override
+    protected RBasePresenter getPresenter() {
+        return null;
     }
 
     private void updateTitle() {

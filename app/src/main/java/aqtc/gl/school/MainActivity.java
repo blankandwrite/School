@@ -10,6 +10,7 @@ import android.widget.FrameLayout;
 import com.jaeger.library.StatusBarUtil;
 
 import aqtc.gl.school.base.BaseActivity;
+import aqtc.gl.school.base.RBasePresenter;
 import aqtc.gl.school.fragment.AcademyFragment;
 import aqtc.gl.school.fragment.EdumanagementFragment;
 import aqtc.gl.school.fragment.FindFragment;
@@ -58,6 +59,11 @@ public class MainActivity extends BaseActivity implements OpenDrawerLayoutListen
         initLeftMenu();
         initTabs();
         initContentFragment();
+    }
+
+    @Override
+    protected RBasePresenter getPresenter() {
+        return null;
     }
 
 
@@ -110,6 +116,7 @@ public class MainActivity extends BaseActivity implements OpenDrawerLayoutListen
                 index = 4;
                 break;
         }
+
         if (currentTabIndex != index) {
             FragmentTransaction trx = getSupportFragmentManager().beginTransaction();
             trx.hide(fragments[currentTabIndex]);
@@ -134,7 +141,8 @@ public class MainActivity extends BaseActivity implements OpenDrawerLayoutListen
 
     @Override
     protected void setStatusBar() {
-        mStatusBarColor = getResources().getColor(R.color.colorPrimary);
-        StatusBarUtil.setColorForDrawerLayout(this,drawerLayout, mStatusBarColor,StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA);
+       mStatusBarColor = getResources().getColor(R.color.colorPrimary);
+       StatusBarUtil.setColorForDrawerLayout(this,drawerLayout, mStatusBarColor,StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA);
+
     }
 }

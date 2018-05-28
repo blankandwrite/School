@@ -21,6 +21,11 @@ public class BaseWebViewActivity extends BaseActivity {
         setView();
     }
 
+    @Override
+    protected RBasePresenter getPresenter() {
+        return null;
+    }
+
     public void setView() {
 
     }

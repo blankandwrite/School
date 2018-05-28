@@ -19,11 +19,12 @@ import pub.devrel.easypermissions.EasyPermissions;
  * @date 2018/5/6
  * @desc
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity <T extends RBasePresenter> extends AppCompatActivity {
     // 用来标记同一生命周期
     private String tag = "";
     public Context mContext;
     public TitleView mTitleView;
+    protected T mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,12 +33,19 @@ public abstract class BaseActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         setStatusBar();
         mContext = this;
+        mPresenter = getPresenter();
         initView();
         findTitleViewId();
         setback();
     }
 
     public abstract int getActivityViewById();
+    /**
+     * 设置 Presenter
+     *
+     * @return
+     */
+    protected abstract T getPresenter();
 
     public abstract void initView();
 
@@ -49,6 +57,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
+    
     protected void setStatusBar() {
         StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary));
     }
@@ -80,11 +89,24 @@ public abstract class BaseActivity extends AppCompatActivity {
         return tag;
     }
 
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        if (mPresenter != null) {
+            mPresenter.onStop();
+        }
+    }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        if (mPresenter != null) {
+            mPresenter.onDestory();
+        }
         OkHttpUtil.getInstance(mContext).cancelTag(getTAG());
     }
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {

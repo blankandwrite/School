@@ -28,7 +28,6 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Tran"
             android:windowSoftInputMode="adjustPan"/>
         <activity
             android:name=".main.home.activity.ScenceActivity"
