@@ -3,16 +3,13 @@ package aqtc.gl.school.main.home.activity.mvp.homecommonList;
 
 import android.content.Context;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.RBasePresenter;
-import aqtc.gl.school.common.CommonUrl;
+import aqtc.gl.school.main.home.api.HomeApiFactory;
 import aqtc.gl.school.main.home.entity.HomeCommonListEntity;
-import aqtc.gl.school.net.okhttp.OkHttpUtil;
-import aqtc.gl.school.net.okhttp.callback.OnResponse;
 import aqtc.gl.school.utils.GsonUtil;
+import io.reactivex.functions.Consumer;
+import okhttp3.ResponseBody;
 
 /**
  * @author gl
@@ -30,7 +27,7 @@ public class HomeCommonListPresenter extends RBasePresenter<HomeCommonListContra
     @Override
     public void getListData(final Context context, String tag, String schoolId, int page,
                             String categoryId, String rows) {
-        /*addSubscription(HomeApiFactory.getHomeList(schoolId, String.valueOf(page), categoryId, rows)
+        addSubscription(HomeApiFactory.getHomeList(schoolId, String.valueOf(page), categoryId, rows)
                 .subscribe(new Consumer<ResponseBody>() {
                                @Override
                                public void accept(ResponseBody responseBody) throws Exception {
@@ -48,8 +45,8 @@ public class HomeCommonListPresenter extends RBasePresenter<HomeCommonListContra
                                }
                            }
 
-                ));*/
-       Map<String,String> params = new HashMap<>();
+                ));
+      /* Map<String,String> params = new HashMap<>();
         params.put("school_id",schoolId);
         params.put("page",String.valueOf(page));
         params.put("category_id",categoryId);
@@ -71,7 +68,7 @@ public class HomeCommonListPresenter extends RBasePresenter<HomeCommonListContra
                     public void responseFail(String msg) {
                         mView.onFail(msg);
                     }
-                });
+                });*/
     }
 
 }

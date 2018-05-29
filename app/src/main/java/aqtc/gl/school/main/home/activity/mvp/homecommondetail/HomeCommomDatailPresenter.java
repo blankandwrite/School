@@ -2,6 +2,8 @@ package aqtc.gl.school.main.home.activity.mvp.homecommondetail;
 
 import android.content.Context;
 
+import com.library.log.LogX;
+
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.RBasePresenter;
 import aqtc.gl.school.main.home.api.HomeApiFactory;
@@ -32,6 +34,7 @@ public class HomeCommomDatailPresenter extends RBasePresenter<HomeCommonDetailCo
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(@NonNull Throwable throwable) throws Exception {
+                        LogX.e("Throwable",throwable.getMessage()+"");
                         mView.onFail(context.getResources().getString(R.string.no_data));
                     }
                 }));
