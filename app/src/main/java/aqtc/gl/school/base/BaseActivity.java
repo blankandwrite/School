@@ -7,10 +7,10 @@ import android.support.annotation.Nullable;
 import android.support.v4.util.ArrayMap;
 import android.support.v7.app.AppCompatActivity;
 
-import com.android.okhttpwrapper.OkHttpUtil;
 import com.jaeger.library.StatusBarUtil;
 
 import aqtc.gl.school.R;
+import aqtc.gl.school.net.okhttp.OkHttpUtil;
 import aqtc.gl.school.widget.TitleView;
 import butterknife.ButterKnife;
 import io.reactivex.disposables.CompositeDisposable;

@@ -152,6 +152,8 @@ public class HomeCommonListActivity extends BaseActivity<HomeCommonListPresenter
 
     @Override
     public void onFail(String err) {
+        mSmartRefreshLayout.finishRefresh();
+        mSmartRefreshLayout.finishLoadMore();
         ToastUtils.showMsg(mContext,err);
     }
 }

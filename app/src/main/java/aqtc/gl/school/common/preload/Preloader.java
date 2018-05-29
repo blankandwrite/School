@@ -2,12 +2,13 @@ package aqtc.gl.school.common.preload;
 
 import android.content.Context;
 
-import com.android.okhttpwrapper.OkHttpUtil;
-import com.android.okhttpwrapper.callback.OnResponse;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import aqtc.gl.school.net.okhttp.OkHttpUtil;
+import aqtc.gl.school.net.okhttp.callback.OnResponse;
+
 /**
  * @author gl
  * @date 2018/5/24

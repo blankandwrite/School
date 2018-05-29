@@ -2,7 +2,7 @@
  * Copyright (c) aibona 2017.
  */
 
-package com.android.okhttpwrapper.progress;
+package aqtc.gl.school.net.okhttp.progress;
 
 /**
  * http://www.jianshu.com/p/548031c62257

@@ -2,9 +2,7 @@
  * Copyright (c) aibona 2017.
  */
 
-package com.android.okhttpwrapper.progress;
-
-import com.android.okhttpwrapper.progress.ProgressCallback;
+package aqtc.gl.school.net.okhttp.progress;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -5,8 +5,6 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 
-import com.android.okhttpwrapper.OkHttpUtil;
-import com.android.okhttpwrapper.callback.OnResponse;
 import com.library.log.LogX;
 
 import org.json.JSONException;
@@ -17,6 +15,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import aqtc.gl.school.net.okhttp.OkHttpUtil;
+import aqtc.gl.school.net.okhttp.callback.OnResponse;
 import aqtc.gl.school.utils.bitmap.BitmapCompresser;
 import aqtc.gl.school.utils.file.MimeTypeMap;
 import okhttp3.Call;

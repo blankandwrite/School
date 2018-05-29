@@ -9,8 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.android.okhttpwrapper.OkHttpUtil;
-
+import aqtc.gl.school.net.okhttp.OkHttpUtil;
 import butterknife.ButterKnife;
 import pub.devrel.easypermissions.EasyPermissions;
 

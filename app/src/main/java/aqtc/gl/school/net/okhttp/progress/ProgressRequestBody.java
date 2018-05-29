@@ -2,7 +2,7 @@
 /*
  * Copyright (c) aibona 2017.
  */
-package com.android.okhttpwrapper.progress;
+package aqtc.gl.school.net.okhttp.progress;
 
 import java.io.IOException;
 
