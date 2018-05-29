@@ -44,14 +44,19 @@ public abstract class BaseActivity <T extends RBasePresenter> extends AppCompatA
         setback();
     }
 
+    /**
+     * 获取布局layoutId
+     * @return
+     */
     public abstract int getActivityViewById();
     /**
      * 设置 Presenter
-     *
-     * @return
      */
     protected abstract T getPresenter();
 
+    /**
+     * 初始化界面
+     */
     public abstract void initView();
 
     /**
