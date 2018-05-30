@@ -24,7 +24,7 @@ public class Global {
     public static final int IMAGE_DEFAULT = R.mipmap.no_image;
     public static final String ROWS = "20";
     public static final int PHOTO_REQUEST_CAREMA=100;
-    public static final int CROP_PHOTO=101;
+    public static final int SELECT_PHOTO=101;
 
 
    /*{"err":0,"msg":"ok","data":[

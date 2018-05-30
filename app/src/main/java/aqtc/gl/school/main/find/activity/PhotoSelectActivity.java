@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -126,6 +127,18 @@ public class PhotoSelectActivity extends BaseActivity implements
     public static void openSelect(Activity context, int requestCode, int maxCount) {
         openSelect(context, requestCode, maxCount, null);
     }
+
+    public static void openSelect(Fragment fragment, int requestCode, int maxCount, PhotoFolderEntity.FileType fileType) {
+        Intent intent = new Intent(fragment.getActivity(), PhotoSelectActivity.class);
+        Bundle bundle = new Bundle();
+        if (fileType != null) {
+            bundle.putSerializable(PhotoSelectActivity.SELECT_MODE, fileType);
+        }
+        intent.putExtras(bundle);
+        intent.putExtra(SELECT_TOTAL, maxCount);
+        fragment.startActivityForResult(intent, requestCode);
+    }
+
 
     @Override
     public int getActivityViewById() {

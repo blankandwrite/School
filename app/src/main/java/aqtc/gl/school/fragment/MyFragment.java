@@ -3,21 +3,22 @@ package aqtc.gl.school.fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Build;
-import android.os.StrictMode;
 import android.provider.MediaStore;
-import android.support.v4.content.FileProvider;
 import android.view.View;
 
 import com.library.log.LogX;
+import com.soundcloud.android.crop.Crop;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseFragment;
 import aqtc.gl.school.common.Global;
+import aqtc.gl.school.main.find.activity.PhotoSelectActivity;
 import aqtc.gl.school.main.home.activity.MyInfoEditActivity;
+import aqtc.gl.school.utils.file.media.PhotoFolderEntity;
 import butterknife.OnClick;
 
 import static android.app.Activity.RESULT_OK;
@@ -75,7 +76,8 @@ public class MyFragment extends BaseFragment {
 
     @OnClick(R.id.iv_photo)
     void changePhoto() {
-        try {
+        PhotoSelectActivity.openSelect(MyFragment.this,Global.SELECT_PHOTO,1, PhotoFolderEntity.FileType.IMAGE);
+/*        try {
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
             StrictMode.setVmPolicy(builder.build());
             builder.detectFileUriExposure();
@@ -98,8 +100,8 @@ public class MyFragment extends BaseFragment {
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             startActivityForResult(intent, Global.PHOTO_REQUEST_CAREMA);
         }catch (Exception e){
-
-        }
+            e.printStackTrace();
+        }*/
     }
 
     @Override
@@ -107,17 +109,37 @@ public class MyFragment extends BaseFragment {
         switch (requestCode) {
             case Global.PHOTO_REQUEST_CAREMA:
                 if (resultCode == RESULT_OK) {
-                    LogX.e("PHOTO_REQUEST_CAREMA", "CROP");
-                    startPhotoCrop();
+               //     startPhotoCrop();
+                    Uri destination = Uri.fromFile(new File(mContext.getCacheDir(), "cropped"));
+                    Crop.of(mFileUri, destination).asSquare().start(getActivity());
                 }
                 break;
-            case Global.CROP_PHOTO:
+            case Crop.REQUEST_CROP:
+                LogX.e("PHOTO_REQUEST_CAREMA", "CROP");
                 if (resultCode == RESULT_OK) {
-
+                    LogX.e("PHOTO_REQUEST_CAREMA", "CROP1");
+                }
+                break;
+            case Global.SELECT_PHOTO:
+                ArrayList<String> datas = data.getStringArrayListExtra(PhotoSelectActivity.SELECT_DATA);
+                if (datas != null && datas.size() > 0) {
+                    Uri destination = Uri.fromFile(new File(mContext.getCacheDir(), "tempdemo"));
+                    String path = datas.get(0);
+                    mFileUri = Uri.fromFile(new File(path));
+                    Crop.of(mFileUri, destination).asSquare().start(getActivity());
                 }
                 break;
         }
     }
+
+
+
+
+
+
+
+
+
 
     /**
      * 开启裁剪相片
@@ -160,6 +182,6 @@ public class MyFragment extends BaseFragment {
         intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
         intent.putExtra("return-data", false);//data不需要返回,避免图片太大异常
         intent.putExtra("noFaceDetection", true); // no face detection
-        startActivityForResult(intent, Global.CROP_PHOTO);
+        startActivityForResult(intent, 103);
     }
 }
