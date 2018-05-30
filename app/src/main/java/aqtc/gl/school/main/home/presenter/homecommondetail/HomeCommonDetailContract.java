@@ -1,4 +1,4 @@
-package aqtc.gl.school.main.home.activity.mvp.homecommondetail;
+package aqtc.gl.school.main.home.presenter.homecommondetail;
 
 import android.content.Context;
 
@@ -21,7 +21,7 @@ public class HomeCommonDetailContract {
 
    public interface IHomeCommonDetailPresenter {
        //获取数据
-       void getData(Context context,String tag,String id);
+       void getData(Context context, String tag, String id);
    }
 
 }

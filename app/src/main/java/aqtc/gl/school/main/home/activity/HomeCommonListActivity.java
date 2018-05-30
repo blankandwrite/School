@@ -20,10 +20,10 @@ import java.util.List;
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseActivity;
 import aqtc.gl.school.common.Global;
-import aqtc.gl.school.main.home.activity.mvp.homecommonList.HomeCommonListContract;
-import aqtc.gl.school.main.home.activity.mvp.homecommonList.HomeCommonListPresenter;
 import aqtc.gl.school.main.home.adapter.HomeCommonListAdapter;
 import aqtc.gl.school.main.home.entity.HomeCommonListEntity;
+import aqtc.gl.school.main.home.presenter.homecommonList.HomeCommonListContract;
+import aqtc.gl.school.main.home.presenter.homecommonList.HomeCommonListPresenter;
 import aqtc.gl.school.utils.ToastUtils;
 import butterknife.BindView;
 

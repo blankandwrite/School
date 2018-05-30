@@ -1,4 +1,4 @@
-package aqtc.gl.school.main.home.activity.mvp.homecommonList;
+package aqtc.gl.school.main.home.presenter.homecommonList;
 
 import android.content.Context;
 
@@ -22,7 +22,7 @@ public class HomeCommonListContract {
 
     public interface ICommonListPresenter {
         //获取数据
-        void getListData(Context context, String tag,String schoolId, int page, String categoryId, String rows);
+        void getListData(Context context, String tag, String schoolId, int page, String categoryId, String rows);
 
     }
 }

@@ -8,7 +8,7 @@ import io.reactivex.disposables.Disposable;
 /**
  * @author gl
  * @date 2018/5/28
- * @desc
+ * @desc 事件订阅管理
  */
 public class RBasePresenter<T extends IRBaseView> implements IRBasePresenter {
 
@@ -23,6 +23,7 @@ public class RBasePresenter<T extends IRBaseView> implements IRBasePresenter {
     @Override
     public void onDestory() {
         onUnsubscribe();
+
     }
 
     @Override
@@ -66,9 +67,6 @@ public class RBasePresenter<T extends IRBaseView> implements IRBasePresenter {
      */
     protected void onUnsubscribe() {
         if (compositeDisposable != null) {
-            // Using clear will clear all, but can accept new disposable
-//            compositeDisposable.clear();
-            // Using dispose will clear all and set isDisposed = true, so it will not accept any new disposable
             compositeDisposable.dispose();
             compositeDisposable = null;
         }

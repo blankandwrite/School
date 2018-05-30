@@ -1,4 +1,4 @@
-package aqtc.gl.school.main.home.activity.mvp.homecommondetail;
+package aqtc.gl.school.main.home.presenter.homecommondetail;
 
 import android.content.Context;
 
@@ -29,7 +29,11 @@ public class HomeCommomDatailPresenter extends RBasePresenter<HomeCommonDetailCo
                 .subscribe(new Consumer<HomeCommonDetailEntity>() {
                     @Override
                     public void accept(@NonNull HomeCommonDetailEntity homeCommonDetailEntity) throws Exception {
-                        mView.onSucess(homeCommonDetailEntity.data);
+                        if (homeCommonDetailEntity.err!=0){
+                            mView.onFail(homeCommonDetailEntity.msg);
+                        }else{
+                            mView.onSucess(homeCommonDetailEntity.data);
+                        }
                     }
                 }, new Consumer<Throwable>() {
                     @Override
@@ -39,22 +43,5 @@ public class HomeCommomDatailPresenter extends RBasePresenter<HomeCommonDetailCo
                     }
                 }));
 
-       /*  Map<String, String> params = new HashMap<>();
-        params.put("id", id);
-       OkHttpUtil.getInstance(context).doRequestByPost(CommonUrl.ARTICLE__DETAIL, tag, params,
-                new OnResponse<String>() {
-                    @Override
-                    public void responseOk(String temp) {
-                        HomeCommonDetailEntity homeCommonDetailEntity = GsonUtil.jsonToBean(temp, HomeCommonDetailEntity.class);
-                        if (null != homeCommonDetailEntity && null != homeCommonDetailEntity.data) {
-                            mView.onSucess(homeCommonDetailEntity.data);
-                        }
-                    }
-
-                    @Override
-                    public void responseFail(String msg) {
-                        mView.onFail(msg);
-                    }
-                });*/
     }
 }

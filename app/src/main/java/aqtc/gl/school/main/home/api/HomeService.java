@@ -7,7 +7,9 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 /**
- * Created by a on 2017/5/16.
+ * @author gl
+ * @date 2018/5/30
+ * @desc
  */
 
 public interface HomeService {
@@ -15,7 +17,6 @@ public interface HomeService {
      * 获取列表条目
      * @return
      */
-
     @POST("api/v1/app/article/pages")
     Observable<ResponseBody> getHomeList(@Query("school_id") String school_id,@Query("page") String page,
                                          @Query("category_id") String category_id,  @Query("limit") String limit );

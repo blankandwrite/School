@@ -25,7 +25,6 @@ import aqtc.gl.school.main.home.activity.HomeCommonListActivity;
 import aqtc.gl.school.main.home.activity.NoticeListActivity;
 import aqtc.gl.school.main.home.activity.ScenceActivity;
 import aqtc.gl.school.utils.GsonUtil;
-import aqtc.gl.school.utils.ToastUtils;
 import aqtc.gl.school.utils.apputil.Apputil;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -122,7 +121,7 @@ public class HomeFragment extends BaseFragment {
 
                     @Override
                     public void fail(String errorMsg) {
-                        ToastUtils.showMsg(mContext,errorMsg);
+
                     }
                 });
 

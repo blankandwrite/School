@@ -8,9 +8,10 @@ import io.reactivex.Observable;
 import okhttp3.ResponseBody;
 
 /**
- * Created by a on 2017/5/16.
+ * @author gl
+ * @date 2018/5/30
+ * @desc
  */
-
 public class HomeApiFactory {
 
     public static Observable<HomeCommonDetailEntity> getDetail(String id) {

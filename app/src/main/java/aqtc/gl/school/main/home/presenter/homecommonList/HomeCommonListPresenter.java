@@ -1,4 +1,4 @@
-package aqtc.gl.school.main.home.activity.mvp.homecommonList;
+package aqtc.gl.school.main.home.presenter.homecommonList;
 
 
 import android.content.Context;
@@ -46,29 +46,7 @@ public class HomeCommonListPresenter extends RBasePresenter<HomeCommonListContra
                            }
 
                 ));
-      /* Map<String,String> params = new HashMap<>();
-        params.put("school_id",schoolId);
-        params.put("page",String.valueOf(page));
-        params.put("category_id",categoryId);
-        params.put("limit",rows);
-        OkHttpUtil.getInstance(context).doRequestByPost(CommonUrl.ARTICLE_LIS,tag, params,
-                new OnResponse<String>() {
-                    @Override
-                    public void responseOk(String temp) {
-                        HomeCommonListEntity homeCommonListEntity = GsonUtil.jsonToBean(temp,HomeCommonListEntity.class);
-                        if (null != homeCommonListEntity && null != homeCommonListEntity.data && null != homeCommonListEntity.data.list){
-                             mView.onScuess(homeCommonListEntity.data.list);
-                        }else {
-                             mView.onFail(context.getResources().getString(R.string.no_data));
-                        }
 
-                    }
-
-                    @Override
-                    public void responseFail(String msg) {
-                        mView.onFail(msg);
-                    }
-                });*/
     }
 
 }

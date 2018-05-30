@@ -23,6 +23,9 @@ public class Global {
     public static final int FIND_PIC_SELECT_MAX_COUNT = 9;
     public static final int IMAGE_DEFAULT = R.mipmap.no_image;
     public static final String ROWS = "20";
+    public static final int PHOTO_REQUEST_CAREMA=100;
+    public static final int CROP_PHOTO=101;
+
 
    /*{"err":0,"msg":"ok","data":[
     {"id":1,"school_id":1,"cover":"","name":"师大要闻"},

@@ -5,9 +5,9 @@ import android.content.Intent;
 
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseActivity;
-import aqtc.gl.school.main.home.activity.mvp.homecommondetail.HomeCommomDatailPresenter;
-import aqtc.gl.school.main.home.activity.mvp.homecommondetail.HomeCommonDetailContract;
 import aqtc.gl.school.main.home.entity.HomeCommonDetailEntity;
+import aqtc.gl.school.main.home.presenter.homecommondetail.HomeCommomDatailPresenter;
+import aqtc.gl.school.main.home.presenter.homecommondetail.HomeCommonDetailContract;
 import aqtc.gl.school.utils.ToastUtils;
 import aqtc.gl.school.widget.ProgressWebView;
 import butterknife.BindView;

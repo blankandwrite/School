@@ -87,7 +87,6 @@ public abstract class BaseActivity <T extends RBasePresenter> extends AppCompatA
 
     }
 
-
     public String getTAG() {
         try {
             if ("".equals(tag)) {
@@ -109,7 +108,6 @@ public abstract class BaseActivity <T extends RBasePresenter> extends AppCompatA
 
     /**
      * 添加事件监听处理到 事件管理类
-     *
      * @param disposable 上流事件
      */
     protected void addSubscription(Disposable disposable) {
@@ -143,9 +141,6 @@ public abstract class BaseActivity <T extends RBasePresenter> extends AppCompatA
      */
     protected void onUnsubscribe() {
         if (compositeDisposable != null) {
-            // Using clear will clear all, but can accept new disposable
-//            compositeDisposable.clear();
-            // Using dispose will clear all and set isDisposed = true, so it will not accept any new disposable
             compositeDisposable.dispose();
             compositeDisposable = null;
         }
@@ -175,6 +170,8 @@ public abstract class BaseActivity <T extends RBasePresenter> extends AppCompatA
         super.onDestroy();
         if (mPresenter != null) {
             mPresenter.onDestory();
+            //若调用 addSubscription(String tag, Disposable disposable) 则使用
+           // mPresenter.removeDisposableByTag(tag);
         }
         OkHttpUtil.getInstance(mContext).cancelTag(getTAG());
     }
