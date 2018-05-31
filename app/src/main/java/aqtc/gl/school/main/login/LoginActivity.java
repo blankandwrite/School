@@ -26,6 +26,7 @@ import aqtc.gl.school.MainActivity;
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseActivity;
 import aqtc.gl.school.base.RBasePresenter;
+import aqtc.gl.school.main.login.entity.LoginBean;
 import aqtc.gl.school.widget.dialog.LoadingDialog;
 
 /**
@@ -52,6 +53,11 @@ public class LoginActivity extends BaseActivity {
             if (msg.what == 0) {
                 mLoadingDialog.dismiss();
                 Snackbar.make(relativeLayout2, "登录完成", Snackbar.LENGTH_SHORT).show();
+                LoginBean.DataBean dataBean = new LoginBean.DataBean();
+                dataBean.token="eee";
+                LoginInfoCache loginInfoCache = LoginInfoCache.getInstance();
+                loginInfoCache.save(mContext,dataBean);
+                loginInfoCache.initLoginInfo(mContext);
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
 
             }

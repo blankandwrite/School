@@ -1,13 +1,15 @@
 package aqtc.gl.school;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
-
-import com.jaeger.library.StatusBarUtil;
 
 import aqtc.gl.school.base.BaseActivity;
 import aqtc.gl.school.base.RBasePresenter;
@@ -19,6 +21,7 @@ import aqtc.gl.school.fragment.LeftMenuFragment;
 import aqtc.gl.school.fragment.MyFragment;
 import aqtc.gl.school.fragment.listener.OpenDrawerLayoutListener;
 import aqtc.gl.school.utils.Utils;
+import aqtc.gl.school.utils.apputil.Apputil;
 import butterknife.BindView;
 
 /**
@@ -117,6 +120,12 @@ public class MainActivity extends BaseActivity implements OpenDrawerLayoutListen
                 break;
         }
 
+        if (index==2 || index == 3){
+           if (!Apputil.checkLogin(MainActivity.this)){
+               return;
+           }
+        }
+
         if (currentTabIndex != index) {
             FragmentTransaction trx = getSupportFragmentManager().beginTransaction();
             trx.hide(fragments[currentTabIndex]);
@@ -136,13 +145,24 @@ public class MainActivity extends BaseActivity implements OpenDrawerLayoutListen
         if (!drawerLayout.isDrawerOpen(leftMune)) {
             drawerLayout.openDrawer(leftMune);
         }
-
     }
-
     @Override
     protected void setStatusBar() {
-       mStatusBarColor = getResources().getColor(R.color.colorPrimary);
-       StatusBarUtil.setColorForDrawerLayout(this,drawerLayout, mStatusBarColor,StatusBarUtil.DEFAULT_STATUS_BAR_ALPHA);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            setTranslucentStatus(true);
+        }
+    }
 
+    @TargetApi(19)
+    private void setTranslucentStatus(boolean on) {
+        Window win = getWindow();
+        WindowManager.LayoutParams winParams = win.getAttributes();
+        final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
+        if (on) {
+            winParams.flags |= bits;
+        } else {
+            winParams.flags &= ~bits;
+        }
+        win.setAttributes(winParams);
     }
 }

@@ -26,6 +26,7 @@ public class EdumanagementFragment extends BaseFragment {
 
     @Override
     public void initView(View rootView) {
+        addStatusBarHeight();
         mProgressWebView.loadUrl("http://210.45.175.14/");
      /*   mSmartRefreshLayout.autoRefresh();
         mSmartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {

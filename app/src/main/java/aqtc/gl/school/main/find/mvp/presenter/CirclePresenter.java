@@ -2,6 +2,9 @@ package aqtc.gl.school.main.find.mvp.presenter;
 
 import android.view.View;
 
+import com.google.gson.Gson;
+import com.library.log.LogX;
+
 import java.util.List;
 import aqtc.gl.school.main.find.bean.CircleItem;
 import aqtc.gl.school.main.find.bean.CommentConfig;
@@ -34,6 +37,7 @@ public class CirclePresenter implements CircleContract.Presenter{
         List<CircleItem> datas = DatasUtil.createCircleDatas();
         if(view!=null){
             view.update2loadData(loadType, datas);
+			LogX.e("json",new Gson().toJson(datas.get(0)));
         }
 	}
 

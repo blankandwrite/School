@@ -30,19 +30,21 @@
         </provider>
 
         <activity
-            android:name=".main.login.LoginActivity"
+            android:name=".MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoBar"
+            android:windowSoftInputMode="adjustPan"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
         <activity
-            android:name=".MainActivity"
+            android:name=".main.login.LoginActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan"/>
+            android:theme="@style/AppTheme.NoBar"
+            />
         <activity
             android:name=".main.home.activity.ScenceActivity"
             android:screenOrientation="portrait"/>

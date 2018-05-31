@@ -139,6 +139,9 @@ public class PhotoSelectActivity extends BaseActivity implements
         fragment.startActivityForResult(intent, requestCode);
     }
 
+    public static void openSelect(Fragment fragment, int requestCode, int maxCount) {
+        openSelect(fragment, requestCode, maxCount, null);
+    }
 
     @Override
     public int getActivityViewById() {

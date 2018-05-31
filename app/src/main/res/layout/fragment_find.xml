@@ -1,7 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/color_aeaeae"
+              android:id="@+id/ll_content"
+              android:background="@color/colorPrimary"
               android:fitsSystemWindows="true"
               android:orientation="vertical"
     >
@@ -35,6 +36,7 @@
     <RelativeLayout
         android:id="@+id/bodyLayout"
         android:layout_width="match_parent"
+        android:background="@color/color_aeaeae"
         android:layout_height="match_parent">
 
         <com.malinskiy.superrecyclerview.SuperRecyclerView

@@ -20,35 +20,14 @@ public class DatasUtil {
 	public static final String[] CONTENTS = { "",
 			"安庆师范大学坐落在国家历史文化名城、国家园林城市、中国优秀旅游城市——安庆。这里是桐城派的故里、黄梅戏的故乡，有着“千年古城、文化之邦、百年省会、戏剧之乡”的美誉。学校傍依浩瀚长江，" +
 					"毗邻宁安高铁、合安九高铁，地理位置优越，水、陆、空交通便利，是皖西南地区唯一的省属师范大学。",
-			//"今天是个好日子，http://www.ChinaAr.com;一个不错的VR网站,18123456789,",
-			//"呵呵，http://www.ChinaAr.com;一个不错的VR网站,18123456789,",
-			//"只有http|https|ftp|svn://开头的网址才能识别为网址，正则表达式写的不太好，如果你又更好的正则表达式请评论告诉我，谢谢！",
 			"学校办学历史悠久，是安徽近代高等教育的发源地。1897年，清代著名省学敬敷书院在此办学，揭开了百年育人的序幕。" +
 					"1901年，敬敷书院与求是学堂合并成立安徽大学堂，后更名为安徽高等学堂。1928年省立安徽大学在此创办，1946年改为国立安徽大学。" +
 					"菱湖校区现存的敬敷书院和国立安徽大学红楼，作为全国重点文物保护单位见证了学校百年发展历程。1980年，经国务院批准成立安庆师范学院。" +
 					"2006年，学校获批硕士学位授予权。2007年获得教育部本科教学工作水平评估“优秀”等次。" +
 					"2016年，经教育部批准更名为安庆师范大学。2017年，安庆师范大学进入安徽省一本招生行列。",
-			//"哈哈哈哈",
-			//"图不错",
+
 			"我勒个去" };
-	/*public static final String[] PHOTOS = {
-			"http://f.hiphotos.baidu.com/image/pic/item/faf2b2119313b07e97f760d908d7912396dd8c9c.jpg",
-			"http://g.hiphotos.baidu.com/image/pic/item/4b90f603738da977c76ab6fab451f8198718e39e.jpg",
-			"http://e.hiphotos.baidu.com/image/pic/item/902397dda144ad343de8b756d4a20cf430ad858f.jpg",
-			"http://a.hiphotos.baidu.com/image/pic/item/a6efce1b9d16fdfa0fbc1ebfb68f8c5495ee7b8b.jpg",
-			"http://b.hiphotos.baidu.com/image/pic/item/a71ea8d3fd1f4134e61e0f90211f95cad1c85e36.jpg",
-			"http://c.hiphotos.baidu.com/image/pic/item/7dd98d1001e939011b9c86d07fec54e737d19645.jpg",
-			"http://f.hiphotos.baidu.com/image/pic/item/f11f3a292df5e0fecc3e83ef586034a85edf723d.jpg",
-			"http://cdn.duitang.com/uploads/item/201309/17/20130917111400_CNmTr.thumb.224_0.png",
-			"http://pica.nipic.com/2007-10-17/20071017111345564_2.jpg",
-			"http://pic4.nipic.com/20091101/3672704_160309066949_2.jpg",
-			"http://pic4.nipic.com/20091203/1295091_123813163959_2.jpg",
-			"http://pic31.nipic.com/20130624/8821914_104949466000_2.jpg",
-			"http://pic6.nipic.com/20100330/4592428_113348099353_2.jpg",
-			"http://pic9.nipic.com/20100917/5653289_174356436608_2.jpg",
-			"http://img10.3lian.com/sc6/show02/38/65/386515.jpg",
-			"http://pic1.nipic.com/2008-12-09/200812910493588_2.jpg",
-			"http://pic2.ooopic.com/11/79/98/31bOOOPICb1_1024.jpg" };*/
+
 	public static final String[] HEADIMG = {
 			"http://f.hiphotos.baidu.com/image/pic/item/faf2b2119313b07e97f760d908d7912396dd8c9c.jpg",
 			"http://bnxs.aqnu.edu.cn/__local/B/73/C4/240FC7118DAAC706BC59B9128BB_F7FE4A13_17B69.jpg",

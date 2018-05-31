@@ -67,7 +67,6 @@ public abstract class BaseActivity <T extends RBasePresenter> extends AppCompatA
 
     }
 
-    
     protected void setStatusBar() {
         StatusBarUtil.setColor(this, getResources().getColor(R.color.colorPrimary));
     }

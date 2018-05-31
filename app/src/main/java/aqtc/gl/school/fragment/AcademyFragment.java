@@ -67,7 +67,8 @@ public class AcademyFragment extends BaseFragment {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
                 if(Math.abs(verticalOffset) >= appBarLayout.getTotalScrollRange()){
-                    mTitle.setVisibility(View.VISIBLE);
+               //     mTitle.setVisibility(View.VISIBLE);
+                    mTitle.setVisibility(View.GONE);
                 }else{
                     mTitle.setVisibility(View.GONE);
 

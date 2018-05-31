@@ -25,11 +25,11 @@ import com.bumptech.glide.Glide;
 import com.malinskiy.superrecyclerview.OnMoreListener;
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseFragment;
+import aqtc.gl.school.common.Global;
 import aqtc.gl.school.main.find.activity.FindCircleShareActivity;
 import aqtc.gl.school.main.find.adapter.CircleAdapter;
 import aqtc.gl.school.main.find.bean.CircleItem;
@@ -81,15 +81,13 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
     private UpLoadDialog uploadDialog;
     private boolean isPission;
     private SwipeRefreshLayout.OnRefreshListener refreshListener;
-    private List<String> mStringList = new ArrayList<>();
     private TextView mTvFind;
     private RelativeLayout rlTop;
 
     @Override
     public void initView(View rootView) {
+        addStatusBarHeight();
         presenter = new CirclePresenter(this);
-        mStringList.add("拍照");
-        mStringList.add("从相册中选取");
         setView(rootView);
         //权限申请
         initPermission();
@@ -116,7 +114,7 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
         } else {
             // 没有权限 申请
             EasyPermissions.requestPermissions(this, "因为功能需要，需要使用相关权限，请允许",
-                    100, perms);
+                    Global.PERMSSION_CODE, perms);
         }
     }
 

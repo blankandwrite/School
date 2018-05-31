@@ -1,25 +1,34 @@
 package aqtc.gl.school.fragment;
 
+import android.Manifest;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
-import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.library.log.LogX;
 import com.soundcloud.android.crop.Crop;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseFragment;
 import aqtc.gl.school.common.Global;
 import aqtc.gl.school.main.find.activity.PhotoSelectActivity;
 import aqtc.gl.school.main.home.activity.MyInfoEditActivity;
+import aqtc.gl.school.utils.TakePhotoUtil;
+import aqtc.gl.school.utils.ToastUtils;
+import aqtc.gl.school.utils.file.FileUtils;
 import aqtc.gl.school.utils.file.media.PhotoFolderEntity;
+import aqtc.gl.school.utils.image.ImageLoad;
+import aqtc.gl.school.widget.popwindow.SelectPicPopWindow;
+import butterknife.BindView;
 import butterknife.OnClick;
+import pub.devrel.easypermissions.EasyPermissions;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -29,11 +38,14 @@ import static android.app.Activity.RESULT_OK;
  * @date 2018/5/26
  * @desc
  */
-public class MyFragment extends BaseFragment {
-
+public class MyFragment extends BaseFragment implements EasyPermissions.PermissionCallbacks {
+    @BindView(R.id.iv_photo)
+    ImageView headPhoto;
 
     private Uri mFileUri;
-
+    private SelectPicPopWindow mSelectPicPopWindow;
+    private List<String> mStringList = new ArrayList<>();
+    private boolean isPission;
 
     public static MyFragment getInstance() {
         return new MyFragment();
@@ -41,7 +53,12 @@ public class MyFragment extends BaseFragment {
 
     @Override
     public void initView(View rootView) {
-
+        initPermission();
+        mStringList.add("拍照");
+        mStringList.add("从相册中选取");
+        if (null == mSelectPicPopWindow) {
+            mSelectPicPopWindow = new SelectPicPopWindow(mContext, mStringList);
+        }
     }
 
     @Override
@@ -76,32 +93,29 @@ public class MyFragment extends BaseFragment {
 
     @OnClick(R.id.iv_photo)
     void changePhoto() {
-        PhotoSelectActivity.openSelect(MyFragment.this,Global.SELECT_PHOTO,1, PhotoFolderEntity.FileType.IMAGE);
-/*        try {
-            StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
-            StrictMode.setVmPolicy(builder.build());
-            builder.detectFileUriExposure();
-            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            //创建File对象，用于存储拍照后的照片
-            File outputImage=new File(mContext.getExternalCacheDir(),"out_image.jpg");//SD卡的应用关联缓存目录
-            if(outputImage.exists()) {
-                outputImage.delete();
+        if (!isPission){
+            ToastUtils.showMsg(mContext,"请开启相关权限");
+            return;
+        }
+        if (!mSelectPicPopWindow.isShowing()) {
+            mSelectPicPopWindow.showAtLocation(getActivity().getWindow().getDecorView(), Gravity.CENTER, 0, 0);
+        }
+        mSelectPicPopWindow.setOnIetmSelectListener(new SelectPicPopWindow.OnIetmSelectListener() {
+            @Override
+            public void select(int position) {
+                switch (position) {
+                    case 0:
+                        mFileUri = TakePhotoUtil.takePhoto(MyFragment.this, Global.PHOTO_REQUEST_CAREMA);
+                        break;
+                    case 1:
+                        PhotoSelectActivity.openSelect(MyFragment.this, Global.SELECT_PHOTO, 1, PhotoFolderEntity.FileType.IMAGE);
+                        break;
+                }
+                mSelectPicPopWindow.dismiss();
             }
-            outputImage.createNewFile();
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                //改变Uri  aqtc.gl.school.fileprovider 注意和manifest中的一致
-                mFileUri = FileProvider.getUriForFile(mContext, "aqtc.gl.school.fileprovider", outputImage);
-            } else {
-                mFileUri = Uri.fromFile(outputImage);
-            }
-            //启动相机程序
-            intent.putExtra(MediaStore.Images.Media.ORIENTATION, 0);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, mFileUri);
-            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            startActivityForResult(intent, Global.PHOTO_REQUEST_CAREMA);
-        }catch (Exception e){
-            e.printStackTrace();
-        }*/
+        });
+
+
     }
 
     @Override
@@ -109,79 +123,63 @@ public class MyFragment extends BaseFragment {
         switch (requestCode) {
             case Global.PHOTO_REQUEST_CAREMA:
                 if (resultCode == RESULT_OK) {
-               //     startPhotoCrop();
-                    Uri destination = Uri.fromFile(new File(mContext.getCacheDir(), "cropped"));
-                    Crop.of(mFileUri, destination).asSquare().start(getActivity());
+                    Uri destination = Uri.fromFile(new File(Global.getPicPath(mContext).getDirPath() + FileUtils.getFileName() + "jpg"));
+                    Crop.of(mFileUri, destination).asSquare().start(mContext, MyFragment.this);
                 }
                 break;
             case Crop.REQUEST_CROP:
-                LogX.e("PHOTO_REQUEST_CAREMA", "CROP");
-                if (resultCode == RESULT_OK) {
-                    LogX.e("PHOTO_REQUEST_CAREMA", "CROP1");
-                }
+                handleCrop(resultCode, data);
                 break;
             case Global.SELECT_PHOTO:
                 ArrayList<String> datas = data.getStringArrayListExtra(PhotoSelectActivity.SELECT_DATA);
                 if (datas != null && datas.size() > 0) {
-                    Uri destination = Uri.fromFile(new File(mContext.getCacheDir(), "tempdemo"));
+                    Uri destination = Uri.fromFile(new File(Global.getPicPath(mContext).getDirPath() + FileUtils.getFileName() + "jpg"));
                     String path = datas.get(0);
                     mFileUri = Uri.fromFile(new File(path));
-                    Crop.of(mFileUri, destination).asSquare().start(getActivity());
+                    Crop.of(mFileUri, destination).asSquare().start(mContext, MyFragment.this);
                 }
                 break;
         }
     }
 
-
-
-
-
-
-
-
-
-
-    /**
-     * 开启裁剪相片
-     */
-    public void startPhotoCrop() {
-        //创建file文件，用于存储剪裁后的照片
-       File cropImage =  new File(mContext.getExternalCacheDir(),"crop_image.jpg");
-
-        try {
-            if (cropImage.exists()) {
-                cropImage.delete();
-            }
-            cropImage.createNewFile();
-        } catch (IOException e) {
-            e.printStackTrace();
+    private void handleCrop(int resultCode, Intent result) {
+        if (resultCode == RESULT_OK) {
+            LogX.e("RESULT_OK", Crop.getOutput(result).getPath());
+            //    upLoad(new File(Crop.getOutput(result).getPath()));
+            ImageLoad.loadRoundImage(mContext, Crop.getOutput(result).getPath(), R.mipmap.ic_user, headPhoto);
+        } else if (resultCode == Crop.RESULT_ERROR) {
+            ToastUtils.showMsg(mContext, Crop.getError(result).getMessage());
         }
-        Uri cropImgUri = Uri.fromFile(cropImage);
-        Intent intent = new Intent("com.android.camera.action.CROP");
-
-        //需要加上这两句话  ： uri 权限 兼容7.0
-        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-
-        //设置源地址uri
-        intent.setDataAndType(mFileUri, "image/*");
-        intent.putExtra("crop", "true");
-        if (android.os.Build.MODEL.contains("HUAWEI")) {//华为特殊处理 不然会显示圆
-            intent.putExtra("aspectX", 9998);
-            intent.putExtra("aspectY", 9999);
-        } else {
-            intent.putExtra("aspectX", 1);
-            intent.putExtra("aspectY", 1);
-        }
-        intent.putExtra("outputX", 200);
-        intent.putExtra("outputY", 200);
-        intent.putExtra("scale", true);
-        //设置目的地址uri
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, cropImgUri);
-        //设置图片格式
-        intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
-        intent.putExtra("return-data", false);//data不需要返回,避免图片太大异常
-        intent.putExtra("noFaceDetection", true); // no face detection
-        startActivityForResult(intent, 103);
     }
+
+    private void initPermission() {
+        String[] perms = {Manifest.permission.CAMERA
+                , Manifest.permission.WRITE_EXTERNAL_STORAGE
+                , Manifest.permission.READ_EXTERNAL_STORAGE
+        };
+
+        if (EasyPermissions.hasPermissions(mContext, perms)) {
+            // 已有权限
+            isPission = true;
+        } else {
+            // 没有权限 申请
+            EasyPermissions.requestPermissions(this, "因为功能需要，需要使用相关权限，请允许",
+                    Global.PERMSSION_CODE, perms);
+        }
+    }
+
+    @Override
+    public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
+        //允许申请的权限
+        isPission = true;
+    }
+
+    @Override
+    public void onPermissionsDenied(int requestCode, @NonNull List<String> perms) {
+        //拒绝权限
+        isPission=false;
+        ToastUtils.showMsg(mContext, "您拒绝了相关权限，可能会导致相关功能不可用");
+    }
+
+
 }
