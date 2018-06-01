@@ -22,6 +22,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.qmuiteam.qmui.widget.dialog.QMUITipDialog;
+
 import aqtc.gl.school.MainActivity;
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseActivity;
@@ -46,12 +48,14 @@ public class LoginActivity extends BaseActivity {
     FrameLayout mainFrame;
     ObjectAnimator animator2, animator1;
     private LoadingDialog mLoadingDialog;
+    private QMUITipDialog tipDialog;
 
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == 0) {
-                mLoadingDialog.dismiss();
+              //  mLoadingDialog.dismiss();
+                tipDialog.dismiss();
                 Snackbar.make(relativeLayout2, "登录完成", Snackbar.LENGTH_SHORT).show();
                 LoginBean.DataBean dataBean = new LoginBean.DataBean();
                 dataBean.token="eee";
@@ -59,6 +63,7 @@ public class LoginActivity extends BaseActivity {
                 loginInfoCache.save(mContext,dataBean);
                 loginInfoCache.initLoginInfo(mContext);
                 startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                finish();
 
             }
         }
@@ -265,7 +270,11 @@ public class LoginActivity extends BaseActivity {
 
                 if (params2.weight == 4.25) {
                     //登录
-                    mLoadingDialog.show();
+                    tipDialog = new QMUITipDialog.Builder(mContext)
+                            .setIconType(QMUITipDialog.Builder.ICON_TYPE_LOADING)
+                            .setTipWord("正在登录")
+                            .create();
+                    tipDialog.show();
                     mHandler.sendEmptyMessageDelayed(0, 1500);
                     return;
                 }
