@@ -39,4 +39,10 @@
         <attr name="record_height" format="integer" />
     </declare-styleable>
 
+    <declare-styleable name="FrameLayoutLoading">
+        <attr name="loadingView" format="reference"/>
+        <attr name="errorView" format="reference"/>
+    </declare-styleable>
+
+
 </resources>

@@ -8,8 +8,8 @@ import aqtc.gl.school.base.BaseActivity;
 import aqtc.gl.school.main.home.entity.HomeCommonDetailEntity;
 import aqtc.gl.school.main.home.presenter.homecommondetail.HomeCommomDatailPresenter;
 import aqtc.gl.school.main.home.presenter.homecommondetail.HomeCommonDetailContract;
-import aqtc.gl.school.utils.ToastUtils;
 import aqtc.gl.school.widget.ProgressWebView;
+import aqtc.gl.school.widget.loadingview.FrameLayoutLoading;
 import butterknife.BindView;
 
 /**
@@ -21,6 +21,8 @@ public class HomeCommonDetailActivity extends BaseActivity<HomeCommomDatailPrese
         implements HomeCommonDetailContract.HomeCommonDetailView {
     @BindView(R.id.webView)
     ProgressWebView mWebView;
+    @BindView(R.id.loading_view)
+    FrameLayoutLoading mFrameLayoutLoading;
 
     protected String title;
     protected String id;
@@ -43,6 +45,12 @@ public class HomeCommonDetailActivity extends BaseActivity<HomeCommomDatailPrese
         id = getIntent().getStringExtra("id");
         mWebView.getSettings().setDefaultTextEncodingName("UTF-8");
         mPresenter.getData(mContext,getTAG(),id);
+        mFrameLayoutLoading.setRefreashClickListener(new FrameLayoutLoading.RefreashClickListener() {
+            @Override
+            public void setRefresh() {
+                mPresenter.getData(mContext,getTAG(),id);
+            }
+        });
     }
 
     @Override
@@ -59,7 +67,7 @@ public class HomeCommonDetailActivity extends BaseActivity<HomeCommomDatailPrese
     
     @Override
     public void showViewLoading() {
-
+        mFrameLayoutLoading.showErrorView();
     }
 
     @Override
@@ -69,11 +77,12 @@ public class HomeCommonDetailActivity extends BaseActivity<HomeCommomDatailPrese
 
     @Override
     public void onSucess(HomeCommonDetailEntity.DataBean dataBean) {
+        mFrameLayoutLoading.hideView();
         mWebView.loadDataWithBaseURL("", dataBean.html_content, "text/html", "UTF-8", "");
     }
 
     @Override
     public void onFail(String err) {
-        ToastUtils.showMsg(mContext, err);
+       showViewLoading();
     }
 }

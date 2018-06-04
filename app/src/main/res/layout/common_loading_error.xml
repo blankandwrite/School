@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+              android:clickable="true"
+              android:gravity="center_horizontal"
+              android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/listview_error_pic"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:gravity="center"
+            android:src="@mipmap/loading_fail">
+        </pl.droidsonroids.gif.GifImageView>
+
+        <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
+            android:id="@+id/loading_refreash_btn"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textSize="@dimen/sp_20"
+            android:text="@string/loading_retry"
+            android:textColor="@color/white"
+            app:qmui_backgroundColor="@color/blue3"
+            app:qmui_borderColor="@color/qmui_s_link_color"
+            app:qmui_borderWidth="1dp"
+            app:qmui_radius="8dp"
+          />
+    </LinearLayout>
+
+</LinearLayout>

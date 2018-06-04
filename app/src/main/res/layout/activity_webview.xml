@@ -10,8 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
-    <aqtc.gl.school.widget.ProgressWebView
-        android:id="@+id/webView"
+    <aqtc.gl.school.widget.loadingview.FrameLayoutLoading
+        android:id="@+id/loading_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
+        <aqtc.gl.school.widget.ProgressWebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </aqtc.gl.school.widget.loadingview.FrameLayoutLoading>
+
 </LinearLayout>

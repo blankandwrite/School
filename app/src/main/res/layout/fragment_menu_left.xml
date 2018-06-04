@@ -113,18 +113,22 @@
             />
     </LinearLayout>
 
-    <TextView
+    <com.qmuiteam.qmui.widget.roundwidget.QMUIRoundButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/quit_bg"
         android:layout_marginRight="@dimen/dp_10"
         android:layout_marginBottom="@dimen/dp_10"
         android:layout_marginLeft="@dimen/dp_10"
-        android:padding="@dimen/dp_10"
-        android:textColor="@color/white"
-        android:textSize="@dimen/sp_20"
-        android:text="退 出"
+        android:clickable="true"
         android:gravity="center"
+        android:padding="10dp"
+        android:textSize="@dimen/sp_20"
+        android:text="退出"
+        android:textColor="@color/white"
+        app:qmui_backgroundColor="@color/blue3"
+        app:qmui_borderColor="@color/qmui_s_link_color"
+        app:qmui_borderWidth="1dp"
+        app:qmui_radius="8dp"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>

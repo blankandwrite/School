@@ -44,4 +44,6 @@
     <drawable name="img_default_black">@color/black</drawable>
     <color name="buy_bar_bg">#fe6666</color>
     <color name="price_bar_bg">#FE9090</color>
+    <color name="frmame_layout4_main_bg">#F5F5F5</color>
+    <color name="default_text_color_red">#f7527c</color>
 </resources>

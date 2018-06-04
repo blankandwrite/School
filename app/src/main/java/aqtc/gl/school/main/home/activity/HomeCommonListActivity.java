@@ -25,6 +25,7 @@ import aqtc.gl.school.main.home.entity.HomeCommonListEntity;
 import aqtc.gl.school.main.home.presenter.homecommonList.HomeCommonListContract;
 import aqtc.gl.school.main.home.presenter.homecommonList.HomeCommonListPresenter;
 import aqtc.gl.school.utils.ToastUtils;
+import aqtc.gl.school.widget.loadingview.FrameLayoutLoading;
 import butterknife.BindView;
 
 /**
@@ -33,22 +34,24 @@ import butterknife.BindView;
  * @desc 师大要闻、 师大媒体、校园传真、学术动态
  */
 public class HomeCommonListActivity extends BaseActivity<HomeCommonListPresenter> implements
-        HomeCommonListContract.IomeCommonListView{
+        HomeCommonListContract.IomeCommonListView {
+    @BindView(R.id.loading_view)
+    FrameLayoutLoading mFrameLayoutLoading;
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
     @BindView(R.id.refreshLayout)
     SmartRefreshLayout mSmartRefreshLayout;
     private HomeCommonListAdapter mCommonListAdapter;
-    private List<HomeCommonListEntity.DataBean.ListBean> mBeanList= new ArrayList();
-    private int page=1;
+    private List<HomeCommonListEntity.DataBean.ListBean> mBeanList = new ArrayList();
+    private int page = 1;
     private String categoryId;
     private String title;
     private String detailTitle;
 
-    public static void goHomeCommonListActivity(Context context,String categoryId,String title){
-        Intent intent = new Intent(context,HomeCommonListActivity.class);
-        intent.putExtra("categoryId",categoryId);
-        intent.putExtra("title",title);
+    public static void goHomeCommonListActivity(Context context, String categoryId, String title) {
+        Intent intent = new Intent(context, HomeCommonListActivity.class);
+        intent.putExtra("categoryId", categoryId);
+        intent.putExtra("title", title);
         context.startActivity(intent);
     }
 
@@ -62,34 +65,34 @@ public class HomeCommonListActivity extends BaseActivity<HomeCommonListPresenter
         Intent intent = getIntent();
         categoryId = intent.getStringExtra("categoryId");
         title = intent.getStringExtra("title");
-        if (Global.NEWS_ID.equals(categoryId)){
+        if (Global.NEWS_ID.equals(categoryId)) {
             detailTitle = "新闻详情";
-        }else if (Global.FAX_ID.equals(categoryId)){
+        } else if (Global.FAX_ID.equals(categoryId)) {
             detailTitle = "传真详情";
-        }else if (Global.MEDIA_ID.equals(categoryId)){
+        } else if (Global.MEDIA_ID.equals(categoryId)) {
             detailTitle = "媒体详情";
-        }else {
+        } else {
             detailTitle = "学术详情";
         }
-        mCommonListAdapter = new HomeCommonListAdapter(mContext,mBeanList);
+        mCommonListAdapter = new HomeCommonListAdapter(mContext, mBeanList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext,DividerItemDecoration.VERTICAL));
+        mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL));
         mRecyclerView.setAdapter(mCommonListAdapter);
         mSmartRefreshLayout.autoRefresh();
 
         mSmartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
-               page = 1;
-                mPresenter.getListData(mContext,getTAG(), Global.SCHOOL_ID,page,categoryId,Global.ROWS);
+                page = 1;
+                mPresenter.getListData(mContext, getTAG(), Global.SCHOOL_ID, page, categoryId, Global.ROWS);
             }
         });
         mSmartRefreshLayout.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
             public void onLoadMore(RefreshLayout refreshLayout) {
-                page = page +1;
-                mPresenter.getListData(mContext,getTAG(), Global.SCHOOL_ID,page,categoryId,Global.ROWS);
+                page = page + 1;
+                mPresenter.getListData(mContext, getTAG(), Global.SCHOOL_ID, page, categoryId, Global.ROWS);
 
             }
         });
@@ -98,12 +101,19 @@ public class HomeCommonListActivity extends BaseActivity<HomeCommonListPresenter
             @Override
             public void onItemClick(View view, RecyclerView.ViewHolder holder, int position) {
                 HomeCommonListEntity.DataBean.ListBean bean = mBeanList.get(position);
-                HomeCommonDetailActivity.goHomeCommonDetailActivity(mContext,detailTitle,String.valueOf(bean.id));
+                HomeCommonDetailActivity.goHomeCommonDetailActivity(mContext, detailTitle, String.valueOf(bean.id));
             }
 
             @Override
             public boolean onItemLongClick(View view, RecyclerView.ViewHolder holder, int position) {
                 return false;
+            }
+        });
+
+        mFrameLayoutLoading.setRefreashClickListener(new FrameLayoutLoading.RefreashClickListener() {
+            @Override
+            public void setRefresh() {
+                mSmartRefreshLayout.autoRefresh();
             }
         });
 
@@ -133,19 +143,21 @@ public class HomeCommonListActivity extends BaseActivity<HomeCommonListPresenter
 
     @Override
     public void onScuess(List<HomeCommonListEntity.DataBean.ListBean> listBeans) {
-        if (page==1){
+        mFrameLayoutLoading.hideView();
+        if (page == 1) {
             mSmartRefreshLayout.finishRefresh();
-            if (listBeans.size()>0){
+            if (listBeans.size() > 0) {
                 mCommonListAdapter.refresh(listBeans);
-            }else {
-                ToastUtils.showMsg(mContext,getString(R.string.no_data));
+            } else {
+                mFrameLayoutLoading.showErrorView();
+                ToastUtils.showMsg(mContext, getString(R.string.no_data));
             }
-        }else {
+        } else {
             mSmartRefreshLayout.finishLoadMore();
-            if (listBeans.size()>0){
+            if (listBeans.size() > 0) {
                 mCommonListAdapter.addAll(listBeans);
-            }else {
-                ToastUtils.showMsg(mContext,getString(R.string.no_more_data));
+            } else {
+                ToastUtils.showMsg(mContext, getString(R.string.no_more_data));
             }
         }
     }
@@ -154,6 +166,6 @@ public class HomeCommonListActivity extends BaseActivity<HomeCommonListPresenter
     public void onFail(String err) {
         mSmartRefreshLayout.finishRefresh();
         mSmartRefreshLayout.finishLoadMore();
-        ToastUtils.showMsg(mContext,err);
+        mFrameLayoutLoading.showErrorView();
     }
 }
