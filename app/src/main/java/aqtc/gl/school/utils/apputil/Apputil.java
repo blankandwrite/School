@@ -11,7 +11,7 @@ import aqtc.gl.school.main.login.LoginInfoCache;
 /**
  * @author gl
  * @date 2018/5/10
- * @desc
+ * @desc 该APP工具
  */
 public class Apputil {
 

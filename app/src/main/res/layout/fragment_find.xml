@@ -27,7 +27,7 @@
             android:layout_alignParentRight="true"
             android:textSize="@dimen/sp_16"
             android:textColor="@color/white"
-            android:text="@string/index_bottom_find"
+            android:text="发布"
             android:gravity="center"
             android:padding="@dimen/dp_10"
             />

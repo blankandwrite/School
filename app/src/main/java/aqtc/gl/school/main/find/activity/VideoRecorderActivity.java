@@ -75,7 +75,6 @@ public class VideoRecorderActivity extends AppCompatActivity implements VideoOnT
         }
     }
 
-
     private void resolveIntent() {
         Intent intent = getIntent();
         if (intent == null) {

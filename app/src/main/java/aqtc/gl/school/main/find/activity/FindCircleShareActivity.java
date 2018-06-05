@@ -13,6 +13,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.library.log.LogX;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -287,8 +289,8 @@ public class FindCircleShareActivity extends BaseActivity {
             ImageView videoFrame = (ImageView) v.findViewById(R.id.videoFrame);
             videoView.mute();
             if (!TextUtils.isEmpty(data)) {
-                ivDelete.setVisibility(View.VISIBLE);
                 if (MimeTypeMap.isVideo(data)) {
+                    ivDelete.setVisibility(View.GONE);
                     previewImg.setVisibility(View.GONE);
                     videoBody.setVisibility(View.VISIBLE);
                     ImageLoad.getVideoImageGlide(mContext, data).centerCrop().into(videoFrame);
@@ -308,7 +310,7 @@ public class FindCircleShareActivity extends BaseActivity {
 
                         @Override
                         public void onCompletion(MediaPlayer mp) {
-                            videoView.start();
+                           videoView.start();
                         }
 
                         @Override
@@ -334,6 +336,7 @@ public class FindCircleShareActivity extends BaseActivity {
                 } else {
                     previewImg.setVisibility(View.VISIBLE);
                     videoBody.setVisibility(View.GONE);
+                    ivDelete.setVisibility(View.VISIBLE);
                     ImageLoad.getImageGlide(mContext, data,Global.IMAGE_DEFAULT).centerCrop().into(previewImg);
                 }
             }else {
@@ -343,6 +346,7 @@ public class FindCircleShareActivity extends BaseActivity {
                 @Override
                 public void onClick(View view) {
                     contents.remove(data);
+                    LogX.e("position",position+"");
                     notifyDataChanged();
                 }
             });

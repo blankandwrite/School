@@ -74,6 +74,7 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".main.find.activity.VideoRecorderActivity"
+            android:theme="@style/AppTheme.NoBar"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".main.home.activity.HomeCommonDetailActivity"
