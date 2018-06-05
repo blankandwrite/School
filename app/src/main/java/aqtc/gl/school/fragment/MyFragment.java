@@ -8,7 +8,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.library.log.LogX;
 import com.soundcloud.android.crop.Crop;
 
 import java.io.File;
@@ -20,6 +19,7 @@ import aqtc.gl.school.base.BaseFragment;
 import aqtc.gl.school.common.Global;
 import aqtc.gl.school.main.find.activity.PhotoSelectActivity;
 import aqtc.gl.school.main.home.activity.MyInfoEditActivity;
+import aqtc.gl.school.utils.LogX;
 import aqtc.gl.school.utils.TakePhotoUtil;
 import aqtc.gl.school.utils.ToastUtils;
 import aqtc.gl.school.utils.file.FileUtils;

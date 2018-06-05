@@ -13,8 +13,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.library.log.LogX;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +23,7 @@ import aqtc.gl.school.common.Global;
 import aqtc.gl.school.main.find.enums.FindShareType;
 import aqtc.gl.school.main.find.utils.FindSendPopupUtil;
 import aqtc.gl.school.main.find.widgets.videolist.widget.TextureVideoView;
+import aqtc.gl.school.utils.LogX;
 import aqtc.gl.school.utils.ShapeDrawableFactory;
 import aqtc.gl.school.utils.ToastUtils;
 import aqtc.gl.school.utils.file.MimeTypeMap;

@@ -1,1 +1,1 @@
-include ':app', ':baseadapter-recyclerview', ':LogLibrary'
+include ':app', ':baseadapter-recyclerview'

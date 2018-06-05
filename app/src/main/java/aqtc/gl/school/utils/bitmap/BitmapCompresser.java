@@ -8,13 +8,12 @@ import android.graphics.BitmapFactory.Options;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
-import com.library.log.LogX;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import aqtc.gl.school.utils.LogX;
 import aqtc.gl.school.utils.file.PathHelper;
 
 /**

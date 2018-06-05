@@ -5,11 +5,11 @@ import android.graphics.BitmapFactory.Options;
 import android.graphics.Matrix;
 import android.util.Log;
 
-import com.library.log.LogX;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+
+import aqtc.gl.school.utils.LogX;
 
 /**
  * @author gl

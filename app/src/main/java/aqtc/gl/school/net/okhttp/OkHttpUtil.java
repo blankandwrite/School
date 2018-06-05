@@ -3,8 +3,6 @@ package aqtc.gl.school.net.okhttp;
 import android.content.Context;
 import android.os.Handler;
 
-import com.library.log.LogX;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,6 +11,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import aqtc.gl.school.net.okhttp.callback.OnResponse;
+import aqtc.gl.school.utils.LogX;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;

@@ -36,8 +36,6 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.library.log.LogX;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -51,6 +49,7 @@ import aqtc.gl.school.main.find.utils.CameraUtils;
 import aqtc.gl.school.main.find.utils.DeviceUtil;
 import aqtc.gl.school.main.find.utils.SurfaceViewHelper;
 import aqtc.gl.school.main.find.utils.VideoOnTouchHelper;
+import aqtc.gl.school.utils.LogX;
 import aqtc.gl.school.utils.bitmap.BitmapUtil;
 
 

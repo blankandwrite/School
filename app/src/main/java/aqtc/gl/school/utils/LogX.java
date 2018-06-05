@@ -1,4 +1,4 @@
-package com.library.log;
+package aqtc.gl.school.utils;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;

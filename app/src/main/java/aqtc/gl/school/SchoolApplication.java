@@ -8,6 +8,7 @@ import aqtc.gl.school.common.preload.Preloader;
 import aqtc.gl.school.main.login.LoginInfoCache;
 import aqtc.gl.school.net.ApiClient;
 import aqtc.gl.school.net.OkHttpManager;
+import aqtc.gl.school.utils.LogX;
 import okhttp3.OkHttpClient;
 
 /**
@@ -27,6 +28,8 @@ public class SchoolApplication extends Application {
         initRetrofit();
         //初始化登录信息
         LoginInfoCache.getInstance().initLoginInfo(mAppContext);
+        //初始化log
+        LogX.initLog(mAppContext);
         //文件路径初始化
         Global.initAppPath(this);
         //网络请求临时缓存初始化

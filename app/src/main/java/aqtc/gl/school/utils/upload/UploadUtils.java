@@ -5,8 +5,6 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 
-import com.library.log.LogX;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,6 +15,7 @@ import java.util.Map;
 
 import aqtc.gl.school.net.okhttp.OkHttpUtil;
 import aqtc.gl.school.net.okhttp.callback.OnResponse;
+import aqtc.gl.school.utils.LogX;
 import aqtc.gl.school.utils.bitmap.BitmapCompresser;
 import aqtc.gl.school.utils.file.MimeTypeMap;
 import okhttp3.Call;

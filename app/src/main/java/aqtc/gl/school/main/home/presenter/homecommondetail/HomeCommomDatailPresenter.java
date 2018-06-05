@@ -2,12 +2,11 @@ package aqtc.gl.school.main.home.presenter.homecommondetail;
 
 import android.content.Context;
 
-import com.library.log.LogX;
-
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.RBasePresenter;
 import aqtc.gl.school.main.home.api.HomeApiFactory;
 import aqtc.gl.school.main.home.entity.HomeCommonDetailEntity;
+import aqtc.gl.school.utils.LogX;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Consumer;
 
