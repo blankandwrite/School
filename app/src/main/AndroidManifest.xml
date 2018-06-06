@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
     <application
         android:name=".SchoolApplication"
         android:allowBackup="true"
@@ -64,18 +65,18 @@
             android:name=".main.find.activity.FindCircleShareActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".common.ActivityWebView"
-            android:screenOrientation="portrait"/>
-        <activity
             android:name=".main.find.activity.PhotoSelectActivity"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".main.find.activity.SimpleVideoPlayActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".main.find.activity.VideoRecorderActivity"
-            android:theme="@style/AppTheme.NoBar"
+            android:name=".base.BaseWebViewActivity"
             android:screenOrientation="portrait"/>
+        <activity
+            android:name=".main.find.activity.VideoRecorderActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoBar"/>
         <activity
             android:name=".main.home.activity.HomeCommonDetailActivity"
             android:screenOrientation="portrait"/>

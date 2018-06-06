@@ -135,6 +135,7 @@
             android:layout_alignParentRight="true"/>
 
         <TextView
+            android:id="@+id/tv_introduction"
             style="@style/home_list2"
             android:text="@string/home_desc"
             android:drawableTop="@mipmap/ic_desc"

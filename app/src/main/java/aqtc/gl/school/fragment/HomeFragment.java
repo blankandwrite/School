@@ -13,6 +13,7 @@ import java.util.Map;
 
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseFragment;
+import aqtc.gl.school.base.BaseWebViewActivity;
 import aqtc.gl.school.common.CommonUrl;
 import aqtc.gl.school.common.Global;
 import aqtc.gl.school.common.preload.Preloader;
@@ -101,6 +102,10 @@ public class HomeFragment extends BaseFragment {
     @OnClick(R.id.tv_science)
     void goScience() {
         HomeCommonListActivity.goHomeCommonListActivity(mContext, Global.SCIENCE_ID,getString(R.string.home_science));
+    }
+    @OnClick(R.id.tv_introduction)
+    void goIntroduction(){
+        BaseWebViewActivity.goBaseWebViewActivity(mContext,"file:///android_asset/introduction.html",getString(R.string.home_desc));
     }
 
     private void getCategory(){
