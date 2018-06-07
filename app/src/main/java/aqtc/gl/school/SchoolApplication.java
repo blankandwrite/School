@@ -2,6 +2,8 @@ package aqtc.gl.school;
 
 import android.app.Application;
 
+import com.umeng.commonsdk.UMConfigure;
+
 import aqtc.gl.school.common.CommonUrl;
 import aqtc.gl.school.common.Global;
 import aqtc.gl.school.common.preload.Preloader;
@@ -34,7 +36,8 @@ public class SchoolApplication extends Application {
         Global.initAppPath(this);
         //网络请求临时缓存初始化
         Preloader.getInstance(mAppContext).reset();
-
+        //友盟初始化
+        UMConfigure.init(mAppContext,UMConfigure.DEVICE_TYPE_PHONE, "");
     }
 
     public static SchoolApplication getContext(){
