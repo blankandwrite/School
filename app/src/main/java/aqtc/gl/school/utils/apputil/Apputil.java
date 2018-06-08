@@ -23,7 +23,7 @@ public class Apputil {
      * 一键登录
      */
     public static boolean checkLogin(Object obj) {
-        //没有登录信息或者环信未登录跳转登录
+        //没有登录信息跳转登录页面
         if (!LoginInfoCache.getInstance().isLogin()) {
             if (obj instanceof Fragment) {
                 Fragment frg = (Fragment) obj;

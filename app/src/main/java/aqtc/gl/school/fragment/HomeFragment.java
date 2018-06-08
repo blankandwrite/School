@@ -83,39 +83,43 @@ public class HomeFragment extends BaseFragment {
 
     @OnClick(R.id.tv_news)
     void goNews() {
-        HomeCommonListActivity.goHomeCommonListActivity(mContext, Global.NEWS_ID,getString(R.string.home_news));
+        HomeCommonListActivity.goHomeCommonListActivity(mContext, Global.NEWS_ID, getString(R.string.home_news));
     }
 
     @OnClick(R.id.tv_fax)
     void goFax() {
-        HomeCommonListActivity.goHomeCommonListActivity(mContext, Global.FAX_ID,getString(R.string.home_fax));
+        HomeCommonListActivity.goHomeCommonListActivity(mContext, Global.FAX_ID, getString(R.string.home_fax));
     }
 
     @OnClick(R.id.tv_media)
     void goMedia() {
-        HomeCommonListActivity.goHomeCommonListActivity(mContext, Global.MEDIA_ID,getString(R.string.home_media));
+        HomeCommonListActivity.goHomeCommonListActivity(mContext, Global.MEDIA_ID, getString(R.string.home_media));
     }
+
     @OnClick(R.id.tv_notice)
     void goNotice() {
         Apputil.goActivity(mContext, NoticeListActivity.class);
     }
+
     @OnClick(R.id.tv_science)
     void goScience() {
-        HomeCommonListActivity.goHomeCommonListActivity(mContext, Global.SCIENCE_ID,getString(R.string.home_science));
-    }
-    @OnClick(R.id.tv_introduction)
-    void goIntroduction(){
-        BaseWebViewActivity.goBaseWebViewActivity(mContext,"file:///android_asset/introduction.html",getString(R.string.home_desc));
+        HomeCommonListActivity.goHomeCommonListActivity(mContext, Global.SCIENCE_ID, getString(R.string.home_science));
     }
 
-    private void getCategory(){
-        Map<String,String> params = new HashMap<>();
-        params.put("school_id","1");
+    @OnClick(R.id.tv_introduction)
+    void goIntroduction() {
+        BaseWebViewActivity.goBaseWebViewActivity(mContext, "file:///android_asset/introduction.html", getString(R.string.home_desc));
+
+    }
+
+    private void getCategory() {
+        Map<String, String> params = new HashMap<>();
+        params.put("school_id", "1");
         Preloader.getInstance(mContext).loadData(mContext, CommonUrl.ARTICLE_CATEGORY, getTAG(), params,
                 new PreloaderCallback<CategoryBean.DataBean>() {
                     @Override
                     public List<CategoryBean.DataBean> parseResult(String json) {
-                        mCategoryBean = GsonUtil.jsonToBean(json,CategoryBean.class);
+                        mCategoryBean = GsonUtil.jsonToBean(json, CategoryBean.class);
                         return mCategoryBean.data;
                     }
 

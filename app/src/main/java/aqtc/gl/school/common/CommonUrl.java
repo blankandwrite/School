@@ -13,6 +13,6 @@ public class CommonUrl {
     public static final String BASE_URL = BASE_URL_TEST;
     //首页
     public static final String ARTICLE_CATEGORY = BASE_URL + "api/v1/app/article/categories";
-    public static final String ARTICLE_LIS = BASE_URL + "api/v1/app/article/pages";
-    public static final String ARTICLE__DETAIL = BASE_URL + "api/v1/app/article/detail";
+    public static final String ARTICLE_LIS = "api/v1/app/article/pages";
+    public static final String ARTICLE_DETAIL = "api/v1/app/article/detail";
 }

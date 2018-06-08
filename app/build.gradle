@@ -10,7 +10,7 @@ android {
         versionName "1.0"
         flavorDimensions "1"
         multiDexEnabled = true
-       manifestPlaceholders = [UMENG_CHANNEL_VALUE: "umeng"]//添加一个默认渠道号
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "umeng"]//添加一个默认渠道号
 
     }
 
@@ -32,7 +32,7 @@ android {
     buildTypes {
 
         debug {
-        //    shrinkResources true // 移除无用的resource文件
+            //    shrinkResources true // 移除无用的resource文件minifyEnabled=true可用
             minifyEnabled false //不启用混淆
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro',
                     'proguard-fresco.pro'
@@ -40,7 +40,7 @@ android {
             signingConfig signingConfigs.debug
         }
         release {
-         //  shrinkResources true // 移除无用的resource文件
+            //  shrinkResources true // 移除无用的resource文件minifyEnabled=true可用
             minifyEnabled false //不启用混淆
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             //签名配置
@@ -56,45 +56,45 @@ android {
         Tencent {//投放应用宝市场
             //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Tencent]
         }
-       /* Baidu {//投放百度市场
-            //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Baidu]
-        }
-        Wandoujia {//投放豌豆荚市场
-            //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Wandoujia]
-        }
-        PP {//投放PP助手市场
-            //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: PP]
-        }
-        Qihoo {//投放PP助手市场
-            //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Qihoo]
-        }
-        Vivo {//投放vivo市场
-            //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Vivo]
-        }
-        Oppo {//投放oppo市场
-            //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Oppo]
-        }
-        Xiaomi {//投放小米市场
-            //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Xiaomi]
-        }
-        Meizu {//投放魅族市场
-            //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Meizu]
-        }
-        Huawei {//投放华为应用市场
-            //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Huawei]
-        }
-        Lenovo {//投放联想市场
-            //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Lenovo]
-        }
-        Letv {//投放乐视市场
-            //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Letv]
-        }
-        Gionee {//投放金立市场
-            //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Gionee]
-        }
-        HiMarket {//投放安卓市场
-            //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: HiMarket]
-        }*/
+        /* Baidu {//投放百度市场
+             //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Baidu]
+         }
+         Wandoujia {//投放豌豆荚市场
+             //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Wandoujia]
+         }
+         PP {//投放PP助手市场
+             //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: PP]
+         }
+         Qihoo {//投放PP助手市场
+             //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Qihoo]
+         }
+         Vivo {//投放vivo市场
+             //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Vivo]
+         }
+         Oppo {//投放oppo市场
+             //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Oppo]
+         }
+         Xiaomi {//投放小米市场
+             //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Xiaomi]
+         }
+         Meizu {//投放魅族市场
+             //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Meizu]
+         }
+         Huawei {//投放华为应用市场
+             //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Huawei]
+         }
+         Lenovo {//投放联想市场
+             //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Lenovo]
+         }
+         Letv {//投放乐视市场
+             //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Letv]
+         }
+         Gionee {//投放金立市场
+             //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: Gionee]
+         }
+         HiMarket {//投放安卓市场
+             //     manifestPlaceholders = [UMENG_CHANNEL_VALUE: HiMarket]
+         }*/
 
     }
     //注意我注释掉的，可以去掉注释，那样的话，下面这句就可以不用了
@@ -102,7 +102,7 @@ android {
         flavor -> flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
     }
 
-   //指定打包后应用名称
+    //指定打包后应用名称
     applicationVariants.all { variant ->
         variant.outputs.all { output ->  // each 改为 all
             def fileName = "aqtc_${defaultConfig.versionCode}_${defaultConfig.versionName}_${releaseTime()}.apk"
@@ -181,6 +181,7 @@ dependencies {
     implementation 'com.umeng.sdk:common:1.5.0'
     implementation 'com.umeng.sdk:analytics:7.5.0'
 }
+
 def releaseTime() {
     return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
 }

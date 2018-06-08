@@ -27,16 +27,17 @@ public class SchoolApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mAppContext = this;
+        //初始化RetrofitClient
         initRetrofit();
         //初始化登录信息
         LoginInfoCache.getInstance().initLoginInfo(mAppContext);
         //初始化log
         LogX.initLog(mAppContext);
         //文件路径初始化
-        Global.initAppPath(this);
+        Global.initAppPath(mAppContext);
         //网络请求临时缓存初始化
         Preloader.getInstance(mAppContext).reset();
-        //友盟初始化
+        //友盟初始化且必须要放在主线程里
         UMConfigure.init(mAppContext,UMConfigure.DEVICE_TYPE_PHONE, "");
     }
 

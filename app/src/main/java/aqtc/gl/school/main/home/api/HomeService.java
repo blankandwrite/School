@@ -1,5 +1,6 @@
 package aqtc.gl.school.main.home.api;
 
+import aqtc.gl.school.common.CommonUrl;
 import aqtc.gl.school.main.home.entity.HomeCommonDetailEntity;
 import io.reactivex.Observable;
 import okhttp3.ResponseBody;
@@ -17,7 +18,7 @@ public interface HomeService {
      * 获取列表条目
      * @return
      */
-    @POST("api/v1/app/article/pages")
+    @POST(CommonUrl.ARTICLE_LIS)
     Observable<ResponseBody> getHomeList(@Query("school_id") String school_id,@Query("page") String page,
                                          @Query("category_id") String category_id,  @Query("limit") String limit );
 
@@ -25,6 +26,6 @@ public interface HomeService {
      * 获取列表条目详情
      * @return
      */
-    @POST("api/v1/app/article/detail")
+    @POST(CommonUrl.ARTICLE_DETAIL)
     Observable<HomeCommonDetailEntity> getHomeListDetail(@Query("id") String id);
 }
