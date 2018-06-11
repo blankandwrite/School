@@ -39,8 +39,9 @@ public abstract class BaseActivity <T extends RBasePresenter> extends AppCompatA
         setStatusBar();
         mContext = this;
         mPresenter = getPresenter();
-        initView();
+        initView(savedInstanceState);
         findTitleViewId();
+        handleData();
         setback();
     }
 
@@ -57,13 +58,20 @@ public abstract class BaseActivity <T extends RBasePresenter> extends AppCompatA
     /**
      * 初始化界面
      */
-    public abstract void initView();
+    public abstract void initView(Bundle savedInstanceState);
 
     /**
      * 获取头部标题 操作头部子类需重写
-     * 注意：TitleView不为空 所有有关头部的操作要放在该方法里操作
+     * 注意：TitleView不为空 所有有关头部的操作要放在该方法里操作或者在handle()方法中处理
      */
     public void findTitleViewId() {
+
+    }
+
+    /**
+     * 数据处理
+     */
+    public void handleData(){
 
     }
 

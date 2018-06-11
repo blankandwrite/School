@@ -2,6 +2,7 @@ package aqtc.gl.school.base;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 
 import aqtc.gl.school.R;
 import aqtc.gl.school.widget.ProgressWebView;
@@ -31,7 +32,7 @@ public class BaseWebViewActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mWebView = findViewById(R.id.webView);
         mFrameLayoutLoading = findViewById(R.id.loading_view);
         Intent intent = getIntent();

@@ -2,6 +2,7 @@ package aqtc.gl.school.main.home.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseActivity;
@@ -40,17 +41,11 @@ public class HomeCommonDetailActivity extends BaseActivity<HomeCommomDatailPrese
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         title = getIntent().getStringExtra("title");
         id = getIntent().getStringExtra("id");
         mWebView.getSettings().setDefaultTextEncodingName("UTF-8");
-        mPresenter.getData(mContext,getTAG(),id);
-        mFrameLayoutLoading.setRefreashClickListener(new FrameLayoutLoading.RefreashClickListener() {
-            @Override
-            public void setRefresh() {
-                mPresenter.getData(mContext,getTAG(),id);
-            }
-        });
+
     }
 
     @Override
@@ -58,6 +53,17 @@ public class HomeCommonDetailActivity extends BaseActivity<HomeCommomDatailPrese
         mTitleView = findViewById(R.id.titleView);
         mTitleView.setTitle(title);
 
+    }
+
+    @Override
+    public void handleData() {
+        mPresenter.getData(mContext,getTAG(),id);
+        mFrameLayoutLoading.setRefreashClickListener(new FrameLayoutLoading.RefreashClickListener() {
+            @Override
+            public void setRefresh() {
+                mPresenter.getData(mContext,getTAG(),id);
+            }
+        });
     }
 
     @Override

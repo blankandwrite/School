@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -15,6 +14,7 @@ import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseFragment;
 import aqtc.gl.school.common.DataManager;
 import aqtc.gl.school.fragment.adapter.AcademyAdpter;
+import aqtc.gl.school.utils.divider.DividerListItemDecoration;
 import butterknife.BindView;
 
 /**
@@ -45,7 +45,8 @@ public class AcademyFragment extends BaseFragment {
         initTopView();
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
-        mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext,DividerItemDecoration.VERTICAL));
+      // mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext,DividerItemDecoration.VERTICAL));
+        mRecyclerView.addItemDecoration(new DividerListItemDecoration(mContext,DividerListItemDecoration.VERTICAL_LIST));
         mAcademyAdpter = new AcademyAdpter(mContext,R.layout.item_academy, DataManager.academyList);
         mRecyclerView.setAdapter(mAcademyAdpter);
 

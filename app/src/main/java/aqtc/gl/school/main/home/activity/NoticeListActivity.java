@@ -1,5 +1,6 @@
 package aqtc.gl.school.main.home.activity;
 
+import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -34,7 +35,7 @@ public class NoticeListActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mNoticeListAdapter = new NoticeListAdapter(mContext,R.layout.item_noticelist, NoticeListBean.getData());
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());

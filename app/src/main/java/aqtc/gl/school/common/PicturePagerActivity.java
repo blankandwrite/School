@@ -2,6 +2,7 @@ package aqtc.gl.school.common;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
@@ -45,7 +46,7 @@ public class PicturePagerActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         mUrlList.clear();
         mUrlList.addAll(getIntent().getStringArrayListExtra("urlList"));
         position = getIntent().getIntExtra("position",0);

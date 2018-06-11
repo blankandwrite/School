@@ -149,7 +149,7 @@ public class PhotoSelectActivity extends BaseActivity implements
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         getData();
         if (mImageFolders == null || mImageFolders.size() == 0)
             getImages();

@@ -2,6 +2,7 @@ package aqtc.gl.school.main.home.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -61,10 +62,21 @@ public class HomeCommonListActivity extends BaseActivity<HomeCommonListPresenter
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         Intent intent = getIntent();
         categoryId = intent.getStringExtra("categoryId");
         title = intent.getStringExtra("title");
+
+    }
+
+    @Override
+    public void findTitleViewId() {
+        mTitleView = findViewById(R.id.titleView);
+        mTitleView.setTitle(title);
+    }
+
+    @Override
+    public void handleData() {
         if (Global.NEWS_ID.equals(categoryId)) {
             detailTitle = "新闻详情";
         } else if (Global.FAX_ID.equals(categoryId)) {
@@ -80,7 +92,6 @@ public class HomeCommonListActivity extends BaseActivity<HomeCommonListPresenter
         mRecyclerView.addItemDecoration(new DividerItemDecoration(mContext, DividerItemDecoration.VERTICAL));
         mRecyclerView.setAdapter(mCommonListAdapter);
         mSmartRefreshLayout.autoRefresh();
-
         mSmartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
             @Override
             public void onRefresh(RefreshLayout refreshLayout) {
@@ -116,13 +127,6 @@ public class HomeCommonListActivity extends BaseActivity<HomeCommonListPresenter
                 mSmartRefreshLayout.autoRefresh();
             }
         });
-
-    }
-
-    @Override
-    public void findTitleViewId() {
-        mTitleView = findViewById(R.id.titleView);
-        mTitleView.setTitle(title);
     }
 
     @Override

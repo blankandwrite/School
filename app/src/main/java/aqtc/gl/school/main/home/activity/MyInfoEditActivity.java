@@ -2,6 +2,7 @@ package aqtc.gl.school.main.home.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.InputType;
 import android.widget.EditText;
 
@@ -39,7 +40,7 @@ public class MyInfoEditActivity extends BaseActivity {
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
      type = getIntent().getIntExtra("type",0);
      switch (type){
          // 0 用户名，1 学院 2，级别 3，专业 4，班级 5，密码

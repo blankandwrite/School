@@ -2,6 +2,7 @@ package aqtc.gl.school;
 
 import android.annotation.TargetApi;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
@@ -50,7 +51,7 @@ public class MainActivity extends BaseActivity implements OpenDrawerLayoutListen
     // 当前fragment的index
     private int currentTabIndex;
     private Button[] mTabs;
-    private int mStatusBarColor;
+
 
     @Override
     public int getActivityViewById() {
@@ -58,17 +59,17 @@ public class MainActivity extends BaseActivity implements OpenDrawerLayoutListen
     }
 
     @Override
-    public void initView() {
+    public void initView(Bundle savedInstanceState) {
         initLeftMenu();
         initTabs();
         initContentFragment();
+
     }
 
     @Override
     protected RBasePresenter getPresenter() {
         return null;
     }
-
 
     private void initLeftMenu() {
         DrawerLayout.LayoutParams params = (DrawerLayout.LayoutParams) leftMune.getLayoutParams();
@@ -120,10 +121,10 @@ public class MainActivity extends BaseActivity implements OpenDrawerLayoutListen
                 break;
         }
 
-        if (index==2 || index == 3){
-           if (!Apputil.checkLogin(MainActivity.this)){
-               return;
-           }
+        if (index == 2 || index == 3) {
+            if (!Apputil.checkLogin(MainActivity.this)) {
+                return;
+            }
         }
 
         if (currentTabIndex != index) {
@@ -146,6 +147,7 @@ public class MainActivity extends BaseActivity implements OpenDrawerLayoutListen
             drawerLayout.openDrawer(leftMune);
         }
     }
+
     @Override
     protected void setStatusBar() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
