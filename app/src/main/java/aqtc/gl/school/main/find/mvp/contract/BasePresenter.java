@@ -1,9 +1,7 @@
 package aqtc.gl.school.main.find.mvp.contract;
 
-/**
- * @author gl
- * @date 2018/5/12
- * @desc
+/**动态操作接口
+ * Created by suneee on 2016/7/15.
  */
 public interface BasePresenter {
 }

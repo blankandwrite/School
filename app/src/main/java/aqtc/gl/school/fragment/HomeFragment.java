@@ -60,7 +60,7 @@ public class HomeFragment extends BaseFragment {
                 .setSource(BannerBean.getBannerBean().data)
                 .setTransformerClass(ZoomOutSlideTransformer.class)
                 .startScroll();
-        getCategory();
+    //    getCategory();
 
     }
 

@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import aqtc.gl.school.R;
 
+import static aqtc.gl.school.main.common.FindCameraType.TYPE_URL;
+
 
 /**
  * @author gl

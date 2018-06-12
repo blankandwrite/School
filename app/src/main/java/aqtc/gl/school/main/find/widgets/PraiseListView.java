@@ -17,7 +17,7 @@ import java.util.List;
 
 import aqtc.gl.school.R;
 import aqtc.gl.school.SchoolApplication;
-import aqtc.gl.school.main.find.bean.FavortItem;
+import aqtc.gl.school.main.find.bean.CircleItemServer;
 import aqtc.gl.school.main.find.spannable.CircleMovementMethod;
 import aqtc.gl.school.main.find.spannable.SpannableClickable;
 
@@ -32,7 +32,7 @@ public class PraiseListView extends TextView {
 
     private int itemColor;
     private int itemSelectorColor;
-    private List<FavortItem> datas;
+    private List<CircleItemServer.ListBean.LikeListBean> datas;
     private OnItemClickListener onItemClickListener;
 
     public OnItemClickListener getOnItemClickListener() {
@@ -69,10 +69,10 @@ public class PraiseListView extends TextView {
         }
     }
 
-    public List<FavortItem> getDatas() {
+    public List<CircleItemServer.ListBean.LikeListBean> getDatas() {
         return datas;
     }
-    public void setDatas(List<FavortItem> datas) {
+    public void setDatas(List<CircleItemServer.ListBean.LikeListBean> datas) {
         this.datas = datas;
         notifyDataSetChanged();
     }
@@ -83,11 +83,11 @@ public class PraiseListView extends TextView {
         if(datas != null && datas.size() > 0){
             //添加点赞图标
             builder.append(setImageSpan());
-            FavortItem item = null;
+            CircleItemServer.ListBean.LikeListBean item = null;
             for (int i=0; i<datas.size(); i++){
                 item = datas.get(i);
                 if(item != null){
-                    builder.append(setClickableSpan(item.getUser().getName(), i));
+                    builder.append(setClickableSpan(item.name, i));
                     if(i != datas.size()-1){
                         builder.append(", ");
                     }
@@ -98,7 +98,6 @@ public class PraiseListView extends TextView {
         setText(builder);
         setMovementMethod(new CircleMovementMethod(itemSelectorColor));
     }
-
 
     private SpannableString setImageSpan(){
         String text = "  ";

@@ -15,6 +15,7 @@ import aqtc.gl.school.main.find.widgets.PraiseListView;
 import aqtc.gl.school.main.find.widgets.SnsPopupWindow;
 import aqtc.gl.school.main.find.widgets.videolist.model.VideoLoadMvpView;
 import aqtc.gl.school.main.find.widgets.videolist.widget.TextureVideoView;
+import aqtc.gl.school.widget.PraiseLayout;
 
 
 /**
@@ -23,10 +24,6 @@ import aqtc.gl.school.main.find.widgets.videolist.widget.TextureVideoView;
  * @desc
  */
 public abstract class CircleViewHolder extends RecyclerView.ViewHolder implements VideoLoadMvpView {
-
-    public final static int TYPE_URL = 1;
-    public final static int TYPE_IMAGE = 2;
-    public final static int TYPE_VIDEO = 3;
 
     public int viewType;
 
@@ -38,8 +35,10 @@ public abstract class CircleViewHolder extends RecyclerView.ViewHolder implement
     public TextView timeTv;
     public TextView deleteBtn;
     public ImageView snsBtn;
-    /** 点赞列表*/
+    /* 点赞列表 */
     public PraiseListView praiseListView;
+    /* 评论详情专用，显示头像 */
+    public PraiseLayout praiseLayout;
 
     public LinearLayout digCommentBody;
     public View digLine;
@@ -66,7 +65,9 @@ public abstract class CircleViewHolder extends RecyclerView.ViewHolder implement
         timeTv = (TextView) itemView.findViewById(R.id.timeTv);
         deleteBtn = (TextView) itemView.findViewById(R.id.deleteBtn);
         snsBtn = (ImageView) itemView.findViewById(R.id.snsBtn);
+
         praiseListView = (PraiseListView) itemView.findViewById(R.id.praiseListView);
+        praiseLayout = (PraiseLayout) itemView.findViewById(R.id.praiseLayout);
 
         digCommentBody = (LinearLayout) itemView.findViewById(R.id.digCommentBody);
         commentList = (CommentListView)itemView.findViewById(R.id.commentList);
@@ -99,6 +100,10 @@ public abstract class CircleViewHolder extends RecyclerView.ViewHolder implement
 
     @Override
     public void videoResourceReady(String videoPath) {
+
+    }
+
+    public void setOnClickListener(View.OnClickListener listener){
 
     }
 }

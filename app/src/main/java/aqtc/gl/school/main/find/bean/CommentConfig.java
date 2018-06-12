@@ -4,7 +4,7 @@ package aqtc.gl.school.main.find.bean;
  * Created by yiwei on 16/3/2.
  */
 public class CommentConfig {
-    public static enum Type{
+    public  enum Type{
         PUBLIC("public"), REPLY("reply");
 
         private String value;
@@ -18,6 +18,7 @@ public class CommentConfig {
     public int commentPosition;
     public Type commentType;
     public User replyUser;
+    public CircleItemServer.ListBean dynamic;
 
     @Override
     public String toString() {

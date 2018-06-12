@@ -12,9 +12,9 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 import aqtc.gl.school.R;
-import aqtc.gl.school.main.find.bean.CommentItem;
+import aqtc.gl.school.main.find.bean.CircleItemServer;
 import aqtc.gl.school.main.find.mvp.presenter.CirclePresenter;
-import aqtc.gl.school.main.find.utils.DatasUtil;
+import aqtc.gl.school.main.login.LoginInfoCache;
 
 
 /**
@@ -27,11 +27,11 @@ public class CommentDialog extends Dialog implements
 
 	private Context mContext;
 	private CirclePresenter mPresenter;
-	private CommentItem mCommentItem;
+	private CircleItemServer.ListBean.CommentListBean mCommentItem;
 	private int mCirclePosition;
 
 	public CommentDialog(Context context, CirclePresenter presenter,
-                         CommentItem commentItem, int circlePosition) {
+						 CircleItemServer.ListBean.CommentListBean commentItem, int circlePosition) {
 		super(context, R.style.comment_dialog);
 		mContext = context;
 		this.mPresenter = presenter;
@@ -42,7 +42,7 @@ public class CommentDialog extends Dialog implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.dialog_comment);
+		setContentView(R.layout.find_dialog_comment);
 		initWindowParams();
 		initView();
 	}
@@ -65,8 +65,8 @@ public class CommentDialog extends Dialog implements
 		copyTv.setOnClickListener(this);
 		TextView deleteTv = (TextView) findViewById(R.id.deleteTv);
 		if (mCommentItem != null
-				&& DatasUtil.curUser.getId().equals(
-						mCommentItem.getUser().getId())) {
+				&& LoginInfoCache.getMyUser().id.equals(
+				mCommentItem.userId)) {
 			deleteTv.setVisibility(View.VISIBLE);
 		} else {
 			deleteTv.setVisibility(View.GONE);
@@ -77,21 +77,21 @@ public class CommentDialog extends Dialog implements
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-		case R.id.copyTv:
-			if (mCommentItem != null) {
-				ClipboardManager clipboard = (ClipboardManager) mContext.getSystemService(Context.CLIPBOARD_SERVICE);
-				clipboard.setText(mCommentItem.getContent());
-			}
-			dismiss();
-			break;
-		case R.id.deleteTv:
-			if (mPresenter != null && mCommentItem != null) {
-				mPresenter.deleteComment(mCirclePosition, mCommentItem.getId());
-			}
-			dismiss();
-			break;
-		default:
-			break;
+			case R.id.copyTv:
+				if (mCommentItem != null) {
+					ClipboardManager clipboard = (ClipboardManager) mContext.getSystemService(Context.CLIPBOARD_SERVICE);
+					clipboard.setText(mCommentItem.content);
+				}
+				dismiss();
+				break;
+			case R.id.deleteTv:
+				if (mPresenter != null && mCommentItem != null) {
+					mPresenter.deleteComment(mCirclePosition, mCommentItem.id);
+				}
+				dismiss();
+				break;
+			default:
+				break;
 		}
 	}
 

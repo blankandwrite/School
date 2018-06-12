@@ -38,8 +38,6 @@ public class OkHttpUtil {
         clientBuilder.connectTimeout(15, TimeUnit.SECONDS);
         //写入超时
         clientBuilder.writeTimeout(2 * 60, TimeUnit.SECONDS);
-        //心跳频率
-        clientBuilder.pingInterval(10, TimeUnit.SECONDS);
         mOkHttpClient = clientBuilder.build();
     }
 
@@ -119,7 +117,17 @@ public class OkHttpUtil {
             public void onResponse(Call call, Response response) throws IOException {
                 try {
                     final String responseStr = response.body().string();
-                    final JSONObject jsonObject = new JSONObject(responseStr);
+                    JSONObject jsonObject = new JSONObject(responseStr);
+                    boolean isSuccess = jsonObject.getBoolean("success");
+                    LogX.e(TAG, "#response:" + jsonObject.toString());
+                    if (isSuccess) {
+                        onSuccess(onResponse, responseStr);
+                    } else {
+                        final String error = jsonObject.getString("msg");
+                        onError(onResponse, error);
+                    }
+
+                   /* final JSONObject jsonObject = new JSONObject(responseStr);
                     LogX.e(TAG, "#response:" + jsonObject.toString());
                     int err = jsonObject.getInt("err");
                     if (err == 0) {
@@ -127,7 +135,8 @@ public class OkHttpUtil {
                     } else {
                         final String error = jsonObject.getString("msg");
                         onError(onResponse, error);
-                    }
+                    }*/
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                     onError(onResponse, "访问失败，请重试");

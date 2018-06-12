@@ -1,9 +1,7 @@
 package aqtc.gl.school.main.find.mvp.contract;
 
-/**
- * @author gl
- * @date 2018/5/12
- * @desc
+/**视图操作接口
+ * Created by yiwei on 16/4/1.
  */
 public interface BaseView {
     void showLoading(String msg);

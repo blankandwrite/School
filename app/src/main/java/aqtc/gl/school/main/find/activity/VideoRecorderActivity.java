@@ -19,7 +19,8 @@ import aqtc.gl.school.utils.ToastUtils;
 
 import static aqtc.gl.school.main.common.FindCameraType.CAMERA_MODE;
 import static aqtc.gl.school.main.common.FindCameraType.MODE_NONE;
-import static aqtc.gl.school.main.find.adapter.viewholder.CircleViewHolder.TYPE_VIDEO;
+import static aqtc.gl.school.main.common.FindCameraType.TYPE_VIDEO;
+
 
 /**
  * @author gl

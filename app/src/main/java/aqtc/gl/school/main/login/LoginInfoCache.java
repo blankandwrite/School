@@ -4,6 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 
 import aqtc.gl.school.main.login.entity.LoginBean;
+import aqtc.gl.school.main.login.entity.User;
 import aqtc.gl.school.utils.sharepreference.PreferenceHelper;
 
 
@@ -23,6 +24,7 @@ public class LoginInfoCache {
     private boolean login = false;
     private static LoginInfoCache sInstance = new LoginInfoCache();
     private PreferenceHelper preferenceHelper;
+    private static User myUser;
 
     private LoginInfoCache() {
         preferenceHelper = PreferenceHelper.getInstance(LOGIN_FILE_NAME);
@@ -30,6 +32,9 @@ public class LoginInfoCache {
 
     public static LoginInfoCache getInstance() {
         return sInstance;
+    }
+    public static User getMyUser() {
+        return myUser;
     }
 
     /**
@@ -46,9 +51,11 @@ public class LoginInfoCache {
         LoginBean.DataBean account = getLoginBean(context);
         if (account != null && !TextUtils.isEmpty(account.token)) {
             login = true;
+            myUser = new User(account.userId, account.studentCode, account.headUrl);
         } else {
             login = false;
             clear(context);
+            myUser = new User("", "", "");
         }
     }
     /**

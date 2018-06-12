@@ -15,4 +15,10 @@ public class CommonUrl {
     public static final String ARTICLE_CATEGORY = BASE_URL + "api/v1/app/article/categories";
     public static final String ARTICLE_LIS = "api/v1/app/article/pages";
     public static final String ARTICLE_DETAIL = "api/v1/app/article/detail";
+
+    //模拟动态列表
+    public static final String FIND_DYNAMIC_LIST_URL = "http://quality.snzo.cn/sztx/open/discovery/dynamic/list";
+    //新增评论
+    public static final String FIND_ADD_COMMENT = BASE_URL + "/open/discovery/dynamic/comment";
+    //朋友圈
 }

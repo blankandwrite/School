@@ -6,6 +6,8 @@ import android.view.ViewStub;
 import aqtc.gl.school.R;
 import aqtc.gl.school.main.find.widgets.CircleVideoView;
 
+import static aqtc.gl.school.main.common.FindCameraType.TYPE_VIDEO;
+
 
 /**
  * @author gl

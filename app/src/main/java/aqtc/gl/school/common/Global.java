@@ -41,6 +41,8 @@ public class Global {
     public static final String SCIENCE_ID="3";
     public static final String MEDIA_ID="4";
 
+    public static final String TOKEN="eyJ1c2VyaWQiOiJmZjgwODA4MTVkZGY4ODhkMDE1ZGRmODhlYTA0MDAwMCIsInN0a2giOiI5NTEzMDAwMTEwMzg1NDgyIiwicmVhbE5hbWUiOiLmm7nlsI/kuq4iLCJyb2xlcyI6IlvlrabnlJ9dIiwidGFncyI6Ils5NTEzMDAwMTEwMzg1NDgyLCBBTExdIiwiempoIjoiMzQyOTAxMTk4NTA5MDg0NjE3Iiwic2V4Ijoi55S3In0=";
+
     public static void initAppPath(Context context) {
         PathHelper.getInstance(context, BASE_FILE_PATH + File.separator + PATH_PIC, false);
         PathHelper.getInstance(context, BASE_FILE_PATH + File.separator + PATH_VIDEO, false);

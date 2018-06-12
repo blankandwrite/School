@@ -25,14 +25,18 @@ import com.bumptech.glide.Glide;
 import com.malinskiy.superrecyclerview.OnMoreListener;
 import com.malinskiy.superrecyclerview.SuperRecyclerView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import aqtc.gl.school.R;
 import aqtc.gl.school.base.BaseFragment;
+import aqtc.gl.school.common.CommonUrl;
 import aqtc.gl.school.common.Global;
 import aqtc.gl.school.main.find.activity.FindCircleShareActivity;
 import aqtc.gl.school.main.find.adapter.CircleAdapter;
 import aqtc.gl.school.main.find.bean.CircleItem;
+import aqtc.gl.school.main.find.bean.CircleItemServer;
 import aqtc.gl.school.main.find.bean.CommentConfig;
 import aqtc.gl.school.main.find.bean.CommentItem;
 import aqtc.gl.school.main.find.bean.FavortItem;
@@ -42,9 +46,12 @@ import aqtc.gl.school.main.find.mvp.presenter.CirclePresenter;
 import aqtc.gl.school.main.find.utils.CommonUtils;
 import aqtc.gl.school.main.find.utils.FindSendPopupUtil;
 import aqtc.gl.school.main.find.widgets.CommentListView;
-import aqtc.gl.school.main.find.widgets.DivItemDecoration;
 import aqtc.gl.school.main.find.widgets.dialog.UpLoadDialog;
+import aqtc.gl.school.net.okhttp.OkHttpUtil;
+import aqtc.gl.school.net.okhttp.callback.OnResponse;
+import aqtc.gl.school.utils.GsonUtil;
 import aqtc.gl.school.utils.ToastUtils;
+import aqtc.gl.school.utils.divider.DividerListItemDecoration;
 import pub.devrel.easypermissions.EasyPermissions;
 
 import static android.app.Activity.RESULT_CANCELED;
@@ -75,14 +82,16 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
     private RelativeLayout bodyLayout;
     private LinearLayoutManager layoutManager;
 
-
-    private final static int TYPE_PULLREFRESH = 1;
-    private final static int TYPE_UPLOADREFRESH = 2;
     private UpLoadDialog uploadDialog;
     private boolean isPission;
     private SwipeRefreshLayout.OnRefreshListener refreshListener;
     private TextView mTvFind;
     private RelativeLayout rlTop;
+
+    private final static int TYPE_PULLREFRESH = 1;
+    private final static int TYPE_UPLOADREFRESH = 2;
+    private int page=1;
+    private int rows=10;
 
     @Override
     public void initView(View rootView) {
@@ -91,14 +100,7 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
         setView(rootView);
         //权限申请
         initPermission();
-        //实现自动下拉刷新功能
-        recyclerView.getSwipeToRefresh().post(new Runnable() {
-            @Override
-            public void run() {
-                recyclerView.setRefreshing(true);//执行下拉刷新的动画
-                refreshListener.onRefresh();//执行数据加载操作
-            }
-        });
+
 
     }
 
@@ -133,8 +135,10 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
         recyclerView = (SuperRecyclerView) rootView.findViewById(R.id.recyclerView);
         layoutManager = new LinearLayoutManager(mContext);
         recyclerView.setLayoutManager(layoutManager);
-        recyclerView.addItemDecoration(new DivItemDecoration(2, true));
+     //  recyclerView.addItemDecoration(new DivItemDecoration(2, true));
+        recyclerView.addItemDecoration(new DividerListItemDecoration(mContext,DividerListItemDecoration.VERTICAL_LIST));
         recyclerView.getMoreProgressView().getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
+
         recyclerView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -152,7 +156,8 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        presenter.loadData(TYPE_PULLREFRESH);
+                        page = 1;
+                        loadData(TYPE_PULLREFRESH);
                     }
                 }, 2000);
             }
@@ -201,6 +206,18 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
         });
 
         setViewTreeObserver();
+
+       //实现自动下拉刷新功能
+        recyclerView.getSwipeToRefresh().post(new Runnable() {
+            @Override
+            public void run() {
+                recyclerView.setRefreshing(true);//执行下拉刷新的动画
+                refreshListener.onRefresh();//执行数据加载操作
+            }
+        });
+        presenter.setServer(mContext, getTAG());
+
+
     }
 
 
@@ -294,28 +311,55 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
 
 
     @Override
-    public void update2DeleteCircle(String circleId) {
-        List<CircleItem> circleItems = circleAdapter.getDatas();
-        for (int i = 0; i < circleItems.size(); i++) {
-            if (circleId.equals(circleItems.get(i).getId())) {
-                circleItems.remove(i);
-                circleAdapter.notifyDataSetChanged();
-                //circleAdapter.notifyItemRemoved(i+1);
-                return;
-            }
-        }
+    public void update2DeleteCircle(CircleItemServer.ListBean circleItem) {
+
     }
 
     @Override
-    public void update2AddFavorite(int circlePosition, FavortItem addItem) {
-        if (addItem != null) {
-            CircleItem item = (CircleItem) circleAdapter.getDatas().get(circlePosition);
-            item.getFavorters().add(addItem);
-            circleAdapter.notifyDataSetChanged();
-            //circleAdapter.notifyItemChanged(circlePosition+1);
-        }
+    public void update2AddFavorite(int circlePosition, String dynamicId) {
+
     }
 
+    @Override
+    public void update2AddComment(int circlePosition, CircleItemServer.ListBean.CommentListBean addItem) {
+
+    }
+
+    /* @Override
+        public void update2DeleteCircle(String circleId) {
+            List<CircleItem> circleItems = circleAdapter.getDatas();
+            for (int i = 0; i < circleItems.size(); i++) {
+                if (circleId.equals(circleItems.get(i).getId())) {
+                    circleItems.remove(i);
+                    circleAdapter.notifyDataSetChanged();
+                    //circleAdapter.notifyItemRemoved(i+1);
+                    return;
+                }
+            }
+        }
+
+        @Override
+        public void update2AddFavorite(int circlePosition, FavortItem addItem) {
+            if (addItem != null) {
+                CircleItem item = (CircleItem) circleAdapter.getDatas().get(circlePosition);
+                item.getFavorters().add(addItem);
+                circleAdapter.notifyDataSetChanged();
+                //circleAdapter.notifyItemChanged(circlePosition+1);
+            }
+        }
+
+          @Override
+        public void update2AddComment(int circlePosition, CommentItem addItem) {
+            if (addItem != null) {
+                CircleItem item = (CircleItem) circleAdapter.getDatas().get(circlePosition);
+                item.getComments().add(addItem);
+                circleAdapter.notifyDataSetChanged();
+                //circleAdapter.notifyItemChanged(circlePosition+1);
+            }
+            //清空评论文本
+            editText.setText("");
+        }
+    */
     @Override
     public void update2DeleteFavort(int circlePosition, String favortId) {
         CircleItem item = (CircleItem) circleAdapter.getDatas().get(circlePosition);
@@ -330,17 +374,8 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
         }
     }
 
-    @Override
-    public void update2AddComment(int circlePosition, CommentItem addItem) {
-        if (addItem != null) {
-            CircleItem item = (CircleItem) circleAdapter.getDatas().get(circlePosition);
-            item.getComments().add(addItem);
-            circleAdapter.notifyDataSetChanged();
-            //circleAdapter.notifyItemChanged(circlePosition+1);
-        }
-        //清空评论文本
-        editText.setText("");
-    }
+
+
 
     @Override
     public void update2DeleteComment(int circlePosition, String commentId) {
@@ -375,16 +410,23 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
     }
 
     @Override
-    public void update2loadData(int loadType, List<CircleItem> datas) {
+    public void update2loadData(int loadType, List<CircleItemServer.ListBean> datas) {
+        Log.e("currentThread2",Thread.currentThread().getName());
         if (loadType == TYPE_PULLREFRESH) {
+            if (datas == null || datas.isEmpty()) {
+                ToastUtils.showMsg(mContext, "暂无数据");
+            }
             recyclerView.setRefreshing(false);
             circleAdapter.setDatas(datas);
         } else if (loadType == TYPE_UPLOADREFRESH) {
+            if (datas == null || datas.isEmpty()) {
+                ToastUtils.showMsg(mContext, "暂无更多数据");
+            }
             circleAdapter.getDatas().addAll(datas);
         }
         circleAdapter.notifyDataSetChanged();
 
-        if (circleAdapter.getDatas().size() < 45 + CircleAdapter.HEADVIEW_SIZE) {
+        if (datas.size() >= 10) {
             recyclerView.setupMoreListener(new OnMoreListener() {
                 @Override
                 public void onMoreAsked(int overallItemsCount, int itemsBeforeMore, int maxLastVisiblePosition) {
@@ -392,7 +434,8 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            presenter.loadData(TYPE_UPLOADREFRESH);
+                            page++;
+                            loadData(TYPE_UPLOADREFRESH);
                         }
                     }, 2000);
 
@@ -402,7 +445,6 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
             recyclerView.removeMoreListener();
             recyclerView.hideMoreProgress();
         }
-
     }
 
 
@@ -504,5 +546,28 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
         //拒绝权限
         isPission=false;
         ToastUtils.showMsg(mContext, "您拒绝了相关权限，可能会导致相关功能不可用");
+    }
+
+
+    public void loadData(final int loadType) {
+        Map<String, String> params = new HashMap<>();
+        params.put("token",Global.TOKEN);
+        params.put("page", page + "");
+        params.put("rows", rows + "");
+        OkHttpUtil.getInstance(mContext).doRequestByPost(CommonUrl.FIND_DYNAMIC_LIST_URL, getTAG(), params,
+                new OnResponse<String>() {
+                    @Override
+                    public void responseOk(String temp) {
+                        CircleItemServer bean = GsonUtil.jsonToBean(temp, CircleItemServer.class);
+                        update2loadData(loadType, bean.list);
+                    }
+
+                    @Override
+                    public void responseFail(String msg) {
+                        ToastUtils.showMsg(mContext, msg);
+                        recyclerView.setRefreshing(false);
+                    }
+                });
+
     }
 }

@@ -22,7 +22,7 @@
     <color name="bg_color">#F0F0F0</color>
     <color name="line">#ebeff2</color>
     <color name="colorBackgroundDark">#f2f2f2</color>
-    <drawable name="img_default">@color/gray6</drawable>
+    <drawable name="img_default">@color/gray4</drawable>
 
     <color name="color_8290AF">#8290AF</color>
     <color name="color_232323">#232323</color>

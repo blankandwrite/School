@@ -20,12 +20,14 @@ public class LoginBean extends BaseBean {
          * clazzId : 0ecc52c837154d61a650e1a2c942ba9c
          * clazzName : 2班
          * studentCode : yaofei
+         *
          */
-
-        public String token;
+        public String userId="userId";
+        public String headUrl="";
+        public String token="token";
         public String clazzId;
         public String clazzName;
-        public String studentCode;
+        public String studentCode="studentCode";
 
     }
 }
