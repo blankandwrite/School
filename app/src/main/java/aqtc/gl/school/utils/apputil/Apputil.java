@@ -5,6 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 
+import java.io.File;
+
+import aqtc.gl.school.common.CommonUrl;
 import aqtc.gl.school.main.login.LoginActivity;
 import aqtc.gl.school.main.login.LoginInfoCache;
 
@@ -43,6 +46,17 @@ public class Apputil {
         return true;
     }
 
-
+    //路径检查
+    public static String checkPath(String path) {
+        if (path != null) {
+            File file = new File(path);
+            if (file.exists()) {
+                return path;
+            } else {
+                return CommonUrl.BASE_IMAGE_URL + path;
+            }
+        }
+        return path;
+    }
 
 }

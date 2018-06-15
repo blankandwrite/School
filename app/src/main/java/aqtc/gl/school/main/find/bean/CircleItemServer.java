@@ -8,6 +8,7 @@ import java.util.List;
 
 import aqtc.gl.school.main.login.LoginInfoCache;
 import aqtc.gl.school.utils.StringUtils;
+import aqtc.gl.school.utils.apputil.Apputil;
 
 /**
  * @author gl
@@ -24,14 +25,13 @@ public class CircleItemServer {
      * list : [{"id":"ff80808163b8fb390163d2d82e2e1c77","userId":"ff8080815ddf888d015ddf88ea040000","content":"好","time":"2018-06-06 10:06:13","name":"曹小亮","headImage":"","pathList":[{"original":"/file/sztx/180606/e917cc51.jpg","thumbnail":"/file/sztx/180606/e917cc51_thumb.jpg"},{"original":"/file/sztx/180606/ccc21b96.jpg","thumbnail":"/file/sztx/180606/ccc21b96_thumb.jpg"}],"type":0,"likeList":[{"id":"ff80808163b8fb390163d2d8b2ff1c7b","userId":"ff8080815ddf888d015ddf9c7c12000a","name":"用户名","headImage":""},{"id":"ff80808163b8fb390163d2d919611c80","userId":"ff8080815ddf888d015ddf88ea040000","name":"曹小亮","headImage":""}],"commentList":[{"id":"ff80808163b8fb390163d2d8ca641c7d","userId":"ff8080815ddf888d015ddf9c7c12000a","name":"用户名","headImage":"","content":"好像","time":"2018-06-06 10:06:53","targetId":"ff8080815ddf888d015ddf88ea040000","targetName":"曹小亮","type":"0"},{"id":"ff80808163b8fb390163d2d93e101c81","userId":"ff8080815ddf888d015ddf88ea040000","name":"曹小亮","headImage":"","content":"你好","time":"2018-06-06 10:07:22","targetId":"ff8080815ddf888d015ddf88ea040000","targetName":"曹小亮","type":"0"},{"id":"ff80808163b8fb390163d2d953d91c84","userId":"ff8080815ddf888d015ddf88ea040000","name":"曹小亮","headImage":"","content":"哈哈哈","time":"2018-06-06 10:07:28","targetId":"ff8080815ddf888d015ddf9c7c12000a","targetName":"用户名","type":"1"}]},{"id":"ff80808163b8fb390163d2bbaa6a1bd4","userId":"ff8080815ddf888d015ddf9c7c12000a","content":"哈哈哈哈","time":"2018-06-06 09:35:04","name":"用户名","headImage":"","pathList":[{"original":"/file/sztx/180606/b8f3c6fe.mp4","thumbnail":"/file/sztx/180606/b8f3c6fe.jpg"}],"type":1,"likeList":[],"commentList":[]},{"id":"ff80808163b8fb390163d2a7128b1b71","userId":"ff8080815ddf888d015ddf9c7c12000a","content":"和合肥","time":"2018-06-06 09:12:34","name":"用户名","headImage":"","pathList":[{"original":"/file/sztx/180606/d0034a02.jpg","thumbnail":"/file/sztx/180606/d0034a02_thumb.jpg"},{"original":"/file/sztx/180606/7cf0aeb4.jpg","thumbnail":"/file/sztx/180606/7cf0aeb4_thumb.jpg"},{"original":"/file/sztx/180606/13404f0b.jpg","thumbnail":"/file/sztx/180606/13404f0b_thumb.jpg"}],"type":0,"likeList":[{"id":"ff80808163b8fb390163d2abb1711b8a","userId":"ff8080815ddf888d015ddf9c7c12000a","name":"用户名","headImage":""}],"commentList":[{"id":"ff80808163b8fb390163d2abf0b01b8d","userId":"ff8080815ddf888d015ddf9c7c12000a","name":"用户名","headImage":"","content":"呵呵呵呵","time":"2018-06-06 09:17:53","targetId":"ff8080815ddf888d015ddf9c7c12000a","targetName":"用户名","type":"0"},{"id":"ff80808163b8fb390163d2b99a931bd2","userId":"ff8080815ddf888d015ddf88ea040000","name":"曹小亮","headImage":"","content":"你好","time":"2018-06-06 09:32:49","targetId":"ff8080815ddf888d015ddf9c7c12000a","targetName":"用户名","type":"1"}]}]
      */
     public String error;
-    public boolean success;
     public String bgImage;
     public String headImage;
     public String name;
     public List<ListBean> list;
 
     public String getBgImage() {
-        return bgImage;
+        return Apputil.checkPath(bgImage);
     }
 
     public void setBgImage(String bgImage) {
@@ -39,7 +39,7 @@ public class CircleItemServer {
     }
 
     public String getHeadImage() {
-        return headImage;
+        return Apputil.checkPath(headImage);
     }
 
     public void setHeadImage(String headImage) {
@@ -91,6 +91,7 @@ public class CircleItemServer {
         public String linkUrl;
         public String linkImg;
         public String linkTitle;
+
 
         public void setExpand(boolean isExpand) {
             this.isExpand = isExpand;
@@ -216,7 +217,7 @@ public class CircleItemServer {
         }
 
         public String getHeadImage() {
-            return headImage;
+            return Apputil.checkPath(headImage);
         }
 
         public void setHeadImage(String headImage) {
@@ -344,7 +345,7 @@ public class CircleItemServer {
             }
 
             public String getHeadImage() {
-                return headImage;
+                return Apputil.checkPath(headImage);
             }
 
             public void setHeadImage(String headImage) {
@@ -428,7 +429,7 @@ public class CircleItemServer {
             //*****************手动添加*******************//
 
             public String getHeadImage() {
-                return headImage;
+                return Apputil.checkPath(headImage);
             }
 
             public void setHeadImage(String headImage) {
@@ -490,11 +491,11 @@ public class CircleItemServer {
             }
 
             public String getOriginal() {
-                return original;
+                return Apputil.checkPath(original);
             }
 
             public String getThumbnail() {
-                return thumbnail;
+                return Apputil.checkPath(thumbnail);
             }
 
             public void setTitle(String title) {
@@ -510,4 +511,5 @@ public class CircleItemServer {
             }
         }
     }
+
 }

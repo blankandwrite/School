@@ -8,6 +8,11 @@ import android.content.res.Configuration;
 import android.util.DisplayMetrics;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+
+import java.io.File;
+
+import aqtc.gl.school.common.CommonUrl;
+
 /**
  * @author gl
  * @date 2018/5/6

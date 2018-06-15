@@ -9,6 +9,10 @@ public class CommonUrl {
     //www.xiangline.com  regular  http://106.14.8.195:8800/
     public static final String BASE_URL_TEST = "http://test-api.xiangline.com/";
     public static final String BASE_URL_REGULAR = "http://api.xiangline.com/";
+    
+    //图片前缀地址
+    public static final String BASE_IMAGE_PREFIX = "http://quality.snzo.cn";
+    public static final String BASE_IMAGE_URL = BASE_IMAGE_PREFIX + "/jrelax-fs";
 
     public static final String BASE_URL = BASE_URL_TEST;
     //首页

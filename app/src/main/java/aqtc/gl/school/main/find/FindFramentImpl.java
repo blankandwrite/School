@@ -51,7 +51,6 @@ import aqtc.gl.school.net.okhttp.OkHttpUtil;
 import aqtc.gl.school.net.okhttp.callback.OnResponse;
 import aqtc.gl.school.utils.GsonUtil;
 import aqtc.gl.school.utils.ToastUtils;
-import aqtc.gl.school.utils.divider.DividerListItemDecoration;
 import pub.devrel.easypermissions.EasyPermissions;
 
 import static android.app.Activity.RESULT_CANCELED;
@@ -136,7 +135,7 @@ public class FindFramentImpl extends BaseFragment implements CircleContract.View
         layoutManager = new LinearLayoutManager(mContext);
         recyclerView.setLayoutManager(layoutManager);
      //  recyclerView.addItemDecoration(new DivItemDecoration(2, true));
-        recyclerView.addItemDecoration(new DividerListItemDecoration(mContext,DividerListItemDecoration.VERTICAL_LIST));
+     //   recyclerView.addItemDecoration(new DividerListItemDecoration(mContext,DividerListItemDecoration.VERTICAL_LIST));
         recyclerView.getMoreProgressView().getLayoutParams().width = ViewGroup.LayoutParams.MATCH_PARENT;
 
         recyclerView.setOnTouchListener(new View.OnTouchListener() {
